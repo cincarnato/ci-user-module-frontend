@@ -1,0 +1,84 @@
+import AuthProvider from '../modules/Auth/providers/AuthProvider'
+import jwt_decode from 'jwt-decode'
+
+export default {
+    state: {
+        access_token: null,
+        me: null,
+    },
+    getters: {
+        me: (state) => {
+            return state.me
+        },
+        getToken: (state) => {
+            return state.access_token
+        },
+        isAuth: (state) => {
+            return (state.access_token) ? true : false
+        },
+        hasRole: (state) => (role) => {
+            if (!state.me || !state.me.role) return false
+            return state.me.role.name == role
+        },
+        hasPermission: (state) => (permission) => {
+            if (!state.me) return false
+            return state.me.role.permissions.includes(permission)
+        },
+    },
+    actions: {
+        login({commit}, {username, password}) {
+
+            return new Promise( (resolve, reject) => {
+                AuthProvider.auth(username, password)
+                    .then((response) => {
+                        commit('setAccessToken', response.data.auth.token)
+                        let me = jwt_decode(response.data.auth.token)
+                        commit('setMe', me)
+                        resolve(me)
+                    }).catch((error) => {
+                    if (error.networkError) {
+                        reject("common.networkError")
+                    } else if (error.graphQLErrors[0].extensions.code == 'UNAUTHENTICATED') {
+                        reject("auth.badCredentials")
+                    } else {
+                        reject("common.unexpectedError")
+                    }
+
+                })
+            })
+        },
+
+        logout({commit}) {
+            commit('setMe', null)
+            commit('setAccessToken', null)
+            //Todo move to another part
+            // router.push('/login')
+        },
+
+        checkAuth: ({state, dispatch, commit}) => {
+            if (state.access_token) {
+                let payload = jwt_decode(state.access_token)
+                if (payload.exp) {
+                    let dateNow = new Date();
+                    let dateToken = new Date(payload.exp * 1000)
+                    if (dateNow < dateToken) {
+                        commit('setMe', payload)
+                    }else{
+                        dispatch('logout')
+                    }
+                }
+            }
+
+        },
+
+
+    },
+    mutations: {
+        setAccessToken(state, access_token) {
+            state.access_token = access_token
+        },
+        setMe(state, me) {
+            state.me = me
+        }
+    }
+}

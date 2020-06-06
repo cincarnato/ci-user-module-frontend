@@ -1,0 +1,84 @@
+<template>
+
+    <v-form @keyup.enter.native="signIn">
+
+        <v-text-field
+                type="text"
+                v-model="form.username"
+                :label="$t('auth.username')"
+                :placeholder="$t('auth.username')"
+                color="secondary"
+        ></v-text-field>
+
+        <v-text-field id="password"
+                      type="password"
+                      v-model="form.password"
+                      :label="$t('auth.password')"
+                      :placeholder="$t('auth.password')"
+                      color="secondary"
+        />
+
+        <v-btn
+                ref="loginBtn"
+                :loading="loading"
+                min-width="100%"
+                color="secondary"
+                class="onSecondary--text"
+                @click="signIn" v-t="'auth.signIn'">
+        </v-btn>
+
+    </v-form>
+
+</template>
+
+<script>
+    import {mapActions, mapState, mapGetters} from 'vuex'
+
+    export default {
+        name: "LoginForm",
+
+        data: () => {
+            return {
+                loading: false,
+                error: null,
+                form: {
+                    username: null,
+                    password: null
+                }
+            }
+        },
+
+        created() {
+            if (this.isAuth) this.$router.push('/')
+        },
+
+        computed: {
+            ...mapState({
+                me: state => state.user.me
+            }),
+            ...mapGetters(['isAuth']),
+        },
+        methods: {
+            ...mapActions(['login']),
+
+            signIn() {
+                this.loading = true
+                this.login(this.form)
+                    .then(() => {
+                        this.$router.push('/')
+                    })
+                    .catch(err => {
+                        this.error = err
+                    })
+                    .finally(() => this.loading = false)
+            }
+        },
+        watch: {
+            me: function (val) {
+                if (val !== null) {
+                    this.$router.push('/')
+                }
+            }
+        },
+    }
+</script>
