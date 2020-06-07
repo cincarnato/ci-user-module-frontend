@@ -37,11 +37,11 @@ export default {
                         resolve(me)
                     }).catch((error) => {
                     if (error.networkError) {
-                        reject("shared.networkError")
+                        reject("shared.clientError.networkError")
                     } else if (error.graphQLErrors[0].extensions.code == 'UNAUTHENTICATED') {
                         reject("auth.badCredentials")
                     } else {
-                        reject("shared.unexpectedError")
+                        reject("shared.clientError.unexpectedError")
                     }
 
                 })

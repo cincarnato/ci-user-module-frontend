@@ -1,8 +1,14 @@
 <template>
     <v-container fluid fill-height class="grey lighten-3">
-        <login-card>
-            <login-form></login-form>
-        </login-card>
+        <v-container fluid fill-height class="grey lighten-3">
+            <v-row align="center" justify="center">
+                <v-col cols="12" sm="7" md="5" lg="4">
+                    <login-card>
+                        <login-form></login-form>
+                    </login-card>
+                </v-col>
+            </v-row>
+        </v-container>
     </v-container>
 </template>
 

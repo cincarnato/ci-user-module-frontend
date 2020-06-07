@@ -18,6 +18,13 @@ class AuthProvider {
         })
     }
 
+    register({username,password, name, email, phone}){
+        return this.gqlc.query({
+            query: require('./gql/register.graphql'),
+            variables: {username,password, name, email, phone}
+        })
+    }
+
     me(){
         return this.gqlc.query({
             query: require('./gql/me.graphql')
