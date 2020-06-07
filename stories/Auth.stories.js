@@ -1,11 +1,20 @@
 import {storiesOf} from '@storybook/vue';
 import LoginForm from '../src/modules/Auth/pages/LoginPage/LoginForm';
 import LoginCard from '../src/modules/Auth/pages/LoginPage/LoginCard';
+import LoginPage from '../src/modules/Auth/pages/LoginPage';
 import store from '../src/store'
 import i18n from '../src/i18n'
 import router from '../src/router'
 
-storiesOf('Auth/Component', module)
+storiesOf('Auth/Pages', module)
+    .add('LoginPage',
+        () => ({
+            components: {LoginPage},
+            template: '<login-page></login-page>',
+            i18n, store, router
+        }))
+
+storiesOf('Auth/Components', module)
     .add('LoginForm',
         () => ({
             components: {LoginForm},
