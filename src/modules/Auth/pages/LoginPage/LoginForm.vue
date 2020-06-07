@@ -1,6 +1,9 @@
 <template>
 
     <v-form @keyup.enter.native="signIn">
+        <v-alert :value="error" type="error" class="mb-3 pa-3">
+            {{$t(error)}}
+        </v-alert>
 
         <v-text-field
                 type="text"
