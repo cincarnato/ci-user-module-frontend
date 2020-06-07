@@ -20,8 +20,15 @@ class AuthProvider {
 
     register({username,password, name, email, phone}){
         return this.gqlc.query({
-            query: require('./gql/register.graphql'),
+            query: require('./gql/registerUser.graphql'),
             variables: {username,password, name, email, phone}
+        })
+    }
+
+    activation(id){
+        return this.gqlc.query({
+            query: require('./gql/activationUser.graphql'),
+            variables: {id}
         })
     }
 
