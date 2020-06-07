@@ -8,16 +8,16 @@
         <v-text-field
                 type="text"
                 v-model="form.username"
-                :label="$t('auth.username')"
-                :placeholder="$t('auth.username')"
+                :label="$t('user.label.username')"
+                :placeholder="$t('user.label.username')"
                 color="secondary"
         ></v-text-field>
 
         <v-text-field id="password"
                       type="password"
                       v-model="form.password"
-                      :label="$t('auth.password')"
-                      :placeholder="$t('auth.password')"
+                      :label="$t('user.label.password')"
+                      :placeholder="$t('user.label.password')"
                       color="secondary"
         />
 

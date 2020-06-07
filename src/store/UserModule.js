@@ -1,5 +1,6 @@
 import AuthProvider from '../modules/Auth/providers/AuthProvider'
 import jwt_decode from 'jwt-decode'
+import ClientError from '../modules/Shared/errors/ClientError'
 
 export default {
     state: {
@@ -28,21 +29,16 @@ export default {
     actions: {
         login({commit}, {username, password}) {
 
-            return new Promise( (resolve, reject) => {
+            return new Promise((resolve, reject) => {
                 AuthProvider.auth(username, password)
                     .then((response) => {
                         commit('setAccessToken', response.data.auth.token)
                         let me = jwt_decode(response.data.auth.token)
                         commit('setMe', me)
                         resolve(me)
-                    }).catch((error) => {
-                    if (error.networkError) {
-                        reject("shared.clientError.networkError")
-                    } else if (error.graphQLErrors[0].extensions.code == 'UNAUTHENTICATED') {
-                        reject("auth.badCredentials")
-                    } else {
-                        reject("shared.clientError.unexpectedError")
-                    }
+                    }).catch((err) => {
+                    let error = new ClientError(err)
+                    reject(error.i18nMessage)
 
                 })
             })
@@ -63,7 +59,7 @@ export default {
                     let dateToken = new Date(payload.exp * 1000)
                     if (dateNow < dateToken) {
                         commit('setMe', payload)
-                    }else{
+                    } else {
                         dispatch('logout')
                     }
                 }

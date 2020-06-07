@@ -1,9 +1,9 @@
 //i18n Messages
-const MESSAGE_GENERIC_ERROR = "shared.clientError.unexpectedError"
-const MESSAGE_NETWORK_ERROR = "shared.clientError.networkError"
-const MESSAGE_VALIDATION = "shared.clientError.validationError"
-const MESSAGE_FORBIDEN = "shared.clientError.forbiden"
-const MESSAGE_UNAUTHENTICATED = "shared.clientError.unauthenticated"
+const MESSAGE_GENERIC_ERROR = "client.error.unexpectedError"
+const MESSAGE_NETWORK_ERROR = "client.error.networkError"
+const MESSAGE_VALIDATION = "client.error.validationError"
+const MESSAGE_FORBIDDEN = "client.error.forbidden"
+const MESSAGE_UNAUTHENTICATED = "client.error.unauthenticated"
 
 //Apollo Errors
 const BAD_USER_INPUT = "BAD_USER_INPUT"
@@ -18,7 +18,7 @@ class ClientError extends Error {
         this.errorsQuantity= null
         //Last error message
         this.i18nMessage = ""
-        //All messages
+        //All userMessages
         this.i18nMessages = []
 
         if (error.networkError) {
@@ -43,8 +43,8 @@ class ClientError extends Error {
                 this.inputErrors = {...this.inputErrors, ...gqlError.extensions.exception.inputErrors}
             }
             if (gqlError.extensions.code == FORBIDDEN) {
-                this.i18nMessage = MESSAGE_FORBIDEN
-                this.i18nMessages.push(MESSAGE_FORBIDEN)
+                this.i18nMessage = MESSAGE_FORBIDDEN
+                this.i18nMessages.push(MESSAGE_FORBIDDEN)
             }
 
             if (gqlError.extensions.code == UNAUTHENTICATED) {

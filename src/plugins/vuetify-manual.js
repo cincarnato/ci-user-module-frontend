@@ -3,6 +3,7 @@ import Vuetify, {
     VApp, VForm, VTextField, VBtn,
     VCard, VCardText, VCardTitle,
     VContent, VContainer, VRow, VCol,
+    VToolbar,
     VAlert, VIcon
 } from 'vuetify/lib';
 import i18n from '../i18n'
@@ -11,6 +12,7 @@ Vue.use(Vuetify, {
         VApp, VForm, VTextField, VBtn,
         VCard, VCardText, VCardTitle,
         VContent, VContainer, VRow, VCol,
+        VToolbar,
         VAlert, VIcon
     }
 });

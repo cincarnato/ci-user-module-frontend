@@ -9,8 +9,8 @@
                         name="name"
                         type="text"
                         v-model="form.name"
-                        :label="$t('user.form.fullname')"
-                        :placeholder="$t('user.form.fullname')"
+                        :label="$t('user.label.fullname')"
+                        :placeholder="$t('user.label.fullname')"
                         :rules="requiredRule"
                         :error="hasInputErrors('name')"
                         :error-messages="getInputErrors('name')"
@@ -24,8 +24,8 @@
                         name="username"
                         type="text"
                         v-model="form.username"
-                        :label="$t('user.form.username')"
-                        :placeholder="$t('user.form.username')"
+                        :label="$t('user.label.username')"
+                        :placeholder="$t('user.label.username')"
                         autocomplete="new-password"
                         :rules="requiredRule"
                         :error="hasInputErrors('username')"
@@ -39,8 +39,8 @@
                               name="email"
                               type="text"
                               v-model="form.email"
-                              :label="$t('user.form.email')"
-                              :placeholder="$t('user.form.email')"
+                              :label="$t('user.label.email')"
+                              :placeholder="$t('user.label.email')"
                               :rules="emailRules"
                               :error="hasInputErrors('email')"
                               :error-messages="getInputErrors('email')"
@@ -53,8 +53,8 @@
                               name="email_verify"
                               type="text"
                               v-model="form.email_verify"
-                              :label="$t('user.form.repeatEmail')"
-                              :placeholder="$t('user.form.repeatEmail')"
+                              :label="$t('user.label.repeatEmail')"
+                              :placeholder="$t('user.label.repeatEmail')"
                               onPaste="return false"
                               :rules="requiredRule"
                               :error="emailMatchError == '' ? false : true"
@@ -70,8 +70,8 @@
                               name="password"
                               type="password"
                               v-model="form.password"
-                              :label="$t('user.form.password')"
-                              :placeholder="$t('user.form.password')"
+                              :label="$t('user.label.password')"
+                              :placeholder="$t('user.label.password')"
                               autocomplete="new-password"
                               ref="password"
                               :rules="requiredRule"
@@ -87,8 +87,8 @@
                               name="password_verify"
                               type="password"
                               v-model="form.password_verify"
-                              :label="$t('user.form.repeatPassword')"
-                              :placeholder="$t('user.form.repeatPassword')"
+                              :label="$t('user.label.repeatPassword')"
+                              :placeholder="$t('user.label.repeatPassword')"
                               autocomplete="new-password"
                               :rules="requiredRule"
                               :error="passwordMatchError == '' ? false : true"
@@ -101,15 +101,15 @@
                               name="phone"
                               type="text"
                               v-model="form.phone"
-                              :label="$t('user.form.phone')"
-                              :placeholder="$t('user.form.phone')"
+                              :label="$t('user.label.phone')"
+                              :placeholder="$t('user.label.phone')"
                               :error="hasInputErrors('phone')"
                               :error-messages="getInputErrors('phone')"
                 />
             </v-col>
 
             <v-col cols="12">
-                <v-btn :loading="loading" color="secondary" @click="register" v-t="'user.signUp'"></v-btn>
+                <v-btn :loading="loading" color="secondary" class="OnSecondary--text" @click="register" v-t="'auth.signUp'"></v-btn>
             </v-col>
         </v-row>
     </v-form>
@@ -150,25 +150,22 @@
         ),
         computed: {
             requiredRule() {
-                return [v => !!v || this.$t('shared.validation.required')];
+                return [v => !!v || this.$t('user.validation.required')];
             },
             emailRules(){
                 return [
-                    v => !!v || this.$t('shared.validation.required'),
-                    v => /.+@.+/.test(v) || this.$t('shared.validation.emailFormat')
+                    v => !!v || this.$t('user.validation.required'),
+                    v => /.+@.+/.test(v) || this.$t('user.validation.emailFormat')
                 ]
             },
             passwordMatchError() {
-                return (this.form.password === this.form.password_verify) ? '' : this.$t('shared.validation.passwordVerify')
+                return (this.form.password === this.form.password_verify) ? '' : this.$t('user.validation.passwordVerify')
             },
             emailMatchError() {
-                return (this.form.email === this.form.email_verify) ? '' : this.$t('shared.validation.emailVerify')
+                return (this.form.email === this.form.email_verify) ? '' : this.$t('user.validation.emailVerify')
             }
         },
         methods: {
-            required(v) {
-                return !!v || this.$t('shared.validation.required')
-            },
             register() {
                 if (this.$refs.form.validate()) {
                     this.loading = true

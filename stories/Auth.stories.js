@@ -19,6 +19,12 @@ storiesOf('Auth/Pages', module)
             template: '<login-page></login-page>',
             i18n, store, router
         }))
+    .add('RegisterPage',
+        () => ({
+            components: {RegisterPage},
+            template: '<register-page></register-page>',
+            i18n, store, router
+        }))
 
 storiesOf('Auth/Login', module)
     .add('LoginForm',
