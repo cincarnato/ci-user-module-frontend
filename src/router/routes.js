@@ -1,4 +1,4 @@
-import LoginPage from '../modules/Auth/pages/LoginPage'
+import LoginPage from '../pages/LoginPage'
 
 const routes = [
     { name: "login", path: '/login', component: LoginPage }

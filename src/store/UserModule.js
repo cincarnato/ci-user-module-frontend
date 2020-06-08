@@ -1,6 +1,6 @@
-import AuthProvider from '../modules/Auth/providers/AuthProvider'
+import AuthProvider from '../providers/AuthProvider'
 import jwt_decode from 'jwt-decode'
-import ClientError from '../modules/Shared/errors/ClientError'
+import ClientError from '../errors/ClientError'
 
 export default {
     state: {
