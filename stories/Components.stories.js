@@ -10,7 +10,7 @@ export const snackbar = () => ({
     components: {Snackbar},
     props: {
         message: {
-            default: text('message', "some")
+            default: text('message', "Some Notification")
         }
     },
     template: '<snackbar :message="message"></snackbar>',

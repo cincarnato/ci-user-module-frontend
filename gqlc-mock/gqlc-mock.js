@@ -3,6 +3,7 @@ import groupsPaginate from './resolves/groupsPaginate'
 import users from './resolves/users'
 import createUser from './resolves/createUser'
 import updateUser from './resolves/updateUser'
+import deleteUser from './resolves/deleteUser'
 import userPaginate from './resolves/userPaginate'
 import roles from './resolves/roles'
 import groups from './resolves/groups'
@@ -35,6 +36,11 @@ mockGqlClient.setRequestHandler(
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/userUpdate.graphql'),
     () => Promise.resolve(updateUser)
+);
+
+mockGqlClient.setRequestHandler(
+    require('../src/providers/gql/userDelete.graphql'),
+    () => Promise.resolve(deleteUser)
 );
 
 

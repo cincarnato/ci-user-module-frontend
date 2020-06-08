@@ -31,7 +31,7 @@
                 {{$t('common.close')}}
             </v-btn>
             <v-spacer></v-spacer>
-            <v-btn color="primary" @click="remove" :loading="loading">
+            <v-btn color="primary" @click="deleteConfirm" :loading="loading">
                 {{$t('common.delete')}}
             </v-btn>
         </v-card-actions>
@@ -40,9 +40,9 @@
 </template>
 
 <script>
-    import {mapActions} from 'vuex'
     import UserShowData from "./UserShowData";
-
+    import UserProvider from "../../providers/UserProvider";
+    import ClientError from "../../errors/ClientError";
     export default {
         name: "UserDelete",
         components: {UserShowData},
@@ -59,13 +59,14 @@
             }
         },
         methods: {
-            ...mapActions(['deleteUser']),
-            remove() {
-                this.deleteUser(this.user.id).then( () => {
-                    this.$emit('deleteConfirmed')
+            deleteConfirm() {
+                UserProvider.deleteUser(this.user.id).then( () => {
+                    this.$emit('deleteConfirmed',this.user)
                     this.$emit('closeDialog')
-                }).catch(err =>{
-                    this.errorMessage = err.message
+                }).catch(error => {
+                    let clientError = new ClientError(error)
+                    this.inputErrors = clientError.inputErrors
+                    this.errorMessage = clientError.i18nMessage
                 })
             },
         },

@@ -10,7 +10,7 @@
         <v-card-text>
 
             <v-col md6 xs12 class="offset-md6">
-                <v-text-field v-model="filter.search" v-on:keyup.native.enter="updatePage" append-icon="search"
+                <v-text-field v-model="filter.search" v-on:keyup.native.enter="loadGroups" append-icon="search"
                               label="Buscar" hide-details/>
             </v-col>
 
@@ -19,8 +19,8 @@
                           :server-items-length="totalItems"
                           :items-per-page.sync="limit" :page.sync="pageNumber"
                           :sort-by.sync="orderBy" :sort-desc.sync="orderDesc"
-                          @update:page="updatePage" @update:items-per-page="updatePage"
-                          @update:sort-by="updatePage" @update:sort-desc="updatePage"
+                          @update:page="loadGroups" @update:items-per-page="loadGroups"
+                          @update:sort-by="loadGroups" @update:sort-desc="loadGroups"
             >
 
                 <div slot="no-data" color="info" outline class="text-xs-center">Sin datos</div>
@@ -54,7 +54,7 @@
         </v-dialog>
 
         <v-dialog :value="deleting" width="850" persistent>
-            <group-delete :item="itemToDelete" v-if="deleting" v-on:itemDelete="updatePage"
+            <group-delete :item="itemToDelete" v-if="deleting" v-on:itemDelete="loadGroups"
                           v-on:closeDialog="deleting=false"/>
         </v-dialog>
 

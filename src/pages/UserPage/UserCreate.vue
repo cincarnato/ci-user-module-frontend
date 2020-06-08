@@ -25,11 +25,12 @@
                                 name="name"
                                 type="text"
                                 v-model="form.name"
-                                :label="$t('user.form.fullname')"
-                                :placeholder="$t('user.form.fullname')"
+                                :label="$t('user.label.fullname')"
+                                :placeholder="$t('user.label.fullname')"
                                 class="pa-3"
-                                :error="hasFieldInUserErrors('name')"
-                                :error-messages="getMessagesInUserErrors('name')"
+                                :rules="requiredRule"
+                                :error="hasInputErrors('name')"
+                                :error-messages="getInputErrors('name')"
                                 required
                                 color="secondary"
                         ></v-text-field>
@@ -40,13 +41,13 @@
                                       name="username"
                                       type="text"
                                       v-model="form.username"
-                                      :label="$t('user.form.username')"
-                                      :placeholder="$t('user.form.username')"
+                                      :label="$t('user.label.username')"
+                                      :placeholder="$t('user.label.username')"
                                       class="pa-3"
                                       autocomplete="new-password"
-                                      :rules="[rules.required]"
-                                      :error="hasFieldInUserErrors('username')"
-                                      :error-messages="getMessagesInUserErrors('username')"
+                                      :rules="requiredRule"
+                                      :error="hasInputErrors('username')"
+                                      :error-messages="getInputErrors('username')"
                                       required
                                       color="secondary"
                         ></v-text-field>
@@ -58,11 +59,11 @@
                                       type="text"
                                       class="pa-3"
                                       v-model="form.email"
-                                      :label="$t('user.form.email')"
-                                      :placeholder="$t('user.form.email')"
-                                      :rules="[rules.required]"
-                                      :error="hasFieldInUserErrors('email')"
-                                      :error-messages="getMessagesInUserErrors('email')"
+                                      :label="$t('user.label.email')"
+                                      :placeholder="$t('user.label.email')"
+                                      :rules="emailRules"
+                                      :error="hasInputErrors('email')"
+                                      :error-messages="getInputErrors('email')"
                                       required
                                       color="secondary"
                         ></v-text-field>
@@ -73,12 +74,11 @@
                                       name="phone"
                                       type="text"
                                       class="pa-3"
-                                      v-model="validatePhone"
-                                      :rules="[rules.validatePhone]"
-                                      :label="$t('user.form.phone')"
-                                      :placeholder="$t('user.form.phone')"
-                                      :error="hasFieldInUserErrors('phone')"
-                                      :error-messages="getMessagesInUserErrors('phone')"
+                                      v-model="form.phone"
+                                      :label="$t('user.label.phone')"
+                                      :placeholder="$t('user.label.phone')"
+                                      :error="hasInputErrors('phone')"
+                                      :error-messages="getInputErrors('phone')"
                                       required
                                       color="secondary"
                         >
@@ -94,13 +94,13 @@
                                       type="password"
                                       v-model="form.password"
                                       class="pa-3"
-                                      :label="$t('user.form.password')"
-                                      :placeholder="$t('user.form.password')"
+                                      :label="$t('user.label.password')"
+                                      :placeholder="$t('user.label.password')"
                                       autocomplete="new-password"
                                       ref="password"
-                                      :rules="[rules.required]"
-                                      :error="hasFieldInUserErrors('password')"
-                                      :error-messages="getMessagesInUserErrors('password')"
+                                      :rules="requiredRule"
+                                      :error="hasInputErrors('password')"
+                                      :error-messages="getInputErrors('password')"
                                       required
                                       color="secondary"
                         ></v-text-field>
@@ -113,11 +113,11 @@
                                 name="password_verify"
                                 type="password"
                                 v-model="form.password_verify"
-                                :label="$t('user.form.password')"
-                                :placeholder="$t('user.form.password')"
+                                :label="$t('user.label.password')"
+                                :placeholder="$t('user.label.password')"
                                 autocomplete="new-password"
                                 class="pa-3"
-                                :rules="[rules.required]"
+                                :rules="requiredRule"
                                 :error="passwordMatchError == '' ? false : true"
                                 :error-messages="passwordMatchError"
                                 required
@@ -133,11 +133,11 @@
                                 :item-text="'name'"
                                 :item-value="'id'"
                                 v-model="form.role"
-                                :label="$t('user.form.role')"
+                                :label="$t('user.label.role')"
                                 :loading="loadingRoles"
-                                :rules="[rules.required]"
-                                :error="hasFieldInUserErrors('groups')"
-                                :error-messages="getMessagesInUserErrors('groups')"
+                                :rules="requiredRule"
+                                :error="hasInputErrors('groups')"
+                                :error-messages="getInputErrors('groups')"
                                 required
                                 color="secondary"
                                 item-color="secondary"
@@ -153,8 +153,8 @@
                                 :item-value="'id'"
                                 attach
                                 chips
-                                :label="$t('user.form.groups')"
-                                :placeholder="$t('user.form.groups')"
+                                :label="$t('user.label.groups')"
+                                :placeholder="$t('user.label.groups')"
                                 multiple
                         ></v-select>
                     </v-col>
@@ -178,7 +178,7 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn color="secondary" class="onSecondary--text" @click="saveUser" :loading="loadingUsers" v-t="'common.create'">
+            <v-btn color="secondary" class="onSecondary--text" @click="saveUser" :loading="loading" v-t="'common.create'">
             </v-btn>
 
         </v-card-actions>
@@ -187,13 +187,26 @@
 </template>
 
 <script>
-    import {mapActions, mapState, mapGetters} from 'vuex'
+    import UserProvider from "../../providers/UserProvider";
+    import GroupProvider from "../../providers/GroupProvider";
+    import RoleProvider from "../../providers/RoleProvider";
+    import ClientError from "../../errors/ClientError";
+    import InputErrors from "../../mixins/InputErrors";
+    import UserValidations from "../../mixins/UserValidations";
+
 
     export default {
         name: "UserCreate",
+        mixins: [InputErrors,UserValidations],
         data() {
             return {
                 title: this.$t('user.createTitle'),
+                errorMessage: null,
+                loading: false,
+                loadingRoles: false,
+                loadingGroups: false,
+                roles: [],
+                groups: [],
                 form: {
                     username: '',
                     password: '',
@@ -205,54 +218,52 @@
                     groups: [],
                     active: true
                 },
-                errorPhone: false,
-                rules: {
-                    required: value => !!value || 'Requerido',
-                    validatePhone: value => {
-                        if(/^([0-9]{1,3})$/g.test(value)){
-                            return "Formato no valido"
-                        } else {
-                            if (/([a-zA-Z$%&|<>#@()/])/g.test(value)) {
-                                return "Formato no valido"
-                            } else { 
-                                return true
-                            }
-                        }
-                    }
-                }
+                
             }
         },
         mounted() {
-            this.fetchRoles()
-            this.fetchGroups()
-            this.clearErrorMessageAdmin()
+            this.loadRoles()
+            this.loadGroups()
         },
         computed: {
-            ...mapState({
-                errorMessage: state => state.admin.errorMessageAdmin,
-                roles: state => state.admin.roles,
-                groups: state => state.admin.groups,
-                loadingUsers: state => state.admin.loadingUsers,
-                loadingRoles: state => state.admin.loadingRoles,
-                loadingGroups: state => state.admin.loadingGroups,
-            }),
-            ...mapGetters(['hasFieldInUserErrors', 'getMessagesInUserErrors']),
             passwordMatchError() {
                 return (this.form.password === this.form.password_verify) ? '' : 'Contraseña no coincide'
             },
         },
         methods: {
-            ...mapActions(['createUser', 'fetchRoles', 'fetchGroups', 'clearErrorMessageAdmin']),
+            loadRoles(){
+                this.loadingRoles = true
+                RoleProvider.roles().then(r => {
+                        this.roles = r.data.roles
+                    }
+                ).catch(err => {
+                    console.error(err)
+                }).finally(() => this.loadingRoles = false)
+            },
+            loadGroups(){
+                this.loadingGroups = true
+                GroupProvider.groups().then(r => {
+                        this.groups = r.data.groups
+                    }
+                ).catch(err => {
+                    console.error(err)
+                }).finally(() => this.loadingGroups = false)
+            },
             saveUser() {
                 if (this.$refs.form.validate()) {
-                    this.createUser(this.form).then(result => {
-                            if (result) {
+                    UserProvider.createUser(this.form).then(r => {
+                            if (r) {
+                                this.$emit('itemCreate', r.data.createUser)
                                 this.$emit('closeDialog')
                             }
                         }
-                    )
+                    ).catch(error => {
+                        let clientError = new ClientError(error)
+                        this.inputErrors = clientError.inputErrors
+                        this.errorMessage = clientError.i18nMessage
+                    })
                 }
-            },
+            }
         },
     }
 </script>

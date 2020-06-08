@@ -23,6 +23,7 @@
         <v-dialog :value="creating"  persistent fullscreen>
             <user-create v-if="creating"
                          v-on:closeDialog="creating=false"
+                         @itemCreate="userCreate"
             />
         </v-dialog>
 
@@ -39,7 +40,7 @@
             <user-delete v-if="deleting"
                          :user="userToDelete"
                          v-on:closeDialog="deleting=false"
-                         v-on:deleteConfirmed="updateList"
+                         @deleteConfirmed="userDelete"
             />
         </v-dialog>
 
@@ -159,7 +160,18 @@
             userUpdate(item){
                 let index = this.items.findIndex(i => i.id == item.id)
                 Vue.set(this.items, index, item)
-            }
+                this.flashMessage="User Updated"
+            },
+            userCreate(item){
+                this.items.push(item)
+                this.totalItems++
+                this.flashMessage="User Created"
+            },
+            userDelete(item){
+                let index = this.items.findIndex(i => i.id == item.id)
+                this.items.splice(index,1)
+                this.flashMessage="User Deleted"
+            },
         },
 
     }
