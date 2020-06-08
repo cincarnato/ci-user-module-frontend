@@ -1,9 +1,30 @@
-import ClientMessage from './client-messages'
-import UserMessage from './user-messages'
+import ClientMessages from './client-messages'
+import UserMessages from './user-messages'
+import GroupMessages from './group-messages'
+import CommonMessages from './common-messages'
+import VuetifyMessages from './vuetify-messages'
 
-const en = {...ClientMessage.en, ...UserMessage.en}
-const es = {...ClientMessage.es, ...UserMessage.es}
-const pt = {...ClientMessage.pt, ...UserMessage.pt}
+const en = {
+    ...ClientMessages.en,
+    ...UserMessages.en,
+    ...GroupMessages.en,
+    ...CommonMessages.en,
+    ...VuetifyMessages.en
+}
+const es = {
+    ...ClientMessages.es,
+    ...UserMessages.es,
+    ...GroupMessages.es,
+    ...CommonMessages.es,
+    ...VuetifyMessages.es
+}
+const pt = {
+    ...ClientMessages.pt,
+    ...UserMessages.pt,
+    ...GroupMessages.pt,
+    ...CommonMessages.pt,
+    ...VuetifyMessages.pt
+}
 
 const messages = {en, es, pt}
 

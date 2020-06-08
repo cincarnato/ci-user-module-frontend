@@ -1,6 +1,6 @@
 <template>
 
-    <v-form ref="form" autocomplete="off" v-model="valid">
+    <v-form ref="form" autocomplete="off">
         <v-row>
             <v-col cols="12" sm="6">
                 <v-text-field
