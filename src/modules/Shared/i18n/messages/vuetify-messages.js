@@ -6,7 +6,11 @@ const messages = {
                 itemsPerPageText: "itemsPerPage",
                 ariaLabel: {
                     sortNone: "sortNone",
-                    activateAscending:"activateAscending"
+                    activateAscending:"activateAscending",
+                    activateDescending: "activateDescending",
+                    sortAscending: "sortAscending",
+                    sortDescending: "sortDescending",
+                    activateNone: "activateNone"
                 }
             },
             dataFooter: {
@@ -24,7 +28,11 @@ const messages = {
                 itemsPerPageText: "itemsPerPage",
                 ariaLabel: {
                     sortNone: "sortNone",
-                    activateAscending:"activateAscending"
+                    activateAscending:"activateAscending",
+                    activateDescending: "activateDescending",
+                    sortAscending: "sortAscending",
+                    sortDescending: "sortDescending",
+                    activateNone: "activateNone"
                 }
             },
             dataFooter: {
@@ -43,7 +51,11 @@ const messages = {
                 itemsPerPageText: "itemsPerPage",
                 ariaLabel: {
                     sortNone: "sortNone",
-                    activateAscending:"activateAscending"
+                    activateAscending:"activateAscending",
+                    activateDescending: "activateDescending",
+                    sortAscending: "sortAscending",
+                    sortDescending: "sortDescending",
+                    activateNone: "activateNone"
                 }
             },
             dataFooter: {

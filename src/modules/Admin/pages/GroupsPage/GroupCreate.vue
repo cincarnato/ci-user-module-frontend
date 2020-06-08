@@ -88,9 +88,10 @@
 
 <script>
     import GroupProvider from "../../providers/GroupProvider";
+    import UserProvider from "../../providers/UserProvider";
     import ClientError from '../../../Shared/errors/ClientError'
     import GroupColorInput from "./GroupColorInput";
-    import UserAdminProvider from "../../providers/UserAdminProvider";
+
 
 
     export default {
@@ -119,7 +120,7 @@
         },
         created() {
             this.loadingUsers = true
-            UserAdminProvider.users().then(r => {
+            UserProvider.users().then(r => {
                     this.users = r.data.users
                 }
             ).catch(err => {

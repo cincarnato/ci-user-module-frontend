@@ -89,7 +89,7 @@
     import GroupProvider from "../../providers/GroupProvider";
     import ClientError from '../../../Shared/errors/ClientError'
     import GroupColorInput from "./GroupColorInput";
-    import UserAdminProvider from "../../providers/UserAdminProvider";
+    import UserProvider from "../../providers/UserProvider";
 
 
     export default {
@@ -122,13 +122,7 @@
             }
         },
         created() {
-            this.loadingUsers = true
-            UserAdminProvider.users().then(r => {
-                    this.users = r.data.users
-                }
-            ).catch(err => {
-                console.error(err)
-            }).finally(() => this.loadingUsers = false)
+            this.loadUsers()
         },
         computed: {
             hasErrors() {
@@ -145,9 +139,17 @@
             },
         },
         methods: {
+            loadUsers(){
+                this.loadingUsers = true
+                UserProvider.users().then(r => {
+                        this.users = r.data.users
+                    }
+                ).catch(err => {
+                    console.error(err)
+                }).finally(() => this.loadingUsers = false)
+            },
             save() {
                 if (this.$refs.form.validate()) {
-                    this.form.amount = parseFloat(this.form.amount)
                     GroupProvider.updateGroup(this.form).then(r => {
                             if (r) {
                                 this.$emit('itemUpdate', r.data.groupUpdate)

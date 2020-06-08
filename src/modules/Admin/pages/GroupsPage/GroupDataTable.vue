@@ -87,7 +87,7 @@
         name: "GroupDataTable",
         components: {GroupCreate, GroupUpdate, GroupDelete, GroupShow},
         created() {
-            this.updatePage()
+            this.loadGroups()
         },
         methods: {
             itemCreate(item) {
@@ -117,13 +117,16 @@
                     this.loading = false
                 })
             },
-            updatePage() {
+            loadGroups() {
                 this.loading = true
-                GroupProvider.paginateGroups(this.limit, this.pageNumber, this.filter.search, this.getOrderBy, this.getOrderDesc).then(r => {
+                GroupProvider.paginateGroups(this.limit, this.pageNumber, this.filter.search, this.getOrderBy, this.getOrderDesc)
+                    .then(r => {
                     this.items = r.data.groupsPaginate.items
                     this.totalItems = r.data.groupsPaginate.totalItems
-                    this.loading = false
-                })
+                }).catch(err => {
+                    //TODO improve handle error (show messages to user)
+                    console.error(err)
+                }).finally(()=>this.loading = false)
             }
         },
         computed: {

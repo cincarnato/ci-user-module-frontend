@@ -18,16 +18,21 @@ class ClientError extends Error {
         this.errorsQuantity= null
         //Last error message
         this.i18nMessage = ""
+        //TODO @deprecated backward compability
+        this.showMessage = ""
         //All userMessages
         this.i18nMessages = []
 
         if (error.networkError) {
             this.i18nMessage = MESSAGE_NETWORK_ERROR
+            this.showMessage = MESSAGE_NETWORK_ERROR
+
             this.i18nMessages.push(MESSAGE_NETWORK_ERROR)
         } else if (error.graphQLErrors && error.graphQLErrors.length > 0) {
             this.processFrapjQLErrors(error.graphQLErrors)
         } else {
             this.i18nMessage = MESSAGE_GENERIC_ERROR
+            this.showMessage = MESSAGE_GENERIC_ERROR
             this.i18nMessages.push(MESSAGE_GENERIC_ERROR)
         }
     }
@@ -39,16 +44,20 @@ class ClientError extends Error {
         graphQLErrors.forEach(gqlError => {
             if (gqlError.extensions.code == BAD_USER_INPUT) {
                 this.i18nMessage = MESSAGE_VALIDATION
+                this.showMessage = MESSAGE_VALIDATION
+
                 this.i18nMessages.push(MESSAGE_VALIDATION)
                 this.inputErrors = {...this.inputErrors, ...gqlError.extensions.exception.inputErrors}
             }
             if (gqlError.extensions.code == FORBIDDEN) {
                 this.i18nMessage = MESSAGE_FORBIDDEN
+                this.showMessage = MESSAGE_FORBIDDEN
                 this.i18nMessages.push(MESSAGE_FORBIDDEN)
             }
 
             if (gqlError.extensions.code == UNAUTHENTICATED) {
                 this.i18nMessage = MESSAGE_UNAUTHENTICATED
+                this.showMessage = MESSAGE_UNAUTHENTICATED
                 this.i18nMessages.push(MESSAGE_UNAUTHENTICATED)
             }
 

@@ -1,6 +1,9 @@
 const userMessages = {
     en: {
         user: {
+            adminTitle: 'Users management',
+            createTitle: 'Creating user',
+            updateTitle: 'Updating user',
             validation: {
                 required: 'Required field',
                 emailVerify: 'Email does not match',
@@ -24,6 +27,9 @@ const userMessages = {
     },
     es: {
         user: {
+            adminTitle: 'Administración de Usuarios',
+            createTitle: 'Creando usuario',
+            updateTitle: 'Actualizando usuario',
             validation: {
                 required: 'Campo requerido',
                 emailVerify: 'El email no coincide',
@@ -48,6 +54,9 @@ const userMessages = {
     },
     pt: {
         user: {
+            adminTitle: 'Administração de usuários',
+            createTitle: 'Criando usuário',
+            updateTitle: 'Atualizando usuário',
             validation: {
                 required: 'Campo obrigatório',
                 emailVerify: 'O email não corresponde',

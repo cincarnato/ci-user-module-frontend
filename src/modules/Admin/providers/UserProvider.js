@@ -1,7 +1,7 @@
 import {gqlc} from '../../../index'
 import ClientError from '../../Shared/errors/ClientError'
 
-class UserAdminProvider {
+class UserProvider {
 
     constructor(gqlc) {
         this.gqlc = gqlc
@@ -97,5 +97,5 @@ class UserAdminProvider {
         })
     }
 }
-const userAdminProvider = new UserAdminProvider(gqlc)
-export default userAdminProvider
+const userProvider = new UserProvider(gqlc)
+export default userProvider

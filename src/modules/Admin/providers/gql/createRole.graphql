@@ -1,0 +1,8 @@
+mutation createRole($name:String!, $permissions: [String]){
+    createRole(input: {name: $name, permissions:$permissions }){
+        id
+        name
+        permissions
+    }
+}
+
