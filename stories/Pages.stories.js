@@ -23,10 +23,10 @@ userProvider.setGqlc(mockGqlClient)
 roleProvider.setGqlc(mockGqlClient)
 
 storiesOf('Pages', module)
-    .add('GroupsPage',
+    .add('UserPage',
         () => ({
-            components: {GroupsPage},
-            template: '<groups-page></groups-page>',
+            components: {UserPage},
+            template: '<user-page></user-page>',
             i18n, store, router
         }))
     .add('RolePage',
@@ -35,10 +35,10 @@ storiesOf('Pages', module)
             template: '<role-page></role-page>',
             i18n, store, router
         }))
-    .add('UserPage',
+    .add('GroupsPage',
         () => ({
-            components: {UserPage},
-            template: '<user-page></user-page>',
+            components: {GroupsPage},
+            template: '<groups-page></groups-page>',
             i18n, store, router
         }))
     .add('LoginPage',

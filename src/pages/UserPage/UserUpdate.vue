@@ -223,6 +223,7 @@
             },
             saveUser() {
                 if (this.$refs.form.validate()) {
+                    this.loading=true
                     UserProvider.updateUser(this.form).then(r => {
                             if (r) {
                                 this.$emit('itemUpdate', r.data.updateUser)
@@ -233,7 +234,7 @@
                         let clientError = new ClientError(error)
                         this.inputErrors = clientError.inputErrors
                         this.errorMessage = clientError.i18nMessage
-                    })
+                    }).finally(()=>this.loading=false)
                 }
             }
         },

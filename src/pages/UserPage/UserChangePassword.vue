@@ -7,35 +7,35 @@
         <v-card-text>
             <v-form ref="form" autocomplete="off" v-model="valid" @submit.prevent="submit">
                 <v-text-field id="password"
-                    prepend-icon="lock"
-                    name="password"
-                    label="Nueva Contraseña"
-                    :append-icon="showNewPassword ? 'mdi-eye' : 'mdi-eye-off'"
-                    :type="showNewPassword ? 'text' : 'password'"
-                    @click:append="showNewPassword = !showNewPassword"
-                    v-model="form.password"
-                    :rules="validations.password"
-                    placeholder="Nueva Contraseña"
-                    autocomplete="new-password"
-                    :error="errors.password.length?true:false"
-                    :error-messages="errors.password"
-                    required
+                              prepend-icon="lock"
+                              name="password"
+                              label="Nueva Contraseña"
+                              :append-icon="showNewPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                              :type="showNewPassword ? 'text' : 'password'"
+                              @click:append="showNewPassword = !showNewPassword"
+                              v-model="form.password"
+                              :rules="requiredRule"
+                              placeholder="Nueva Contraseña"
+                              autocomplete="new-password"
+                              :error="errors.password.length?true:false"
+                              :error-messages="errors.password"
+                              required
                 />
 
                 <v-text-field id="password_verify"
-                    prepend-icon="lock"
-                    name="password_verify"
-                    label="Repetir Nueva Contraseña"
-                    :append-icon="showRepeatPassword ? 'mdi-eye' : 'mdi-eye-off'"
-                    :type="showRepeatPassword ? 'text' : 'password'"
-                    @click:append="showRepeatPassword = !showRepeatPassword"
-                    v-model="form.passwordVerify"
-                    :rules="validations.password"
-                    placeholder="Repetir Nueva Contraseña"
-                    autocomplete="new-password"
-                    :error="errors.passwordVerify.length?true:false"
-                    :error-messages="passwordMatchError"
-                    required
+                              prepend-icon="lock"
+                              name="password_verify"
+                              label="Repetir Nueva Contraseña"
+                              :append-icon="showRepeatPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                              :type="showRepeatPassword ? 'text' : 'password'"
+                              @click:append="showRepeatPassword = !showRepeatPassword"
+                              v-model="form.passwordVerify"
+                              :rules="requiredRule"
+                              placeholder="Repetir Nueva Contraseña"
+                              autocomplete="new-password"
+                              :error="errors.passwordVerify.length?true:false"
+                              :error-messages="passwordMatchError"
+                              required
                 />
             </v-form>
         </v-card-text>
@@ -44,11 +44,11 @@
             <v-spacer></v-spacer>
 
             <v-btn outlined color="grey" text @click="$emit('closeDialog')">
-                Cancelar
+                {{$t('common.cancel')}}
             </v-btn>
 
-            <v-btn  :loading="loading" color="secondary" @click="submit" :disabled="!valid">
-                Cambiar Contraseña
+            <v-btn :loading="loading" color="secondary" @click="submit" :disabled="!valid">
+                {{$t('common.submit')}}
             </v-btn>
 
         </v-card-actions>
@@ -58,53 +58,41 @@
 </template>
 
 <script>
-    import {mapGetters, mapActions, mapState} from 'vuex'
+
+    import UserProvider from "../../providers/UserProvider";
+    import ClientError from "../../errors/ClientError";
+    import InputErrors from "../../mixins/InputErrors";
+    import UserValidations from "../../mixins/UserValidations";
 
     export default {
         name: "UserChangePassword",
         props: {
-          user: Object
+            user: Object
         },
-        data: () => ({
+        mixins: [InputErrors, UserValidations],
+        data() {
+            return {
                 valid: true,
                 showNewPassword: false,
                 showRepeatPassword: false,
+                loading: false,
+                status: null,
                 form: {
-                    id: null,
                     password: null,
                     passwordVerify: null,
                 },
                 errors: {
                     password: [],
                     passwordVerify: []
-                },
-                validations: {
-                    password: [
-                        v => !!v || 'Contraseña es requerido',
-                    ],
-                    passwordVerify: [
-                        v => !!v || 'Verificación de contraseña es requerido',
-                    ],
                 }
             }
-        ),
+        },
         computed: {
-            ...mapGetters([
-                'me',
-                'getUsersLoading',
-                'getChangePassword'
-            ]),
-            ...mapState({
-                loading: s => s.profile.loadingUserProfile,
-                status: s => s.profile.changePasswordStatus
-            }),
             passwordMatchError() {
-                return (this.form.password === this.form.passwordVerify) ? '' : 'Contraseña no coincide'
+                return (this.form.password === this.form.passwordVerify) ? '' : this.$t('user.validation.passwordVerify')
             },
         },
         methods: {
-            ...mapActions(['adminChangePassword']),
-
             resetValidation: function () {
                 this.errors = {
                     password: [],
@@ -113,15 +101,20 @@
             },
             submit() {
                 if (this.$refs.form.validate()) {
-
+                    this.loading = true
                     this.resetValidation()
-                    this.form.id = this.user.id || null
-                    this.adminChangePassword(this.form).then(r => {
-                            if (r) {
-                                this.$emit('closeDialog')
-                            }
-                        }
-                    )
+                    let userId = this.user ? this.user.id : null
+                    UserProvider.adminChangePassword(userId, this.form.password, this.form.passwordVerify)
+                        .then(() => {
+                            this.$emit('changePasswordConfirmed', this.user)
+                            this.$emit('closeDialog')
+                            this.status = true
+                        }).catch(error => {
+                        let clientError = new ClientError(error)
+                        this.inputErrors = clientError.inputErrors
+                        this.errorMessage = clientError.i18nMessage
+                    })
+                        .finally(() => this.loading = false)
                 }
             },
         }

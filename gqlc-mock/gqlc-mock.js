@@ -5,6 +5,7 @@ import createUser from './resolves/createUser'
 import updateUser from './resolves/updateUser'
 import deleteUser from './resolves/deleteUser'
 import userPaginate from './resolves/userPaginate'
+import changePasswordAdmin from './resolves/changePasswordAdmin'
 import roles from './resolves/roles'
 import groups from './resolves/groups'
 import permissions from './resolves/permissions'
@@ -41,6 +42,11 @@ mockGqlClient.setRequestHandler(
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/userDelete.graphql'),
     () => Promise.resolve(deleteUser)
+);
+
+mockGqlClient.setRequestHandler(
+    require('../src/providers/gql/userAdminChangePassword.graphql'),
+    () => Promise.resolve(changePasswordAdmin)
 );
 
 

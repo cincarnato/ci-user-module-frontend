@@ -60,6 +60,7 @@
         },
         methods: {
             deleteConfirm() {
+                this.loading=true
                 UserProvider.deleteUser(this.user.id).then( () => {
                     this.$emit('deleteConfirmed',this.user)
                     this.$emit('closeDialog')
@@ -67,7 +68,7 @@
                     let clientError = new ClientError(error)
                     this.inputErrors = clientError.inputErrors
                     this.errorMessage = clientError.i18nMessage
-                })
+                }).finally(()=>this.loading=false)
             },
         },
     }

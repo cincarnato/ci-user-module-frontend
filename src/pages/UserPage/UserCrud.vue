@@ -55,6 +55,7 @@
             <user-change-password v-if="changePassword"
                                   :user="userToEdit"
                                   v-on:closeDialog="changePassword=false"
+                                  @changePasswordConfirmed="changePasswordConfirmed"
             />
         </v-dialog>
 
@@ -172,6 +173,9 @@
                 this.items.splice(index,1)
                 this.flashMessage="User Deleted"
             },
+            changePasswordConfirmed(){
+                this.flashMessage="User password changed"
+            }
         },
 
     }

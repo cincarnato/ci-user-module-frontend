@@ -251,6 +251,7 @@
             },
             saveUser() {
                 if (this.$refs.form.validate()) {
+                    this.loading=true
                     UserProvider.createUser(this.form).then(r => {
                             if (r) {
                                 this.$emit('itemCreate', r.data.createUser)
@@ -261,7 +262,7 @@
                         let clientError = new ClientError(error)
                         this.inputErrors = clientError.inputErrors
                         this.errorMessage = clientError.i18nMessage
-                    })
+                    }).finally(()=>this.loading=false)
                 }
             }
         },
