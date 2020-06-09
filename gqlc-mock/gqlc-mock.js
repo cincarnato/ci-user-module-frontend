@@ -10,7 +10,15 @@ import roles from './resolves/roles'
 import groups from './resolves/groups'
 import permissions from './resolves/permissions'
 
+import dashboardData from './resolves/dashboardData'
+
 const mockGqlClient = createMockClient();
+
+mockGqlClient.setRequestHandler(
+    require('../src/providers/gql/dashboardData.graphql'),
+    () => Promise.resolve(dashboardData)
+);
+
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/groupsPaginate.graphql'),

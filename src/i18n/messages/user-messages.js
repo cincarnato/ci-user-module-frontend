@@ -1,7 +1,8 @@
 const userMessages = {
     en: {
         user: {
-            adminTitle: 'Users management',
+            title: 'Users management',
+            description: 'View, search, create, edit and delete Users',
             createTitle: 'Creating user',
             updateTitle: 'Updating user',
             validation: {
@@ -27,6 +28,8 @@ const userMessages = {
     },
     es: {
         user: {
+            title: 'Administración de Usuarios',
+            description: 'Ver, buscar, crear, editar, y borrar usuarios del sistema ',
             adminTitle: 'Administración de Usuarios',
             createTitle: 'Creando usuario',
             updateTitle: 'Actualizando usuario',
@@ -54,7 +57,8 @@ const userMessages = {
     },
     pt: {
         user: {
-            adminTitle: 'Administração de usuários',
+            title: 'Administração de Usuários',
+            description: 'Ver, buscar, criar, editar e usar empréstimos do sistema',
             createTitle: 'Criando usuário',
             updateTitle: 'Atualizando usuário',
             validation: {

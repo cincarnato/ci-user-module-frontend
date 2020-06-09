@@ -1,11 +1,8 @@
 <template>
     <v-card class="elevation-6">
 
-        <v-card-title>
-            <v-row>
-                <v-col class="text-xs-center"><h2>{{title}}</h2></v-col>
-            </v-row>
-        </v-card-title>
+        <v-card-title class="title" v-t="'group.title'"></v-card-title>
+        <v-card-subtitle class="" v-t="'group.description'"></v-card-subtitle>
 
         <v-card-text>
 
@@ -14,7 +11,7 @@
                               label="Buscar" hide-details/>
             </v-col>
 
-            <v-data-table  class="mt-3" :headers="headers" :items="items"
+            <v-data-table class="mt-3" :headers="headers" :items="items"
                           :search="filter.search" :single-expand="false" :loading="loading"
                           :server-items-length="totalItems"
                           :items-per-page.sync="limit" :page.sync="pageNumber"
@@ -34,7 +31,7 @@
                 </template>
 
                 <template v-slot:item.users="{ item }">
-                    <span >
+                    <span>
                         {{item.users.map(user => user.username).join(", ")}}
                     </span>
                 </template>
@@ -121,12 +118,12 @@
                 this.loading = true
                 GroupProvider.paginateGroups(this.limit, this.pageNumber, this.filter.search, this.getOrderBy, this.getOrderDesc)
                     .then(r => {
-                    this.items = r.data.groupsPaginate.items
-                    this.totalItems = r.data.groupsPaginate.totalItems
-                }).catch(err => {
+                        this.items = r.data.groupsPaginate.items
+                        this.totalItems = r.data.groupsPaginate.totalItems
+                    }).catch(err => {
                     //TODO improve handle error (show messages to user)
                     console.error(err)
-                }).finally(()=>this.loading = false)
+                }).finally(() => this.loading = false)
             }
         },
         computed: {
@@ -139,7 +136,8 @@
         },
         data() {
             return {
-                title: this.$t('group.adminTitle'),
+                title: this.$t('group.title'),
+                description: this.$t('group.description'),
                 creating: false,
                 updating: false,
                 deleting: false,

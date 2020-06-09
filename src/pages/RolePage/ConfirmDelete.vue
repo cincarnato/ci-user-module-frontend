@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-title class="secondary--text" v-t="'roles.deleteTitle'"></v-card-title>
+    <v-card-title class="secondary--text" v-t="'role.deleteTitle'"></v-card-title>
     <v-card-text v-show="successMessage == true" class="ma-0">
       <v-alert :value="true" color="success" class="ma-0" icon="check_circle" outlined>Exitoso</v-alert>
     </v-card-text>

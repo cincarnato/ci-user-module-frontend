@@ -1,11 +1,8 @@
 <template>
     <div>
         <v-card class="elevation-6">
-            <v-card-title>
-                <v-row>
-                    <v-col class="text-xs-center"><h2 v-t="'user.adminTitle'"></h2></v-col>
-                </v-row>
-            </v-card-title>
+            <v-card-title class="title" v-t="'user.title'"></v-card-title>
+            <v-card-subtitle class="" v-t="'user.description'"></v-card-subtitle>
 
             <v-card-text>
                 <user-data-table

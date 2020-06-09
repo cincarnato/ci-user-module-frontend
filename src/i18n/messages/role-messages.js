@@ -1,10 +1,11 @@
 const messages = {
     en: {
-        roles: {
+        role: {
+            title: 'Roles management',
+            description: 'View, search, create, edit and delete roles',
             deleteTitle: 'Deleting role',
             createTitle: 'Creating role',
             updateTitle: 'Updating role',
-            adminTitle: 'Roles management',
             showTitle: 'Roles and Permissions',
             permission: 'Permission',
             rolDuplicate: 'Duplicated Role',
@@ -29,11 +30,12 @@ const messages = {
         },
     },
     es: {
-        roles: {
+        role: {
+            title: 'Administración de Roles',
+            description: 'Ver, buscar, crear, editar, y borrar roles del sistema',
             deleteTitle: 'Borrando role',
             createTitle: 'Creando rol',
             updateTitle: 'Editando rol',
-            adminTitle: 'Administración de roles',
             showTitle: 'Roles y Permisos',
             permission: 'Permiso',
             rolDuplicate: 'Rol ya Existente',
@@ -59,11 +61,12 @@ const messages = {
 
     },
     pt: {
-        roles: {
+        role: {
+            title: 'Administração de função',
+            description: 'Ver, buscar, criar, editar e usar função del sistema',
             deleteTitle: 'Eliminar role',
             createTitle: 'Criando função',
             updateTitle: 'Atualizando função',
-            adminTitle: 'Administração de função',
             showTitle: 'Funções e Permissões',
             permission: 'Permissão',
             rolDuplicate: 'Função duplicada',

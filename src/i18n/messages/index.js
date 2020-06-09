@@ -1,39 +1,24 @@
-import ClientMessages from './client-messages'
+import merge from 'deepmerge'
 import UserMessages from './user-messages'
+import ClientMessages from './client-messages'
 import GroupMessages from './group-messages'
 import RoleMessages from './role-messages'
 import CommonMessages from './common-messages'
 import VuetifyMessages from './vuetify-messages'
 import AuthMessages from './auth-messages'
+import AuditMessages from './audit-messages'
+import MetricsMessages from './metrics-messages'
 
-const en = {
-    ...ClientMessages.en,
-    ...UserMessages.en,
-    ...GroupMessages.en,
-    ...RoleMessages.en,
-    ...CommonMessages.en,
-    ...VuetifyMessages.en,
-    ...AuthMessages.en
-}
-const es = {
-    ...ClientMessages.es,
-    ...UserMessages.es,
-    ...GroupMessages.es,
-    ...RoleMessages.es,
-    ...CommonMessages.es,
-    ...VuetifyMessages.es,
-    ...AuthMessages.es
-}
-const pt = {
-    ...ClientMessages.pt,
-    ...UserMessages.pt,
-    ...GroupMessages.pt,
-    ...RoleMessages.pt,
-    ...CommonMessages.pt,
-    ...VuetifyMessages.pt,
-    ...AuthMessages.pt
-}
-
-const messages = {en, es, pt}
+const messages = merge.all([
+    UserMessages,
+    ClientMessages,
+    GroupMessages,
+    RoleMessages,
+    CommonMessages,
+    VuetifyMessages,
+    AuthMessages,
+    AuditMessages,
+    MetricsMessages
+])
 
 export default messages

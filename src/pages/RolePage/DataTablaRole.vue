@@ -1,8 +1,8 @@
 <template>
     <v-container fluid>
         <v-card>
-            <v-card-title v-t="'roles.showTitle'"/>
-
+            <v-card-title v-t="'role.title'"/>
+            <v-card-subtitle class="" v-t="'role.description'"></v-card-subtitle>
             <v-card-text>
                 <v-btn class="mx-3" fab fixed right dark color="teal" @click="changeStateDelete">
                     <v-icon dark>delete</v-icon>
@@ -25,7 +25,7 @@
                             <template v-slot:default>
                                 <thead>
                                 <tr class="text-center">
-                                    <th class="text-center headline" v-t="'roles.permission'"></th>
+                                    <th class="text-center headline" v-t="'role.permission'"></th>
                                     <th class="text-center headline pa-3 ma-1" v-for="role in roles" :key="role.id">
                                         <template v-if="statusDelete==true || stateEdit==true">
 
@@ -58,7 +58,7 @@
                                 </thead>
                                 <tbody>
                                 <tr v-for="permission in permissions" :key="permission">
-                                    <td>{{$t('roles.permissions.'+permission)}}</td>
+                                    <td>{{$t('role.permissions.'+permission)}}</td>
                                     <td v-for="role in roles" :key="role.id">
                                         <v-icon
                                                 :color="role.permissions.includes(permission)?'green':'red'"

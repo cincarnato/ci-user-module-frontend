@@ -1,9 +1,10 @@
 const clientMessages = {
     en: {
         group: {
+            title: 'Groups management',
+            description: 'View, search, create, edit and delete Groups',
             createTitle: 'Creating group',
             updateTitle: 'Updating group',
-            adminTitle: 'Groups management',
             label: {
                 avatar: 'Avatar',
                 name: 'Name',
@@ -14,9 +15,10 @@ const clientMessages = {
     },
     es: {
         group: {
+            title: 'Administración de Grupos',
+            description: 'Ver, buscar, crear, editar, y borrar grupos del sistema',
             createTitle: 'Creando grupo',
             updateTitle: 'Editando grupo',
-            adminTitle: 'Administración de Grupos',
             label: {
                 avatar: 'Avatar',
                 name: 'Nombre',
@@ -28,9 +30,10 @@ const clientMessages = {
     },
     pt: {
         group: {
+            title: 'Administração de Grupos',
+            description: 'Ver, buscar, criar, editar e usar  grupos del sistema',
             createTitle: 'Criando grupo',
             updateTitle: 'Atualizando grupo',
-            adminTitle: 'Administração de Grupos',
             label: {
                 avatar: 'Avatar',
                 name: 'Nome',

@@ -36,7 +36,7 @@
                         <v-row>
                             <v-col cols="12" md="6" sm="6" v-for="permission in permissions" :key="permission">
 
-                                <v-checkbox v-model="form.permissions" :label="$t('roles.permissions.'+permission)"
+                                <v-checkbox v-model="form.permissions" :label="$t('role.permissions.'+permission)"
                                             :value="permission"></v-checkbox>
 
                             </v-col>
@@ -67,7 +67,7 @@
         data() {
             return {
                 modal: false,
-                title: this.$t("roles.updateTitle"),
+                title: this.$t("role.updateTitle"),
                 errorMessage: "",
                 inputErrors: {},
                 loading: false,
@@ -129,7 +129,7 @@
                             this.errorMessage = clientError.i18nMessage;
                             if (error.toString().indexOf("duplicate")) {
                                 this.inputErrors.duplicate = "duplicate";
-                                this.errorMessage = this.$t("roles.rolDuplicate");
+                                this.errorMessage = this.$t("role.rolDuplicate");
                             }
                         });
                 }

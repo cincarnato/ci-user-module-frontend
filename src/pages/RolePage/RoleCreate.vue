@@ -22,8 +22,8 @@
             name="name"
             type="text"
             v-model="form.name"
-            :label="$t('roles.label.name')"
-            :placeholder="$t('roles.label.name')"
+            :label="$t('role.label.name')"
+            :placeholder="$t('role.label.name')"
             class="pa-3"
             :rules="[rules.required]"
             :error="hasErrors('name')"
@@ -37,7 +37,7 @@
               <v-col cols="12" md="6" sm="6" v-for="permission in permissions" :key="permission">
                 <v-checkbox
                   v-model="form.permissions"
-                  :label="$t('roles.permissions.'+permission)"
+                  :label="$t('role.permissions.'+permission)"
                   :value="permission"
                 ></v-checkbox>
               </v-col>
@@ -68,7 +68,7 @@ export default {
   data() {
     return {
       modal: false,
-      title: this.$t("roles.createTitle"),
+      title: this.$t("role.createTitle"),
       errorMessage: "",
       inputErrors: {},
       loading: false,
@@ -133,7 +133,7 @@ export default {
             //TODO check duplicate type error
             if (error.toString().indexOf("duplicate")) {
               this.inputErrors.duplicate = "duplicate";
-              this.errorMessage = this.$t("roles.rolDuplicate");
+              this.errorMessage = this.$t("role.rolDuplicate");
             }
           });
       }

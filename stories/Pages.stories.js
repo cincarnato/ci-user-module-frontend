@@ -9,6 +9,9 @@ import RegisterPage from '../src/pages/RegisterPage';
 import ActivationPage from '../src/pages/ActivationPage';
 
 
+import DashboardPage from '../src/pages/DashboardPage';
+
+
 import store from '../src/store'
 import i18n from '../src/i18n'
 import router from '../src/router'
@@ -17,10 +20,12 @@ import router from '../src/router'
 import groupProvider from '../src/providers/GroupProvider'
 import userProvider from '../src/providers/UserProvider'
 import roleProvider from '../src/providers/RoleProvider'
+import sessionProvider from '../src/providers/SessionProvider'
 import mockGqlClient from '../gqlc-mock/gqlc-mock'
 groupProvider.setGqlc(mockGqlClient)
 userProvider.setGqlc(mockGqlClient)
 roleProvider.setGqlc(mockGqlClient)
+sessionProvider.setGqlc(mockGqlClient)
 
 storiesOf('Pages', module)
     .add('UserPage',
@@ -57,5 +62,11 @@ storiesOf('Pages', module)
         () => ({
             components: {ActivationPage},
             template: '<activation-page></activation-page>',
+            i18n, store, router
+        }))
+    .add('DashboardPage',
+        () => ({
+            components: {DashboardPage},
+            template: '<dashboard-page></dashboard-page>',
             i18n, store, router
         }))
