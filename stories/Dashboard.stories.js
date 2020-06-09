@@ -4,7 +4,12 @@ import { withKnobs} from "@storybook/addon-knobs";
 import AdminGroupsCard from "../src/pages/DashboardPage/AdminGroupsCard";
 import AdminUsersCard from "../src/pages/DashboardPage/AdminUsersCard";
 import AdminRolesCard from "../src/pages/DashboardPage/AdminRolesCard";
+import SessionsByUserCard from "../src/pages/DashboardPage/SessionsByUserCard";
 
+//Data
+import sessionsByUserData from './data/sessions-by-user'
+
+//Resources
 import store from '../src/store'
 import i18n from '../src/i18n'
 import router from '../src/router'
@@ -29,5 +34,14 @@ export const adminUsersCard = () => ({
 export const adminRolesCard = () => ({
     components: {AdminRolesCard},
     template: '<admin-roles-card></admin-roles-card>',
+    i18n, store, router
+})
+
+export const sessionsByUserCard = () => ({
+    components: {SessionsByUserCard},
+    props: {
+        data: {default: sessionsByUserData}
+    },
+    template: '<sessions-by-user-card :data="data"></sessions-by-user-card>',
     i18n, store, router
 })

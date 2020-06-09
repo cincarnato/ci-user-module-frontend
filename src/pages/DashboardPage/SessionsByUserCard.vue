@@ -46,19 +46,13 @@
         computed: {
             getTime() {
                 return seconds => {
-
-                 /*   if (seconds > 86400) {
-                        return Math.round(seconds / 60 / 60 / 24) + ' d'
-                    }*/
-
                     if (seconds > 3600) {
                         return Math.round(seconds / 60 / 60) + ' hs'
                     }
-
-                    if (seconds < 60) {
-                        return seconds + ' sec'
+                    if (seconds > 60) {
+                        return Math.round(seconds / 60) + ' min'
                     }
-                    return Math.round(seconds / 60) + ' min'
+                    return Math.round(seconds) + ' sec'
                 }
             }
         }
