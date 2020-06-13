@@ -1,8 +1,10 @@
 import {createMockClient} from 'mock-apollo-client';
+import uuidv4 from './uuidv4'
+import getRoleById from "./getRoleById";
+
+//Resolvers
 import groupsPaginate from './resolves/groupsPaginate'
 import users from './resolves/users'
-import createUser from './resolves/createUser'
-import updateUser from './resolves/updateUser'
 import deleteUser from './resolves/deleteUser'
 import userPaginate from './resolves/userPaginate'
 import changePasswordAdmin from './resolves/changePasswordAdmin'
@@ -39,12 +41,23 @@ mockGqlClient.setRequestHandler(
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/userCreate.graphql'),
-    () => Promise.resolve(createUser)
+    ({ username, password, name, email, phone, role, groups, active}) => {
+        let id =uuidv4()
+        role = getRoleById(role)
+        let avatarurl = null
+        let r = {data: {createUser: {id, username, password, name, email, phone, role, groups, active,avatarurl} } }
+        return Promise.resolve(r)
+    }
 );
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/userUpdate.graphql'),
-    () => Promise.resolve(updateUser)
+    ({id, username, password, name, email, phone, role, groups, active}) => {
+        role = getRoleById(role)
+        let avatarurl = null
+        let r = {data: {updateUser: {id, username, password, name, email, phone, role, groups, active,avatarurl} } }
+        return Promise.resolve(r)
+    }
 );
 
 mockGqlClient.setRequestHandler(

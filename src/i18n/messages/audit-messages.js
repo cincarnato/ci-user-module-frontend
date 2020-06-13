@@ -2,6 +2,8 @@ const messages = {
     en: {
         user: {
             audit: {
+                userAudit: 'User audit',
+
                 when: 'When',
                 actionBy: 'Action By',
                 actionFor: 'Action For',
@@ -17,14 +19,17 @@ const messages = {
                 passwordRecovery: 'user {username} has requested to recover password',
                 userRegistered: 'user {username} has registered',
                 userActivated: 'user {username} has activated his account',
-                avatarChange: 'user {username} has modified his avatar'
+                avatarChange: 'user {username} has modified his avatar',
 
+                failedLogins: 'Failed logins',
+                nofailedLogins: 'No failed logins '
             }
         }
     },
     es: {
         user: {
             audit: {
+
                 userAudit: 'Auditoria de usuario',
                 when: 'Cuando',
                 actionBy: 'Acción Por',
@@ -41,14 +46,17 @@ const messages = {
                 passwordRecovery: 'usuario {username} ha solicitado recuperar su contraseña',
                 userRegistered: 'usuario {username} se ha registrado',
                 userActivated: 'usuario {username} ha activado su cuenta',
-                avatarChange: 'usuario {username} ha modificado su avatar'
+                avatarChange: 'usuario {username} ha modificado su avatar',
 
+                failedLogins: 'Inicios de sesión fallidos',
+                nofailedLogins: 'Sin inicios de sesión fallidos'
             },
         }
     },
     pt: {
         user: {
             audit: {
+
                 userAudit: 'Auditoria de Usuário',
                 when: 'Quando',
                 actionBy: 'Ação por',
@@ -65,7 +73,9 @@ const messages = {
                 passwordRecovery: 'Usuário {username} solicitou recuperar sua senha',
                 userRegistered: 'Usuário {username}  se cadastrou',
                 userActivated: 'Usuário {username} ativou sua conta',
-                avatarChange: 'Usuário {username} mudou sua avatar'
+                avatarChange: 'Usuário {username} mudou sua avatar',
+                failedLogins: 'Logins com falha',
+                nofailedLogins: 'Sem logins com falha'
             },
         }
     }

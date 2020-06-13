@@ -1,6 +1,6 @@
 <template>
-    <v-card>
-        <v-card-title v-t="'user.sessionsByClient'">Sessions By Client</v-card-title>
+    <v-card >
+        <v-card-title v-t="'session.card.sessionsByDeviceType'">Sessions By Device Type</v-card-title>
         <v-card-text>
             <pie-chart :chart-data="getData" ></pie-chart>
         </v-card-text>
@@ -8,11 +8,11 @@
 </template>
 
 <script>
-    import PieChart from "./charts/PieChart";
-    import ChartsMixin from "../../mixins/ChartsMixin";
+    import PieChart from "../../../components/charts/PieChart";
+    import ChartsMixin from "../../../mixins/ChartsMixin";
 
     export default {
-        name: "ClientChart",
+        name: "SessionsByDeviceTypeCard",
         components: {PieChart},
         mixins: [ChartsMixin],
         props: {
@@ -26,7 +26,7 @@
                 let obj = {labels: [], datasets: [{data: [], backgroundColor: this.backgroundColor}]}
 
                 this.data.forEach(i => {
-                    obj.labels.push(i.clientname)
+                    obj.labels.push(i.devicetype)
                     obj.datasets[0].data.push(i.sum)
                 })
 

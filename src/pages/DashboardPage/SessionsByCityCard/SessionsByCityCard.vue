@@ -1,6 +1,6 @@
 <template>
     <v-card>
-        <v-card-title v-t="'user.sessionsByCity'">Sessions By City</v-card-title>
+        <v-card-title v-t="'session.card.sessionsByCity'">Sessions By City</v-card-title>
         <v-card-text>
             <bar-chart :chart-data="getData"></bar-chart>
         </v-card-text>
@@ -8,11 +8,11 @@
 </template>
 
 <script>
-    import ChartsMixin from "../../mixins/ChartsMixin";
-    import BarChart from "./charts/BarChart";
+    import ChartsMixin from "../../../mixins/ChartsMixin";
+    import BarChart from "../../../components/charts/BarChart";
 
     export default {
-        name: "CityChart",
+        name: "SessionsByCityCard",
         components: {BarChart},
         mixins: [ChartsMixin],
         props: {

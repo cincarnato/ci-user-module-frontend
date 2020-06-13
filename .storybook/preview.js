@@ -3,5 +3,6 @@ import vuetify from "../src/plugins/vuetify-manual";
 
 addDecorator(() => ({
     vuetify,
-    template: '<v-app><story/></v-app>',
+    template: '<v-app><v-content><story/></v-content></v-app>',
 }));
+

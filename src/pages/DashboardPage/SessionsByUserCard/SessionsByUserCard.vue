@@ -1,6 +1,6 @@
 <template>
-    <v-card >
-        <v-card-title v-t="'user.sessionsByUser'">Sessions <span class="ml-2 subtitle-1"> (30 days)</span>
+    <v-card>
+        <v-card-title v-t="'session.card.summaryByUser'">Sessions <span class="ml-2 subtitle-1"> (30 days)</span>
         </v-card-title>
         <v-card-text>
             <v-simple-table dense class="text-center" fixed-header :height="height">
@@ -38,7 +38,7 @@
 <script>
 
     export default {
-        name: 'sessions-duration',
+        name: 'SessionsByUserCard',
         props: {
             data: Array,
             height: Number

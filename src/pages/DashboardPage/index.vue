@@ -39,7 +39,7 @@
 
 
             <v-col cols="12" md="3" >
-                <login-fail-by-username-card :data="loginFailByUsername"/>
+                <login-fail-card :data="loginFailByUsername"/>
             </v-col>
 
 
@@ -59,17 +59,17 @@
 <script>
     import SessionProvider from "../../providers/SessionProvider";
 
-    import SessionsByUserCard from "./SessionsByUserCard";
-    import LoginFailByUsernameCard from "./LoginFailByUsernameCard";
+    import SessionsByUserCard from "./SessionsByUserCard/SessionsByUserCard";
+    import LoginFailCard from "./LoginFailCard";
     import AdminUsersCard from "./AdminUsersCard";
     import AdminGroupsCard from "./AdminGroupsCard";
     import AdminRolesCard from "./AdminRolesCard";
-    import DeviceChart from "./DeviceTypeChart";
-    import CountryMapChart from "./CountryMapChart";
-    import OsChart from "./OsChart";
-    import ClientChart from "./ClientChart";
-    import CityChart from "./CityChart";
-    import UserAuditsCard from "./UserAuditsCard";
+    import DeviceChart from "./SessionsByDeviceTypeCard/SessionsByDeviceTypeCard";
+    import CountryMapChart from "./SessionsByCountryCard/SessionsByCountryCard";
+    import OsChart from "./SessionsByOsCard/SessionsByOsCard";
+    import ClientChart from "./SessionsByHttpClientCard/SessionsByHttpClientCard";
+    import CityChart from "./SessionsByCityCard/SessionsByCityCard";
+    import UserAuditsCard from "./UserAuditsCard/UserAuditsCard";
 
     export default {
         name: "DashboardAdmin",
@@ -83,7 +83,7 @@
             AdminRolesCard,
             AdminGroupsCard,
             AdminUsersCard,
-            LoginFailByUsernameCard,
+            LoginFailCard,
             SessionsByUserCard
         },
         data() {

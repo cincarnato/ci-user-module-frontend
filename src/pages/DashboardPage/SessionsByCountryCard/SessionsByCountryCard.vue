@@ -1,6 +1,6 @@
 <template>
     <v-card >
-        <v-card-title v-t="'user.sessionsByCountry'"></v-card-title>
+        <v-card-title v-t="'session.card.sessionsByCountry'"></v-card-title>
         <v-card-text>
         <map-chart
                 style="z-index: 2"
@@ -9,6 +9,7 @@
                 lowColor="#aaaaaa"
                 countryStrokeColor="#909090"
                 defaultCountryFillColor="#dadada"
+                :showLegend="true"
         />
         </v-card-text>
     </v-card>
@@ -18,7 +19,7 @@
     import MapChart from 'vue-map-chart'
 
     export default {
-        name: "CountryMapChart",
+        name: "SessionsByCountryCard",
         components: {MapChart},
         props: {
             data: Array,

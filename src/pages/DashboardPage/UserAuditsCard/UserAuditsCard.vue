@@ -1,6 +1,6 @@
 <template>
     <v-card>
-        <v-card-title v-t="'user.userAudit'"></v-card-title>
+        <v-card-title v-t="'user.audit.userAudit'"></v-card-title>
 
 
         <v-card-text>

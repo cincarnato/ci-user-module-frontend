@@ -1,6 +1,6 @@
 <template>
     <v-card>
-        <v-card-title v-t="'user.sessionsByOs'">Sessions By Os</v-card-title>
+        <v-card-title v-t="'session.card.sessionsByOs'">Sessions By Os</v-card-title>
         <v-card-text>
             <pie-chart :chart-data="getData"></pie-chart>
         </v-card-text>
@@ -8,11 +8,11 @@
 </template>
 
 <script>
-    import PieChart from "./charts/PieChart";
-    import ChartsMixin from "../../mixins/ChartsMixin";
+    import PieChart from "../../../components/charts/PieChart";
+    import ChartsMixin from "../../../mixins/ChartsMixin";
 
     export default {
-        name: "OsChart",
+        name: "SessionsByOsCard",
         components: {PieChart},
         mixins: [ChartsMixin],
         props: {

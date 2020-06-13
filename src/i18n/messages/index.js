@@ -8,6 +8,7 @@ import VuetifyMessages from './vuetify-messages'
 import AuthMessages from './auth-messages'
 import AuditMessages from './audit-messages'
 import MetricsMessages from './metrics-messages'
+import SessionMessages from './session-messages'
 
 const messages = merge.all([
     UserMessages,
@@ -18,7 +19,8 @@ const messages = merge.all([
     VuetifyMessages,
     AuthMessages,
     AuditMessages,
-    MetricsMessages
+    MetricsMessages,
+    SessionMessages
 ])
 
 export default messages
