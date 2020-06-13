@@ -30,6 +30,6 @@ export const sessionsByCountryCard = () => ({
     props: {
         data: {default: data}
     },
-    template: '<v-container fluid><v-row><v-col cols="12" md="4"> <sessions-by-country-card :data="data"></sessions-by-country-card> </v-col></v-row></v-container>',
+    template: '<v-container fluid><v-row><v-col cols="12" md="8"> <sessions-by-country-card :data="data"></sessions-by-country-card> </v-col></v-row></v-container>',
     i18n
 })

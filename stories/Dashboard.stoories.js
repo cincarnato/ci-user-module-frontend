@@ -8,21 +8,20 @@ import SessionsByHttpClientCard from "../src/pages/DashboardPage/SessionsByHttpC
 import SessionsByOsCard from "../src/pages/DashboardPage/SessionsByOsCard/SessionsByOsCard";
 import SessionsByDeviceTypeCard from "../src/pages/DashboardPage/SessionsByDeviceTypeCard/SessionsByDeviceTypeCard";
 
-/*import SessionsByCountryCard from "../src/pages/DashboardPage/SessionsByCountryCard/SessionsByCountryCard";
+import SessionsByCountryCard from "../src/pages/DashboardPage/SessionsByCountryCard/SessionsByCountryCard";
 import SessionsByCityCard from "../src/pages/DashboardPage/SessionsByCityCard/SessionsByCityCard";
 import UserAuditsCard from "../src/pages/DashboardPage/UserAuditsCard/UserAuditsCard";
-import LoginFailCard from "../src/pages/DashboardPage/LoginFailCard/index";*/
+import LoginFailCard from "../src/pages/DashboardPage/LoginFailCard/index";
 
 //Data
 import sessionsByUserData from './data/sessions-by-user'
 import sessionsByHttpClientData from './data/sessions-by-http-client'
 import sessionsByOsData from './data/sessions-by-os'
 import sessionsByDeviceTypeData from './data/sessions-by-device-type'
-/*
 import sessionsByCountryData from './data/sessions-by-country'
 import sessionsByCityData from './data/sessions-by-city'
 import userAuditData from './data/user-audit'
-import loginFailData from './data/login-fail-data'*/
+import loginFailData from './data/login-fail-data'
 
 //Resources
 import store from '../src/store'
@@ -90,7 +89,7 @@ export const sessionsByDeviceTypeCard = () => ({
     i18n, store, router
 })
 
-/*
+
 export const sessionsByCountryCard = () => ({
     components: {SessionsByCountryCard},
     props: {
@@ -137,4 +136,4 @@ export const loginFailCardNoData = () => ({
     },
     template: '<v-col cols="12" md="6"> <login-fail-card :data="data"></login-fail-card> </v-col>',
     i18n, store, router
-})*/
+})
