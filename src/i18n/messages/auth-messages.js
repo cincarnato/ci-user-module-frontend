@@ -2,8 +2,8 @@ export const messages = {
     en: {
         auth : {
             badCredentials: 'Bad credentials',
-            signIn: 'SignIn',
-            signUp: 'signUp',
+            signIn: 'Sign in',
+            signUp: 'sign up',
             createAccount: 'Create an account',
             stillNotUser: 'Still you do not have user? ',
             alreadyAccount: 'Do you already have an account? ',

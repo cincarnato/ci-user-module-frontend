@@ -1,7 +1,7 @@
 import {storiesOf} from '@storybook/vue';
 //Login
-import LoginForm from '../src/pages/LoginPage/LoginForm';
-import LoginCard from '../src/pages/LoginPage/LoginCard';
+import LoginForm from '../src/pages/LoginPage/LoginForm/LoginForm';
+import LoginCard from '../src/pages/LoginPage/LoginCard/LoginCard';
 
 import store from '../src/store'
 import i18n from '../src/i18n'

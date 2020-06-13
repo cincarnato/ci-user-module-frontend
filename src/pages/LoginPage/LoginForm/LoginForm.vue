@@ -1,10 +1,10 @@
 <template>
 
     <v-form @keyup.enter.native="signIn">
-        <v-alert :value="error" type="error" class="mb-3 pa-3">
+        <v-alert :value="!!error" type="error" class="mb-3 pa-3">
             {{$t(error)}}
         </v-alert>
-
+        <div>{{error}}</div>
         <v-text-field
                 type="text"
                 v-model="form.username"
@@ -43,7 +43,7 @@
         data: () => {
             return {
                 loading: false,
-                error: null,
+                error: "asd",
                 form: {
                     username: null,
                     password: null
@@ -71,7 +71,9 @@
                         this.$router.push('/')
                     })
                     .catch(err => {
-                        this.error = err
+                        console.log("LoginForm Err:",err)
+                        console.log("LoginForm T:", this.$t(err))
+                        this.error = this.$t(err)
                     })
                     .finally(() => this.loading = false)
             }

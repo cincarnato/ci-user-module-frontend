@@ -5,9 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.6.6",
@@ -38,7 +39,9 @@
     "@storybook/vue": "^5.3.19",
     "@vue/cli-plugin-babel": "~4.4.0",
     "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-plugin-unit-jest": "^4.4.4",
     "@vue/cli-service": "~4.4.0",
+    "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-preset-vue": "^2.0.2",
@@ -47,6 +50,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "fibers": "^5.0.0",
     "graphql-tag": "^2.10.3",
+    "jest-transform-graphql": "^2.1.0",
     "mock-apollo-client": "^0.4.0",
     "sass": "^1.26.8",
     "sass-loader": "^8.0.2",
@@ -66,7 +70,18 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {},
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   },
   "browserslist": [
     "> 1%",

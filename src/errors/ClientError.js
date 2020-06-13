@@ -13,7 +13,10 @@ const UNAUTHENTICATED = "UNAUTHENTICATED"
 class ClientError extends Error {
     constructor(error) {
         super(error.message);
-        this.name = "ClientError";
+        this.name = "ClientError"
+        this.code = null
+        this.errorMessage = null
+
         this.inputErrors = {}
         this.errorsQuantity= null
         //Last error message
@@ -43,6 +46,9 @@ class ClientError extends Error {
         
         graphQLErrors.forEach(gqlError => {
             if (gqlError.extensions.code == BAD_USER_INPUT) {
+                this.code = BAD_USER_INPUT
+                this.errorMessage = gqlError.message
+
                 this.i18nMessage = MESSAGE_VALIDATION
                 this.showMessage = MESSAGE_VALIDATION
 
@@ -50,12 +56,19 @@ class ClientError extends Error {
                 this.inputErrors = {...this.inputErrors, ...gqlError.extensions.exception.inputErrors}
             }
             if (gqlError.extensions.code == FORBIDDEN) {
+                this.code = FORBIDDEN
+                this.errorMessage = gqlError.message
+
                 this.i18nMessage = MESSAGE_FORBIDDEN
                 this.showMessage = MESSAGE_FORBIDDEN
                 this.i18nMessages.push(MESSAGE_FORBIDDEN)
             }
 
             if (gqlError.extensions.code == UNAUTHENTICATED) {
+
+                this.code = UNAUTHENTICATED
+                this.errorMessage = gqlError.message
+
                 this.i18nMessage = MESSAGE_UNAUTHENTICATED
                 this.showMessage = MESSAGE_UNAUTHENTICATED
                 this.i18nMessages.push(MESSAGE_UNAUTHENTICATED)

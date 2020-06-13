@@ -7,6 +7,10 @@ class AuthProvider {
         this.gqlc = gqlc
     }
 
+    setGqlc(gqlc){
+        this.gqlc = gqlc
+    }
+
     auth(username,password){
         return this.gqlc.mutate({
             mutation: require('./gql/auth.graphql'),
@@ -40,5 +44,6 @@ class AuthProvider {
 
 
 }
+const authProvider = new AuthProvider(null)
 
-export default new AuthProvider(gqlc)
+export default authProvider

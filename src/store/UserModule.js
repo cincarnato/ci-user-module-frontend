@@ -37,7 +37,13 @@ export default {
                         commit('setMe', me)
                         resolve(me)
                     }).catch((err) => {
+
                     let error = new ClientError(err)
+
+                    if(error.code === 'UNAUTHENTICATED' && error.errorMessage === 'BadCredentials'){
+                        reject('auth.badCredentials')
+                    }
+
                     reject(error.i18nMessage)
 
                 })
