@@ -51,7 +51,7 @@
         },
 
         created() {
-            if (this.isAuth) this.$router.push('/')
+            if (this.isAuth) this.$router.push({name:'home'})
         },
 
         computed: {

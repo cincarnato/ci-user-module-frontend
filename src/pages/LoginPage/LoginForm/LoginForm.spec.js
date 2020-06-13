@@ -1,9 +1,9 @@
 import {mount} from '@vue/test-utils'
 import { createLocalVue } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
-
 export const localVue = createLocalVue()
 
+//Resources
 import i18n from "../../../i18n"
 import vuetify from "../../../plugins/vuetify-manual"
 import router from "../../../router"
@@ -12,10 +12,11 @@ import store from "../../../store"
 //GraphQl Client Mock
 import {createMockClient} from 'mock-apollo-client';
 import authProvider from "../../../providers/AuthProvider";
-
-import LoginForm from "./LoginForm"
 import badCredentialsResolve from "../../../../gqlc-mock/resolves/auth-badCredentials";
 import successfulResolve from "../../../../gqlc-mock/resolves/auth-successful";
+
+//Component to Test
+import LoginForm from "./LoginForm"
 
 describe('LoginForm.vue', () => {
 
@@ -69,7 +70,7 @@ describe('LoginForm.vue', () => {
     })
 
 
-    it('Go Home on Login successful', async () => {
+    it('Login successful as root', async () => {
 
         authProvider.gqlc.setRequestHandler(
             require('../../../providers/gql/auth.graphql'),
@@ -87,7 +88,7 @@ describe('LoginForm.vue', () => {
         let button = wrapper.findComponent({ref: 'loginBtn'})
         button.trigger('click')
         await flushPromises()
-        expect(wrapper.vm.$route.name).toBe('home')
+        expect(wrapper.vm.me.username).toBe('root')
     })
 
 
