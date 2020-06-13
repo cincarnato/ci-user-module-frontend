@@ -2,10 +2,10 @@ import {mount} from '@vue/test-utils'
 import { createLocalVue } from '@vue/test-utils'
 
 //We need a instance of i18n, Vuetify, and router
-import i18n from "../../../i18n"
-import vuetify from "../../../plugins/vuetify-manual"
-import router from "../../../router"
-import store from "../../../store"
+import i18n from "../../i18n"
+import vuetify from "../../plugins/vuetify-manual"
+import router from "../../router"
+import store from "../../store"
 
 
 export const localVue = createLocalVue()
@@ -13,7 +13,7 @@ export const localVue = createLocalVue()
 // localVue.use(router)
 
 //Component to Test. (@ is an alias of <rootdir>/src/)
-import Login from "../index"
+import Login from "./index"
 
 
 //Setup Vuex

@@ -5,7 +5,7 @@ const clientMessages = {
                 unauthenticated: 'Authentication required',
                 forbidden: 'Forbidden',
                 validation: 'Validation Errors',
-                networkError: 'networkError',
+                networkError: 'Network error. The server does not respond.',
                 unexpectedError: 'unexpectedError',
             }
         }
@@ -16,7 +16,7 @@ const clientMessages = {
                 unauthenticated: 'Authentication required',
                 forbidden: 'Prohibido',
                 validation: 'Validation Errors',
-                networkError: 'networkError',
+                networkError: 'Error de Red. El servidor no responde',
                 unexpectedError: 'unexpectedError',
             }
         }

@@ -2,6 +2,8 @@ module.exports = {
 
   //setupFiles: ["./tests/setup.js"],
 
+  "testMatch": ["**/?(*.)+(spec|test).[jt]s?(x)"],
+
   // An array of file extensions your modules use
   moduleFileExtensions: [
     "js", "json", "jsx", "ts", "tsx", "node", "vue"

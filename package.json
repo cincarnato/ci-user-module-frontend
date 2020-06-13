@@ -49,6 +49,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "fibers": "^5.0.0",
+    "flush-promises": "^1.0.2",
     "graphql-tag": "^2.10.3",
     "jest-transform-graphql": "^2.1.0",
     "mock-apollo-client": "^0.4.0",
