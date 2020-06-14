@@ -1,7 +1,7 @@
 import {storiesOf} from '@storybook/vue';
 
 //Activation
-import UserDataTable from '../src/pages/UserPage/UserDataTable';
+import UserDataTable from '../src/pages/UserManagementPage/UserDataTable/UserDataTable';
 
 import store from '../src/store'
 import i18n from '../src/i18n'

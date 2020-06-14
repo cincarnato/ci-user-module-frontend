@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>Component Template</h3>
-        {{fruits}}
+        {{data}}
     </div>
 </template>
 
@@ -9,7 +9,7 @@
     export default {
         name: "ComponentTemplate",
         props: {
-            fruits: Array
+            data: Array
         }
     }
 </script>

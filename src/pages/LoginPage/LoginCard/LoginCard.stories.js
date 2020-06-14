@@ -11,6 +11,6 @@ export default {
 
 export const loginCard = () => ({
     components: {LoginCard,LoginForm},
-    template: '<v-container fluid><v-row><v-col cols="12" md="4"> <login-card><login-form></login-form></login-card> </v-col></v-row></v-container>',
+    template: '<v-container fluid><v-row><v-col cols="12" md="4" offset-md="4"> <login-card><login-form></login-form></login-card> </v-col></v-row></v-container>',
     i18n, router, store
 })

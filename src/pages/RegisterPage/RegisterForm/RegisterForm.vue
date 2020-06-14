@@ -117,9 +117,9 @@
 </template>
 
 <script>
-    import AuthProvider from '../../providers/AuthProvider';
-    import ClientError from '../../errors/ClientError'
-    import InputErrors from "../../mixins/InputErrors";
+    import AuthProvider from '../../../providers/AuthProvider';
+    import ClientError from '../../../errors/ClientError'
+    import InputErrors from "../../../mixins/InputErrors";
 
 
     export default {

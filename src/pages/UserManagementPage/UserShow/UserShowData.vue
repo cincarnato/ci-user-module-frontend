@@ -2,23 +2,23 @@
     <v-row>
         <v-col cols="12" sm="6" md="4">
             <v-list>
-                <user-show-item :item="item.name" :label="$t('user.label.fullname')" icon="account_box"/>
-                <user-show-item :item="item.username" :label="$t('user.label.username')" icon="account_circle"/>
+                <user-show-data-item :item="item.name" :label="$t('user.label.fullname')" icon="account_box"/>
+                <user-show-data-item :item="item.username" :label="$t('user.label.username')" icon="account_circle"/>
             </v-list>
         </v-col>
 
         <v-col cols="12" sm="6" md="4">
             <v-list>
-                <user-show-item :item="item.email" :label="$t('user.label.email')" icon="alternate_email"/>
-                <user-show-item :item="item.phone" :label="$t('user.label.phone')" icon="phone"/>
+                <user-show-data-item :item="item.email" :label="$t('user.label.email')" icon="alternate_email"/>
+                <user-show-data-item :item="item.phone" :label="$t('user.label.phone')" icon="phone"/>
             </v-list>
         </v-col>
 
         <v-col cols="12" sm="6" md="4">
             <v-list>
-                <user-show-item :item="item.active?'Activo':'Inactivo'" :label="$t('user.label.active')"
+                <user-show-data-item :item="item.active?'Activo':'Inactivo'" :label="$t('user.label.active')"
                                 :icon="item.active?'done':'clear'"/>
-                <user-show-item :item="item.role.name" :label="$t('user.label.role')" icon="phone"/>
+                <user-show-data-item :item="item.role.name" :label="$t('user.label.role')" icon="phone"/>
             </v-list>
         </v-col>
 
@@ -40,11 +40,11 @@
 
 </template>
 <script>
-    import UserShowItem from "./UserShowItem"
+    import UserShowDataItem from "./UserShowDataItem"
 
     export default {
         name: 'user-show-data',
-        components: {UserShowItem},
+        components: {UserShowDataItem},
         props: {
             item: {}
         }

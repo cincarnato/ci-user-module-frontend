@@ -5,6 +5,9 @@ const userMessages = {
             description: 'View, search, create, edit and delete Users',
             createTitle: 'Creating user',
             updateTitle: 'Updating user',
+            showTitle: 'User details',
+            deleteTitle: 'Deleting user',
+            deleteConfirm: 'Are you sure you want to delete this user?',
             validation: {
                 required: 'Required field',
                 emailVerify: 'Email does not match',
@@ -33,6 +36,9 @@ const userMessages = {
             adminTitle: 'Administración de Usuarios',
             createTitle: 'Creando usuario',
             updateTitle: 'Actualizando usuario',
+            showTitle: 'Detalles de usuario',
+            deleteTitle: 'Borrando usuario',
+            deleteConfirm: '¿Esta seguro que desea eliminar este usuario?',
             validation: {
                 required: 'Campo requerido',
                 emailVerify: 'El email no coincide',
@@ -61,6 +67,9 @@ const userMessages = {
             description: 'Ver, buscar, criar, editar e usar empréstimos do sistema',
             createTitle: 'Criando usuário',
             updateTitle: 'Atualizando usuário',
+            showTitle: 'Detalhes do usuario',
+            deleteTitle: 'Excluindo usuário',
+            deleteConfirm: 'Tem certeza de que deseja excluir este usuário?',
             validation: {
                 required: 'Campo obrigatório',
                 emailVerify: 'O email não corresponde',

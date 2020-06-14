@@ -8,7 +8,12 @@
                     icon="check_circle"
                     outlined
             >
-                Hemos enviado un correo a <strong>{{email}}</strong> para validar y finalizar la creación de su cuenta.
+                <i18n path="auth.activationSent" tag="p">
+                    <template v-slot:email>
+                        <strong>{{email}}</strong>
+                    </template>
+                </i18n>
+
             </v-alert>
 
         </v-card-text>

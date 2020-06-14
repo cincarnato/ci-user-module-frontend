@@ -6,7 +6,7 @@
             <v-spacer></v-spacer>
             <v-toolbar-items>
                 <v-btn icon dark @click="$emit('closeDialog')">
-                    <v-icon>mdi-close</v-icon>
+                    <v-icon>close</v-icon>
                 </v-btn>
             </v-toolbar-items>
         </v-toolbar>
@@ -187,12 +187,12 @@
 </template>
 
 <script>
-    import UserProvider from "../../providers/UserProvider";
-    import GroupProvider from "../../providers/GroupProvider";
-    import RoleProvider from "../../providers/RoleProvider";
-    import ClientError from "../../errors/ClientError";
-    import InputErrors from "../../mixins/InputErrors";
-    import UserValidations from "../../mixins/UserValidations";
+    import UserProvider from "../../../providers/UserProvider";
+    import GroupProvider from "../../../providers/GroupProvider";
+    import RoleProvider from "../../../providers/RoleProvider";
+    import ClientError from "../../../errors/ClientError";
+    import InputErrors from "../../../mixins/InputErrors";
+    import UserValidations from "../../../mixins/UserValidations";
 
 
     export default {

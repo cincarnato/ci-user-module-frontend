@@ -59,10 +59,10 @@
 
 <script>
 
-    import UserProvider from "../../providers/UserProvider";
-    import ClientError from "../../errors/ClientError";
-    import InputErrors from "../../mixins/InputErrors";
-    import UserValidations from "../../mixins/UserValidations";
+    import UserProvider from "../../../providers/UserProvider";
+    import ClientError from "../../../errors/ClientError";
+    import InputErrors from "../../../mixins/InputErrors";
+    import UserValidations from "../../../mixins/UserValidations";
 
     export default {
         name: "UserChangePassword",

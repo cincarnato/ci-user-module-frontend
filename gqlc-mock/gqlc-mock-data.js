@@ -1,21 +1,21 @@
 //Mock
-import mockGqlClient from "../gqlc-mock";
+import mockGqlClient from "./gqlc-mock";
 
 //Resolvers
-import dashboardData from "../resolves/dashboardData";
-import groupsPaginate from "../resolves/groupsPaginate";
-import users from "../resolves/users";
-import userPaginate from "../resolves/userPaginate";
-import deleteUser from "../resolves/deleteUser";
-import changePasswordAdmin from "../resolves/changePasswordAdmin";
-import roles from "../resolves/roles";
-import groups from "../resolves/groups";
-import permissions from "../resolves/permissions";
+import dashboardData from "./resolves/dashboardData";
+import groupsPaginate from "./resolves/groupsPaginate";
+import users from "./resolves/users";
+import userPaginate from "./resolves/userPaginate";
+import deleteUser from "./resolves/deleteUser";
+import changePasswordAdmin from "./resolves/changePasswordAdmin";
+import roles from "./resolves/roles";
+import groups from "./resolves/groups";
+import permissions from "./resolves/permissions";
 
 
 //Helpers
-import uuidv4 from "../helpers/uuidv4";
-import getRoleById from "../helpers/getRoleById";
+import uuidv4 from "./helpers/uuidv4";
+import getRoleById from "./helpers/getRoleById";
 
 
 mockGqlClient.setRequestHandler(

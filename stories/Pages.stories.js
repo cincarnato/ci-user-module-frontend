@@ -2,7 +2,7 @@ import {storiesOf} from '@storybook/vue';
 
 import GroupsPage from '../src/pages/GroupsPage';
 import RolePage from '../src/pages/RolePage';
-import UserPage from '../src/pages/UserPage';
+import UserManagementPage from '../src/pages/UserManagementPage';
 
 import LoginPage from '../src/pages/LoginPage';
 import RegisterPage from '../src/pages/RegisterPage';
@@ -21,17 +21,17 @@ import groupProvider from '../src/providers/GroupProvider'
 import userProvider from '../src/providers/UserProvider'
 import roleProvider from '../src/providers/RoleProvider'
 import sessionProvider from '../src/providers/SessionProvider'
-import mockGqlClient from '../gqlc-mock/gqlc-mock'
+import mockGqlClient from '../gqlc-mock/gqlc-mock-data'
 groupProvider.setGqlc(mockGqlClient)
 userProvider.setGqlc(mockGqlClient)
 roleProvider.setGqlc(mockGqlClient)
 sessionProvider.setGqlc(mockGqlClient)
 
 storiesOf('Pages', module)
-    .add('UserPage',
+    .add('UserManagementPage',
         () => ({
-            components: {UserPage},
-            template: '<user-page></user-page>',
+            components: {UserManagementPage},
+            template: '<user-management-page></user-management-page>',
             i18n, store, router
         }))
     .add('RolePage',

@@ -1,8 +1,8 @@
 import {storiesOf} from '@storybook/vue';
 
 //Register
-import RegisterForm from '../src/pages/RegisterPage/RegisterForm';
-import RegisterCard from '../src/pages/RegisterPage/RegisterCard';
+import RegisterForm from '../src/pages/RegisterPage/RegisterCard';
+import RegisterCard from '../src/pages/RegisterPage/RegisterCard/RegisterCard';
 
 
 import store from '../src/store'

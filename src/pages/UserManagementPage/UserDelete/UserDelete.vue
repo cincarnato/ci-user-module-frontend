@@ -6,7 +6,7 @@
             <v-spacer></v-spacer>
             <v-toolbar-items>
                 <v-btn icon dark @click="$emit('closeDialog')">
-                    <v-icon>mdi-close</v-icon>
+                    <v-icon>close</v-icon>
                 </v-btn>
             </v-toolbar-items>
         </v-toolbar>
@@ -40,9 +40,9 @@
 </template>
 
 <script>
-    import UserShowData from "./UserShowData";
-    import UserProvider from "../../providers/UserProvider";
-    import ClientError from "../../errors/ClientError";
+    import UserShowData from "../UserShow/UserShowData";
+    import UserProvider from "../../../providers/UserProvider";
+    import ClientError from "../../../errors/ClientError";
     export default {
         name: "UserDelete",
         components: {UserShowData},
@@ -52,8 +52,8 @@
         data() {
             return {
                 modal: false,
-                title: "Borrando usuario",
-                areYouSure: "¿Esta seguro que desea borrar este registro?",
+                title: this.$t('user.deleteTitle'),
+                areYouSure: this.$t('user.deleteConfirm'),
                 errorMessage: '',
                 loading: false,
             }
