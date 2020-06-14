@@ -2,9 +2,11 @@ const baseMessages = {
     en: {
         common: {
             search: 'Search',
+            cancel: 'Cancel',
             loading: 'Loading',
             noData: 'No data',
             add: 'Add',
+            submit: 'Submit',
             create: 'Create',
             update: 'Update',
             delete: 'Delete',
@@ -18,14 +20,17 @@ const baseMessages = {
             networkError: 'Network error. The server does not respond.',
             export:'Export',
             import: 'Import',
+            title:'Title'
         }
     },
     es: {
         common: {
             search: 'Buscar',
+            cancel: 'Cancelar',
             loading: 'Cargando',
             noData: 'Sin datos',
             add: 'Agregar',
+            submit: 'Enviar',
             create: 'Crear',
             update: 'Actualizar',
             delete: 'Borrar',
@@ -39,15 +44,18 @@ const baseMessages = {
             networkError: 'Error de red. El servidor no responde.',
             export:'Exportar',
             import: 'Importar',
+            title:'Titulo'
 
         }
     },
     pt: {
         common: {
-            search: 'procurar',
+            search: 'Procurar',
+            cancel: 'Cancelar',
             loading: 'Carregando',
             noData: 'Não há dados',
             add: 'Adicionar',
+            submit: 'Submit',
             create: 'Criar',
             update: 'Atualizar',
             delete: 'Excluir',
@@ -61,7 +69,7 @@ const baseMessages = {
             networkError: 'Erro de vermelho. O servidor não responde.',
             export:'Exportar',
             import: 'Importar',
-
+            title:'Título'
         }
     }
 

@@ -15,13 +15,23 @@ mockGqlClient.setRequestHandler(
 import authProvider from "../../../providers/AuthProvider";
 authProvider.setGqlc(mockGqlClient)
 
+const decorator = () => `
+        <v-container fluid>
+            <v-row>
+                <v-col cols="12" md="6" offset-md="3">
+                    <story/>
+                </v-col>
+            </v-row>
+        </v-container>`
+
 export default {
-    title: "PageComponents/Login"
+    title: "PageComponents/Login",
+    decorators: [decorator]
 };
 
 
 export const loginForm = () => ({
     components: {LoginForm},
-    template: '<v-container fluid><v-row><v-col cols="12" md="4" offset-md="4"> <login-form></login-form> </v-col></v-row></v-container>',
+    template: ' <login-form></login-form>',
     i18n, router, store
 })

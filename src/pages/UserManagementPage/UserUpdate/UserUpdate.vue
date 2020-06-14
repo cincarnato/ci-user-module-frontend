@@ -1,15 +1,10 @@
 <template>
     <v-card>
 
-        <v-toolbar flat color="primary">
-            <v-toolbar-title class="onPrimary--text">{{title}}</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-toolbar-items>
-                <v-btn icon dark @click="$emit('closeDialog')">
-                    <v-icon>close</v-icon>
-                </v-btn>
-            </v-toolbar-items>
-        </v-toolbar>
+        <toolbar-dialog-card
+                title="user.updateTitle"
+                @close="$emit('closeDialog')"
+        />
 
         <v-card-text>
             <v-alert v-if="errorMessage" type="error" dense text>{{errorMessage}}</v-alert>
@@ -17,9 +12,7 @@
 
         <v-card-text>
             <v-form ref="form" autocomplete="off">
-
                 <v-row row wrap>
-
                     <v-col cols="12" sm="6">
                         <v-text-field
                                 prepend-icon="account_box"
@@ -127,25 +120,14 @@
                         Activo
                         <v-switch color="success" input-value="0" v-model="form.active"></v-switch>
                     </v-col>
-
                 </v-row>
-
-
             </v-form>
         </v-card-text>
 
-
         <v-card-actions>
-
-            <v-btn tile outlined color="grey" text @click="$emit('closeDialog')" v-t="'common.close'">
-            </v-btn>
-
+            <close-button @click="$emit('closeDialog')"></close-button>
             <v-spacer></v-spacer>
-
-            <v-btn color="secondary" class="onSecondary--text" @click="saveUser" :loading="loading"
-                   v-t="'common.update'">
-            </v-btn>
-
+            <submit-button @click="saveUser" :loading="loading" text="common.update"></submit-button>
         </v-card-actions>
 
     </v-card>
@@ -158,12 +140,16 @@
     import ClientError from "../../../errors/ClientError";
     import InputErrors from "../../../mixins/InputErrors";
     import UserValidations from "../../../mixins/UserValidations";
+    import SubmitButton from "../../../components/SubmitButton";
+    import CloseButton from "../../../components/CloseButton";
+    import ToolbarDialogCard from "../../../components/ToolbarDialogCard/ToolbarDialogCard";
 
     export default {
         name: "UserUpdate",
         props: {
             user: Object
         },
+        components: {ToolbarDialogCard, CloseButton, SubmitButton},
         mixins: [InputErrors,UserValidations],
         data() {
             return {

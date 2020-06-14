@@ -68,10 +68,10 @@
 
 <script>
 
-    import Snackbar from "../../components/Snackbar"
+    import Snackbar from "../../components/Snackbar/Snackbar"
     import UserCreate from "./UserCreate"
     import UserUpdate from './UserUpdate'
-    import UserChangePassword from './UserChangePassword'
+    import UserChangePassword from './AdminChangePassword'
     import UserDelete from "./UserDelete";
     import UserShow from "./UserShow";
     import UserDataTable from "./UserDataTable";

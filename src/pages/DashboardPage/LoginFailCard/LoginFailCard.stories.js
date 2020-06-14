@@ -1,8 +1,18 @@
 import LoginFailCard from "./index";
 import i18n from "../../../i18n";
 
+const decorator = () => `
+        <v-container fluid>
+            <v-row>
+                <v-col cols="12" md="4" offset-md="4">
+                    <story/>
+                </v-col>
+            </v-row>
+        </v-container>`
+
 export default {
-    title: "PageComponents/Dashboard"
+    title: "PageComponents/Dashboard",
+    decorators: [decorator]
 };
 
 
@@ -22,7 +32,7 @@ export const loginFailCard = () => ({
     props: {
         data: {default: data}
     },
-    template: '<v-container fluid><v-row><v-col cols="12" md="4"> <login-fail-card :data="data"></login-fail-card> </v-col></v-row></v-container>',
+    template: '<login-fail-card :data="data"></login-fail-card>',
     i18n
 })
 
@@ -31,6 +41,6 @@ export const loginFailCardNoData = () => ({
     props: {
         data: {default: []}
     },
-    template: '<v-container fluid><v-row><v-col cols="12" md="4"> <login-fail-card :data="data"></login-fail-card> </v-col></v-row></v-container>',
+    template: ' <login-fail-card :data="data" />',
     i18n
 })

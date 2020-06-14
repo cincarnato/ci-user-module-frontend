@@ -1,15 +1,9 @@
 <template>
     <v-card>
-
-        <v-toolbar flat  color="primary">
-            <v-toolbar-title class="onPrimary--text">{{title}}</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-toolbar-items>
-                <v-btn icon dark @click="$emit('closeDialog')">
-                    <v-icon>close</v-icon>
-                </v-btn>
-            </v-toolbar-items>
-        </v-toolbar>
+        <toolbar-dialog-card
+                title="user.createTitle"
+                @close="$emit('closeDialog')"
+        />
 
         <v-card-text>
             <v-alert v-if="errorMessage" type="error" dense text>{{errorMessage}}</v-alert>
@@ -113,8 +107,8 @@
                                 name="password_verify"
                                 type="password"
                                 v-model="form.password_verify"
-                                :label="$t('user.label.password')"
-                                :placeholder="$t('user.label.password')"
+                                :label="$t('user.label.repeatPassword')"
+                                :placeholder="$t('user.label.repeatPassword')"
                                 autocomplete="new-password"
                                 class="pa-3"
                                 :rules="requiredRule"
@@ -158,29 +152,19 @@
                                 multiple
                         ></v-select>
                     </v-col>
-
                     <v-col cols="12" sm="6" class="pl-8">
                         <v-switch color="success" :label="form.active?'Activo':'Inactivo'" input-value="0"
                                   v-model="form.active"></v-switch>
                     </v-col>
-
                 </v-row>
-
-
             </v-form>
         </v-card-text>
 
 
         <v-card-actions>
-
-            <v-btn tile outlined color="grey" @click="$emit('closeDialog')" v-t="'common.close'">
-            </v-btn>
-
+            <close-button @click="$emit('closeDialog')"></close-button>
             <v-spacer></v-spacer>
-
-            <v-btn color="secondary" class="onSecondary--text" @click="saveUser" :loading="loading" v-t="'common.create'">
-            </v-btn>
-
+            <submit-button @click="saveUser" :loading="loading" text="common.create"></submit-button>
         </v-card-actions>
 
     </v-card>
@@ -193,10 +177,14 @@
     import ClientError from "../../../errors/ClientError";
     import InputErrors from "../../../mixins/InputErrors";
     import UserValidations from "../../../mixins/UserValidations";
+    import SubmitButton from "../../../components/SubmitButton";
+    import CloseButton from "../../../components/CloseButton";
+    import ToolbarDialogCard from "../../../components/ToolbarDialogCard/ToolbarDialogCard";
 
 
     export default {
         name: "UserCreate",
+        components: {ToolbarDialogCard, CloseButton, SubmitButton},
         mixins: [InputErrors,UserValidations],
         data() {
             return {

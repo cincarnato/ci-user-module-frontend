@@ -1,8 +1,18 @@
 import UserAuditsCard from "./UserAuditsCard";
 import i18n from "../../../i18n";
 
+const decorator = () => `
+        <v-container fluid>
+            <v-row>
+                <v-col cols="12" md="6" offset-md="3">
+                    <story/>
+                </v-col>
+            </v-row>
+        </v-container>`
+
 export default {
-    title: "PageComponents/Dashboard"
+    title: "PageComponents/Dashboard",
+    decorators: [decorator]
 };
 
 
@@ -84,6 +94,6 @@ export const userAuditsCard = () => ({
     props: {
         data: {default: data}
     },
-    template: '<v-container fluid><v-row><v-col cols="12" md="4"> <user-audits-card :data="data"></user-audits-card> </v-col></v-row></v-container>',
+    template: ' <user-audits-card :data="data"/>',
     i18n
 })

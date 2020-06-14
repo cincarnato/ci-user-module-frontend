@@ -1,4 +1,4 @@
-import Snackbar from "../src/components/Snackbar";
+import Snackbar from "../src/components/Snackbar/Snackbar";
 import { withKnobs, text} from "@storybook/addon-knobs";
 
 export default {

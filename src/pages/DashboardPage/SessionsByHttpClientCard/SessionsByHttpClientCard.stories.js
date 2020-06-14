@@ -2,8 +2,18 @@ import SessionsByHttpClientCard from "./SessionsByHttpClientCard"
 import i18n from "../../../i18n"
 
 
+const decorator = () => `
+        <v-container fluid>
+            <v-row>
+                <v-col cols="12" md="4" offset-md="4">
+                    <story/>
+                </v-col>
+            </v-row>
+        </v-container>`
+
 export default {
-    title: "PageComponents/Dashboard"
+    title: "PageComponents/Dashboard",
+    decorators: [decorator]
 };
 
 
@@ -29,6 +39,6 @@ export const sessionsByHttpClientCard = () => ({
     props: {
         data: {default: data}
     },
-    template: '<v-container fluid><v-row><v-col cols="12" md="4"> <sessions-by-http-client-card :data="data"></sessions-by-http-client-card> </v-col></v-row></v-container>',
+    template: ' <sessions-by-http-client-card :data="data" />',
     i18n
 })

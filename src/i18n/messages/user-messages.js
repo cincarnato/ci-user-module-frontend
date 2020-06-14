@@ -7,6 +7,7 @@ const userMessages = {
             updateTitle: 'Updating user',
             showTitle: 'User details',
             deleteTitle: 'Deleting user',
+            changePasswordTitle: 'Changing user password',
             deleteConfirm: 'Are you sure you want to delete this user?',
             validation: {
                 required: 'Required field',
@@ -38,6 +39,7 @@ const userMessages = {
             updateTitle: 'Actualizando usuario',
             showTitle: 'Detalles de usuario',
             deleteTitle: 'Borrando usuario',
+            changePasswordTitle: 'Cambiando contraseña de usuario',
             deleteConfirm: '¿Esta seguro que desea eliminar este usuario?',
             validation: {
                 required: 'Campo requerido',
@@ -69,6 +71,7 @@ const userMessages = {
             updateTitle: 'Atualizando usuário',
             showTitle: 'Detalhes do usuario',
             deleteTitle: 'Excluindo usuário',
+            changePasswordTitle: 'Alterando a senha do usuário',
             deleteConfirm: 'Tem certeza de que deseja excluir este usuário?',
             validation: {
                 required: 'Campo obrigatório',

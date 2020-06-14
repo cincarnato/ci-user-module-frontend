@@ -2,10 +2,19 @@ import SessionsByDeviceTypeCard from "./SessionsByDeviceTypeCard"
 import i18n from "../../../i18n"
 
 
-export default {
-    title: "PageComponents/Dashboard"
-};
+const decorator = () => `
+        <v-container fluid>
+            <v-row>
+                <v-col cols="12" md="4" offset-md="4">
+                    <story/>
+                </v-col>
+            </v-row>
+        </v-container>`
 
+export default {
+    title: "PageComponents/Dashboard",
+    decorators: [decorator]
+};
 
 const data = [
     {
@@ -25,6 +34,6 @@ export const sessionsByDeviceTypeCard = () => ({
     props: {
         data: {default: data}
     },
-    template: '<v-container fluid><v-row><v-col cols="12" md="4"> <sessions-by-device-type-card :data="data"></sessions-by-device-type-card> </v-col></v-row></v-container>',
+    template: '<sessions-by-device-type-card :data="data" />',
     i18n
 })

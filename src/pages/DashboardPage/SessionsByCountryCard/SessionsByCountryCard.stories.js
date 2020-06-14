@@ -2,9 +2,20 @@ import SessionsByCountryCard from "./SessionsByCountryCard"
 import i18n from "../../../i18n"
 
 
+const decorator = () => `
+        <v-container fluid>
+            <v-row>
+                <v-col cols="12" md="8" offset-md="2">
+                    <story/>
+                </v-col>
+            </v-row>
+        </v-container>`
+
 export default {
-    title: "PageComponents/Dashboard"
+    title: "PageComponents/Dashboard",
+    decorators: [decorator]
 };
+
 
 
 const data = [
@@ -30,6 +41,6 @@ export const sessionsByCountryCard = () => ({
     props: {
         data: {default: data}
     },
-    template: '<v-container fluid><v-row><v-col cols="12" md="8"> <sessions-by-country-card :data="data"></sessions-by-country-card> </v-col></v-row></v-container>',
+    template: '<sessions-by-country-card :data="data"></sessions-by-country-card>',
     i18n
 })

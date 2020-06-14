@@ -2,10 +2,19 @@ import SessionsByOsCard from "./SessionsByOsCard"
 import i18n from "../../../i18n"
 
 
-export default {
-    title: "PageComponents/Dashboard"
-};
+const decorator = () => `
+        <v-container fluid>
+            <v-row>
+                <v-col cols="12" md="4" offset-md="4">
+                    <story/>
+                </v-col>
+            </v-row>
+        </v-container>`
 
+export default {
+    title: "PageComponents/Dashboard",
+    decorators: [decorator]
+};
 
 const data = [
     {
@@ -29,6 +38,6 @@ export const sessionsByOsCard = () => ({
     props: {
         data: {default: data}
     },
-    template: '<v-container fluid><v-row><v-col cols="12" md="4"><sessions-by-os-card :data="data"></sessions-by-os-card> </v-col></v-row></v-container>',
+    template: '<sessions-by-os-card :data="data" />',
     i18n
 })

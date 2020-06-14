@@ -1,25 +1,16 @@
 <template>
     <v-card>
-
-        <v-toolbar  flat dark color="primary">
-            <v-toolbar-title>{{title}}</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-toolbar-items>
-                <v-btn icon dark @click="$emit('closeDialog')">
-                    <v-icon>close</v-icon>
-                </v-btn>
-            </v-toolbar-items>
-        </v-toolbar>
-
+        <toolbar-dialog-card
+                title="user.showTitle"
+                @close="$emit('closeDialog')"
+        />
         <v-card-text>
             <user-show-data :item="item"/>
         </v-card-text>
 
 
         <v-card-actions>
-            <v-btn color="grey" tile outlined @click="$emit('closeDialog')">
-                {{$t('common.close')}}
-            </v-btn>
+            <close-button @click="$emit('closeDialog')"></close-button>
             <v-spacer></v-spacer>
         </v-card-actions>
 
@@ -28,10 +19,12 @@
 
 <script>
     import UserShowData from "./UserShowData";
+    import ToolbarDialogCard from "../../../components/ToolbarDialogCard/ToolbarDialogCard";
+    import CloseButton from "../../../components/CloseButton/CloseButton";
 
     export default {
         name: "UserShow",
-        components: {UserShowData},
+        components: {CloseButton, ToolbarDialogCard, UserShowData},
         props: {
             item: Object
         },

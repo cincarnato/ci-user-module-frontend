@@ -1,15 +1,10 @@
 <template>
     <v-card>
 
-        <v-toolbar flat dark color="primary">
-            <v-toolbar-title>{{title}}</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-toolbar-items>
-                <v-btn icon dark @click="$emit('closeDialog')">
-                    <v-icon>close</v-icon>
-                </v-btn>
-            </v-toolbar-items>
-        </v-toolbar>
+        <toolbar-dialog-card
+                title="user.deleteTitle"
+                @close="$emit('closeDialog')"
+        />
 
         <v-card-text>
         <user-show-data :item="user" />
@@ -27,13 +22,9 @@
 
 
         <v-card-actions>
-            <v-btn color="grey" tile outlined @click="$emit('closeDialog')">
-                {{$t('common.close')}}
-            </v-btn>
+            <close-button @click="$emit('closeDialog')"></close-button>
             <v-spacer></v-spacer>
-            <v-btn color="primary" @click="deleteConfirm" :loading="loading">
-                {{$t('common.delete')}}
-            </v-btn>
+            <submit-button @click="deleteConfirm" :loading="loading" text="common.delete"></submit-button>
         </v-card-actions>
 
     </v-card>
@@ -43,9 +34,12 @@
     import UserShowData from "../UserShow/UserShowData";
     import UserProvider from "../../../providers/UserProvider";
     import ClientError from "../../../errors/ClientError";
+    import ToolbarDialogCard from "../../../components/ToolbarDialogCard/ToolbarDialogCard";
+    import CloseButton from "../../../components/CloseButton/CloseButton";
+    import SubmitButton from "../../../components/SubmitButton/SubmitButton";
     export default {
         name: "UserDelete",
-        components: {UserShowData},
+        components: {SubmitButton, CloseButton, ToolbarDialogCard, UserShowData},
         props: {
             user: Object
         },
