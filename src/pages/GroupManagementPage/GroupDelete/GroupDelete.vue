@@ -40,8 +40,8 @@
 </template>
 
 <script>
-    import  GroupShowData from "./GroupShowData";
-     import GroupProvider from "../../providers/GroupProvider";
+    import  GroupShowData from "../GroupShow/GroupShowData";
+     import GroupProvider from "../../../providers/GroupProvider";
      
     export default {
         name: "GroupDelete",

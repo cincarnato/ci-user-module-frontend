@@ -1,15 +1,6 @@
 <template>
     <v-card>
-
-       <v-toolbar flat dark color="primary">
-            <v-toolbar-title>{{title}}</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-toolbar-items>
-                <v-btn icon dark @click="$emit('closeDialog')">
-                    <v-icon>close</v-icon>
-                </v-btn>
-            </v-toolbar-items>
-        </v-toolbar>
+        <toolbar-dialog-card :title="title"></toolbar-dialog-card>
 
         <v-card-text class="pt-3">
             <v-alert v-if="errorMessage" type="error" dense text>{{$t(errorMessage)}}</v-alert>
@@ -70,33 +61,28 @@
 
 
         <v-card-actions>
-
-            <v-btn tile outlined color="grey" @click="$emit('closeDialog')">
-                {{$t('common.close')}}
-            </v-btn>
-
+            <close-button @click="$emit('closeDialog')"></close-button>
             <v-spacer></v-spacer>
-
-            <v-btn color="secondary" class="onSecondary--text" @click="save" :loading="loading">
-                {{$t('common.create')}}
-            </v-btn>
-
+            <submit-button @click="save" :loading="loading" text="common.create"></submit-button>
         </v-card-actions>
 
     </v-card>
 </template>
 
 <script>
-    import GroupProvider from "../../providers/GroupProvider";
-    import UserProvider from "../../providers/UserProvider";
-    import ClientError from '../../errors/ClientError'
-    import GroupColorInput from "./GroupColorInput";
+    import GroupProvider from "../../../providers/GroupProvider";
+    import UserProvider from "../../../providers/UserProvider";
+    import ClientError from '../../../errors/ClientError'
+    import GroupColorInput from "../GroupColorInput/GroupColorInput";
+    import SubmitButton from "../../../components/SubmitButton/SubmitButton";
+    import CloseButton from "../../../components/CloseButton/CloseButton";
+    import ToolbarDialogCard from "../../../components/ToolbarDialogCard/ToolbarDialogCard";
 
 
 
     export default {
         name: "GroupCreate",
-        components: {GroupColorInput},
+        components: {ToolbarDialogCard, CloseButton, SubmitButton, GroupColorInput},
         data() {
             return {
                 modal: false,

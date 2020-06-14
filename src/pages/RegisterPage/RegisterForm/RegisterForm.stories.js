@@ -3,8 +3,18 @@ import i18n from "../../../i18n"
 import router from "../../../router"
 import store from "../../../store"
 
+const decorator = () => `
+        <v-container fluid>
+            <v-row>
+                <v-col cols="12" md="6" offset-md="3">
+                    <story/>
+                </v-col>
+            </v-row>
+        </v-container>`
+
 export default {
-    title: "PageComponents/Register"
+    title: "PageComponents/Register",
+    decorators: [decorator]
 };
 
 
@@ -15,6 +25,6 @@ export const registerForm = () => ({
     props: {
         data: {default: data}
     },
-    template: '<v-container fluid><v-row><v-col cols="12" md="6" offset-md="3"> <register-form :data="data"></register-form> </v-col></v-row></v-container>',
+    template: '<register-form :data="data"></register-form>',
     i18n, router, store
 })

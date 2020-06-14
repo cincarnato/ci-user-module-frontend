@@ -1,4 +1,4 @@
-import RegisterCard from "./RegisterCard"
+import GroupCreate from "./GroupCreate"
 import i18n from "../../../i18n"
 import router from "../../../router"
 import store from "../../../store"
@@ -6,20 +6,25 @@ import store from "../../../store"
 const decorator = () => `
         <v-container fluid>
             <v-row>
-                <v-col cols="12" md="6" offset-md="3">
+                <v-col cols="12" md="8" offset-md="2">
                     <story/>
                 </v-col>
             </v-row>
         </v-container>`
 
 export default {
-    title: "PageComponents/Register",
+    title: "PageComponents/GroupManagement",
     decorators: [decorator]
 };
 
 
-export const registerCard = () => ({
-    components: {RegisterCard},
-    template: ' <register-card>SLOT</register-card>',
+const data = {}
+
+export const groupCreate = () => ({
+    components: {GroupCreate},
+    props: {
+        data: {default: data}
+    },
+    template: '<GroupCreate  />',
     i18n, router, store
 })

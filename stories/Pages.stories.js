@@ -1,6 +1,6 @@
 import {storiesOf} from '@storybook/vue';
 
-import GroupsPage from '../src/pages/GroupsPage';
+import GroupManagementPage from '../src/pages/GroupManagementPage';
 import RolePage from '../src/pages/RolePage';
 import UserManagementPage from '../src/pages/UserManagementPage';
 
@@ -40,10 +40,10 @@ storiesOf('Pages', module)
             template: '<role-page></role-page>',
             i18n, store, router
         }))
-    .add('GroupsPage',
+    .add('GroupManagementPage',
         () => ({
-            components: {GroupsPage},
-            template: '<groups-page></groups-page>',
+            components: {GroupManagementPage},
+            template: '<group-management-page></group-management-page>',
             i18n, store, router
         }))
     .add('LoginPage',

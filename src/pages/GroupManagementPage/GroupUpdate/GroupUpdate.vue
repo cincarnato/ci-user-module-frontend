@@ -86,10 +86,10 @@
 </template>
 
 <script>
-    import GroupProvider from "../../providers/GroupProvider";
-    import ClientError from '../../errors/ClientError'
-    import GroupColorInput from "./GroupColorInput";
-    import UserProvider from "../../providers/UserProvider";
+    import GroupProvider from "../../../providers/GroupProvider";
+    import ClientError from '../../../errors/ClientError'
+    import GroupColorInput from "../GroupColorInput/GroupColorInput";
+    import UserProvider from "../../../providers/UserProvider";
 
 
     export default {

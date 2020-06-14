@@ -7,7 +7,7 @@ const resolve = {
                 color: "#00FF00",
                 users: [
                     {id: 1, username: "jhon.doe"},
-                    {id: 1, username: "jane.doe"}
+                    {id: 2, username: "jane.doe"}
                 ]
             },
             {

@@ -2,17 +2,17 @@
     <v-container fluid>
         <v-row>
             <v-col cols="12" class="pa-3">
-               <group-data-table />
+               <group-crud></group-crud>
             </v-col>
         </v-row>
     </v-container>
 </template>
 
 <script>
-    import GroupDataTable from "./GroupDataTable";
+    import GroupCrud from "./GroupCrud";
     export default {
         name: "GroupPage",
-        components: {GroupDataTable}
+        components: {GroupCrud}
     }
 </script>
 

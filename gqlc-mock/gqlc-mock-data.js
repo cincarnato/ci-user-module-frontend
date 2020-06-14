@@ -16,6 +16,7 @@ import permissions from "./resolves/permissions";
 //Helpers
 import uuidv4 from "./helpers/uuidv4";
 import getRoleById from "./helpers/getRoleById";
+import getUserById from "./helpers/getUserById";
 
 
 mockGqlClient.setRequestHandler(
@@ -29,6 +30,24 @@ mockGqlClient.setRequestHandler(
     () => Promise.resolve(groupsPaginate)
 );
 
+mockGqlClient.setRequestHandler(
+    require('../src/providers/gql/groupCreate.graphql'),
+    ({ name, color, users}) => {
+            let id =uuidv4()
+            users = users.map(user => getUserById(user))
+            let r = {data: {groupCreate: {id, name, color, users} } }
+            return Promise.resolve(r)
+    }
+);
+
+mockGqlClient.setRequestHandler(
+    require('../src/providers/gql/groupUpdate.graphql'),
+    ({ id, name, color, users}) => {
+            users = users.map(user => getUserById(user))
+            let r = {data: {groupUpdate: {id,  name, color, users} } }
+            return Promise.resolve(r)
+    }
+);
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/users.graphql'),
