@@ -6,9 +6,8 @@
             </v-list-item-action>
 
             <v-list-item-content>
-                <v-list-item-subtitle class="secondary--text" v-t="'user.form.fullname'"></v-list-item-subtitle>
+                <v-list-item-subtitle class="secondary--text" v-t="'user.label.fullname'" />
                 <v-list-item-title> {{me.name}}</v-list-item-title>
-
             </v-list-item-content>
         </v-list-item>
 
@@ -18,7 +17,7 @@
             </v-list-item-action>
 
             <v-list-item-content>
-                <v-list-item-subtitle class="secondary--text" v-t="'user.form.email'"></v-list-item-subtitle>
+                <v-list-item-subtitle class="secondary--text" v-t="'user.label.email'" />
                 <v-list-item-title> {{me.email}}</v-list-item-title>
 
             </v-list-item-content>
@@ -30,9 +29,8 @@
             </v-list-item-action>
 
             <v-list-item-content>
-                <v-list-item-subtitle class="secondary--text" v-t="'user.form.phone'"></v-list-item-subtitle>
+                <v-list-item-subtitle class="secondary--text" v-t="'user.label.phone'"></v-list-item-subtitle>
                 <v-list-item-title> {{me.phone}}</v-list-item-title>
-
             </v-list-item-content>
 
 
@@ -42,7 +40,7 @@
 
 <script>
     export default {
-        name: "ProfileView",
+        name: "ProfileDetails",
         props: {
             me: Object
         }

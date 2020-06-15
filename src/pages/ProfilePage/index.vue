@@ -4,13 +4,13 @@
         <v-card class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 offset-sm-2 col-sm-8 col-xs-12 offset-xs-0 elevation-12" width="100%">
 
             <v-card-text class="text-center">
-                <profile-image :me="me"/>
+                <profile-avatar :me="me"/>
             </v-card-text>
 
             <v-divider></v-divider>
 
             <v-card-text>
-                <profile-view :me="me"/>
+                <profile-details :me="me"/>
             </v-card-text>
 
             <v-card-text class="text-center pt-0 pb-3">
@@ -27,13 +27,13 @@
 
 <script>
     import {mapGetters} from 'vuex'
-    import ProfileImage from './../components/ProfileImage'
-    import ProfilePassword from './../components/ProfilePassword'
-    import ProfileView from './../components/ProfileView'
+    import ProfileAvatar from "./ProfileAvatar";
+    import ProfileDetails from "./ProfileDetails";
+    import ProfilePassword from "./ProfilePassword";
 
     export default {
         name: "Profile",
-        components: {ProfileImage, ProfilePassword, ProfileView},
+        components: {ProfilePassword, ProfileDetails, ProfileAvatar},
         data: () => {
             return {
                 dialog: false

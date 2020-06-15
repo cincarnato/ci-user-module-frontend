@@ -81,6 +81,9 @@ export default {
         },
         setMe(state, me) {
             state.me = me
+        },
+        avatarUpdate(state, avatarurl) {
+            state.me.avatarurl = avatarurl
         }
     }
 }
