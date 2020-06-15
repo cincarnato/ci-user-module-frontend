@@ -12,7 +12,7 @@
         </v-toolbar>
 
         <v-card-text>
-          <group-show-data :item="item" />
+            <group-show-data :item="item"/>
         </v-card-text>
 
         <v-card-text>
@@ -40,9 +40,10 @@
 </template>
 
 <script>
-    import  GroupShowData from "../GroupShow/GroupShowData";
-     import GroupProvider from "../../../providers/GroupProvider";
-     
+    import GroupShowData from "../GroupShow/GroupShowData";
+    import GroupProvider from "../../../providers/GroupProvider";
+    import ClientError from "../../../errors/ClientError";
+
     export default {
         name: "GroupDelete",
         components: {GroupShowData},
@@ -60,17 +61,19 @@
         },
         methods: {
             remove() {
+                this.loading = true
                 GroupProvider.deleteGroup(this.item.id).then(result => {
-                            if (result.data.groupDelete.deleteSuccess) {
-                                
-                                this.$emit('closeDialog')
-                            }else{
-                                this.errorMessage = 'Error on Delete'
-                            }
+                        if (result.data.groupDelete.deleteSuccess) {
+                            this.$emit('deleteConfirmed', this.item)
+                            this.$emit('closeDialog')
+                        } else {
+                            this.errorMessage = 'Error on Delete'
                         }
-                    ).catch(err =>{
-                    this.errorMessage = err.message
-                })
+                    }
+                ).catch(error => {
+                    let clientError = new ClientError(error)
+                    this.errorMessage = clientError.i18nMessage
+                }).finally(() => this.loading = false)
             },
         },
     }

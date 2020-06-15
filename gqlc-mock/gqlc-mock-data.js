@@ -64,6 +64,14 @@ mockGqlClient.setRequestHandler(
 );
 
 mockGqlClient.setRequestHandler(
+    require('../src/providers/gql/groupDelete.graphql'),
+    (id) => {
+        let r = {data: {groupDelete: {id: id, deleteSuccess: true}}}
+        return Promise.resolve(r)
+    }
+);
+
+mockGqlClient.setRequestHandler(
     require('../src/providers/gql/users.graphql'),
     () => Promise.resolve(users)
 );
@@ -97,7 +105,10 @@ mockGqlClient.setRequestHandler(
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/userDelete.graphql'),
-    () => Promise.resolve(deleteUser)
+    (id) => {
+        let r = {data: {deleteUser:    {id: id, success: true}}}
+        return Promise.resolve(r)
+    }
 );
 
 mockGqlClient.setRequestHandler(

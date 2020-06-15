@@ -19,17 +19,26 @@
         </v-dialog>
 
         <v-dialog :value="deleting" width="850" persistent>
-            <group-delete :item="itemToDelete" v-if="deleting" v-on:itemDelete="loadGroups"
-                          v-on:closeDialog="deleting=false"/>
+            <group-delete :item="itemToDelete"
+                          v-if="deleting"
+                          @deleteConfirmed="itemDelete"
+                          v-on:closeDialog="deleting=false"
+            />
         </v-dialog>
 
         <v-dialog :value="creating" width="850" fullscreen persistent>
-            <group-create v-if="creating" v-on:itemCreate="itemCreate" v-on:closeDialog="creating=false"/>
+            <group-create v-if="creating"
+                          v-on:itemCreate="itemCreate"
+                          v-on:closeDialog="creating=false"
+            />
         </v-dialog>
 
         <v-dialog :value="updating" width="850" persistent>
-            <group-update v-if="updating" :item="itemToEdit" v-on:itemUpdate="itemUpdate"
-                          v-on:closeDialog="updating=false"/>
+            <group-update v-if="updating"
+                          :item="itemToEdit"
+                          v-on:itemUpdate="itemUpdate"
+                          v-on:closeDialog="updating=false"
+            />
         </v-dialog>
 
 
@@ -63,7 +72,6 @@
                 itemToEdit: null,
                 itemToDelete: null,
                 itemToShow: null,
-
                 items: [],
                 totalItems: 0,
                 loading: false,
@@ -80,6 +88,12 @@
             itemUpdate(item) {
                 let index = this.items.findIndex(i => i.id == item.id)
                 this.$set(this.items, index, item)
+            },
+            itemDelete(item){
+                let index = this.items.findIndex(i => i.id == item.id)
+                this.totalItems--
+                this.items.splice(index,1)
+
             },
             openEdit(item) {
                 this.updating = true

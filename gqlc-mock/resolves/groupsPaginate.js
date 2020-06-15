@@ -1,7 +1,7 @@
 const resolve = {
     data: {
         groupsPaginate: {
-            totalItems: 1,
+            totalItems: 2,
             page: 1,
             items: [
                 {
@@ -10,7 +10,7 @@ const resolve = {
                     color: "#00FF00",
                     users: [
                         {id: 1, username: "jhon.doe"},
-                        {id: 1, username: "jane.doe"}
+                        {id: 2, username: "jane.doe"}
                     ]
                 },
                 {

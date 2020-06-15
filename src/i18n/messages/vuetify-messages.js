@@ -2,11 +2,14 @@ const messages = {
     en: {
         $vuetify: {
             noDataText: "No data",
-            dataTable:{
+            dataIterator: {
+                noResultsText: "No results"
+            },
+            dataTable: {
                 itemsPerPageText: "itemsPerPage",
                 ariaLabel: {
                     sortNone: "sortNone",
-                    activateAscending:"activateAscending",
+                    activateAscending: "activateAscending",
                     activateDescending: "activateDescending",
                     sortAscending: "sortAscending",
                     sortDescending: "sortDescending",
@@ -24,11 +27,14 @@ const messages = {
     es: {
         $vuetify: {
             noDataText: "Sin Datos",
-            dataTable:{
+            dataIterator: {
+                noResultsText: "Sin Datos"
+            },
+            dataTable: {
                 itemsPerPageText: "itemsPerPage",
                 ariaLabel: {
                     sortNone: "sortNone",
-                    activateAscending:"activateAscending",
+                    activateAscending: "activateAscending",
                     activateDescending: "activateDescending",
                     sortAscending: "sortAscending",
                     sortDescending: "sortDescending",
@@ -47,11 +53,14 @@ const messages = {
     pt: {
         $vuetify: {
             noDataText: "Não há dados",
-            dataTable:{
+            dataIterator: {
+                noResultsText: "Não há dados"
+            },
+            dataTable: {
                 itemsPerPageText: "itemsPerPage",
                 ariaLabel: {
                     sortNone: "sortNone",
-                    activateAscending:"activateAscending",
+                    activateAscending: "activateAscending",
                     activateDescending: "activateDescending",
                     sortAscending: "sortAscending",
                     sortDescending: "sortDescending",

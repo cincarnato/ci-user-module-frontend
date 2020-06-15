@@ -168,6 +168,7 @@
             userDelete(item){
                 let index = this.items.findIndex(i => i.id == item.id)
                 this.items.splice(index,1)
+                this.totalItems--
                 this.flashMessage="User Deleted"
             },
             changePasswordConfirmed(){
