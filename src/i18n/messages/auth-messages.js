@@ -11,7 +11,6 @@ export const messages = {
             activationSent: 'We have sent an email to  {email} to validate and complete the creation of your account.',
             activatingUser: "Activating User. Please Wait.",
             activationSuccessful: "Activation successful",
-
             invalidToken: "Invalid Token"
         }
     },

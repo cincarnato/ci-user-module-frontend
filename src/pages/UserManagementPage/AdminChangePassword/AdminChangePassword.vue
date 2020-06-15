@@ -15,11 +15,11 @@
                                       @click:append="showNewPassword = !showNewPassword"
                                       v-model="form.password"
                                       :rules="requiredRule"
-                                      :label="$t('user.label.password')"
-                                      :placeholder="$t('user.label.password')"
+                                      :label="$t('user.label.newPassword')"
+                                      :placeholder="$t('user.label.newPassword')"
                                       autocomplete="new-password"
-                                      :error="errors.password.length?true:false"
-                                      :error-messages="errors.password"
+                                      :error="hasInputErrors('newPassword')"
+                                      :error-messages="getInputErrors('newPassword')"
                                       required
                         />
                     </v-col>
@@ -35,7 +35,7 @@
                                       :label="$t('user.label.repeatPassword')"
                                       :placeholder="$t('user.label.repeatPassword')"
                                       autocomplete="new-password"
-                                      :error="errors.passwordVerify.length?true:false"
+                                      :error="passwordMatchError"
                                       :error-messages="passwordMatchError"
                                       required
                         />
@@ -83,23 +83,17 @@
                     password: null,
                     passwordVerify: null,
                 },
-                errors: {
-                    password: [],
-                    passwordVerify: []
-                }
+                errors: {}
             }
         },
         computed: {
             passwordMatchError() {
-                return (this.form.password === this.form.passwordVerify) ? '' : this.$t('user.validation.passwordVerify')
+                return (this.form.password === this.form.passwordVerify) ? null : this.$t('user.validation.passwordVerify')
             },
         },
         methods: {
             resetValidation: function () {
-                this.errors = {
-                    password: [],
-                    passwordVerify: []
-                }
+                this.errors = {}
             },
             submit() {
                 if (this.$refs.form.validate()) {

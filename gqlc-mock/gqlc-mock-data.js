@@ -12,6 +12,7 @@ import roles from "./resolves/roles";
 import groups from "./resolves/groups";
 import permissions from "./resolves/permissions";
 import avatarUpload from "./resolves/avatarUpload";
+import authSuccessful from "./resolves/auth-successful";
 
 
 //Helpers
@@ -118,6 +119,12 @@ mockGqlClient.setRequestHandler(
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/permissions.graphql'),
     () => Promise.resolve(permissions)
+);
+
+
+mockGqlClient.setRequestHandler(
+    require('../src/providers/gql/auth.graphql'),
+    () => Promise.resolve(authSuccessful)
 );
 
 export default mockGqlClient

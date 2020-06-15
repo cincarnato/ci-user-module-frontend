@@ -15,12 +15,12 @@
 
             <v-card-text class="text-center pt-0 pb-3">
                 <v-btn color="secondary" class="onSecondary--text"
-                       @click="openDialog" v-t="'user.changePassword'">
+                       @click="openDialog" v-t="'user.changeYourPassword'">
                 </v-btn>
             </v-card-text>
         </v-card>
 
-        <profile-password :openDialog="dialog" :id="me.id" @closeDialog="dialog = false"/>
+        <profile-password :openDialog="dialog" @closeDialog="dialog = false"/>
 
     </v-container>
 </template>

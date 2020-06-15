@@ -7,6 +7,7 @@ import UserManagementPage from '../src/pages/UserManagementPage';
 import LoginPage from '../src/pages/LoginPage';
 import RegisterPage from '../src/pages/RegisterPage';
 import ActivationPage from '../src/pages/ActivationPage';
+import ProfilePage from '../src/pages/ProfilePage';
 
 
 import DashboardPage from '../src/pages/DashboardPage';
@@ -17,15 +18,23 @@ import i18n from '../src/i18n'
 import router from '../src/router'
 
 //MOCK GQLC PROVIDERS
+import authProvider from '../src/providers/AuthProvider'
 import groupProvider from '../src/providers/GroupProvider'
 import userProvider from '../src/providers/UserProvider'
 import roleProvider from '../src/providers/RoleProvider'
 import sessionProvider from '../src/providers/SessionProvider'
 import mockGqlClient from '../gqlc-mock/gqlc-mock-data'
+authProvider.setGqlc(mockGqlClient)
 groupProvider.setGqlc(mockGqlClient)
 userProvider.setGqlc(mockGqlClient)
 roleProvider.setGqlc(mockGqlClient)
 sessionProvider.setGqlc(mockGqlClient)
+
+
+
+//Set Auth
+store.dispatch('login',{username:'root',password:'123'})
+
 
 storiesOf('Pages', module)
     .add('UserManagementPage',
@@ -68,5 +77,11 @@ storiesOf('Pages', module)
         () => ({
             components: {DashboardPage},
             template: '<dashboard-page></dashboard-page>',
+            i18n, store, router
+        }))
+    .add('ProfilePage',
+        () => ({
+            components: {ProfilePage},
+            template: '<profile-page></profile-page>',
             i18n, store, router
         }))

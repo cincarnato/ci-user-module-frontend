@@ -1,15 +1,14 @@
 <template>
     <v-dialog :value="openDialog" width="500" persistent>
 
-        <password-success v-if="status" @close="$emit('closeDialog')"/>
+        <password-success v-if="success" @close="$emit('closeDialog')"/>
 
-        <password-form v-else @close="$emit('closeDialog')"/>
+        <password-form v-else @success="success=true" @close="$emit('closeDialog')"/>
 
     </v-dialog>
 </template>
 
 <script>
-    import {mapState} from 'vuex'
     import PasswordForm from './ProfilePasswordForm'
     import PasswordSuccess from './ProfilePasswordSuccess'
 
@@ -22,12 +21,11 @@
         props: {
             openDialog: Boolean
         },
-        computed: {
-            ...mapState({
-                loading: state => state.profile.loadingUserProfile,
-                status: state => state.profile.changePasswordStatus
-            })
-        },
+        data(){
+            return {
+                success: false
+            }
+        }
     }
 </script>
 

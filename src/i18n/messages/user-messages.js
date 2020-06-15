@@ -7,8 +7,9 @@ const userMessages = {
             updateTitle: 'Updating user',
             showTitle: 'User details',
             deleteTitle: 'Deleting user',
-            changePasswordTitle: 'Changing user password',
             deleteConfirm: 'Are you sure you want to delete this user?',
+            changePasswordTitle: 'Changing user password',
+            changeYourPassword: 'Change your password',
             validation: {
                 required: 'Required field',
                 emailVerify: 'Email does not match',
@@ -27,6 +28,8 @@ const userMessages = {
                 actions: 'Actions',
                 repeatEmail: 'Confirm email',
                 repeatPassword: 'Confirm password',
+                newPassword: 'New password',
+                currentPassword: 'Current password'
             },
         },
     },
@@ -39,8 +42,9 @@ const userMessages = {
             updateTitle: 'Actualizando usuario',
             showTitle: 'Detalles de usuario',
             deleteTitle: 'Borrando usuario',
-            changePasswordTitle: 'Cambiando contraseña de usuario',
             deleteConfirm: '¿Esta seguro que desea eliminar este usuario?',
+            changePasswordTitle: 'Cambiando contraseña de usuario',
+            changeYourPassword: 'Cambiar tu contraseña',
             validation: {
                 required: 'Campo requerido',
                 emailVerify: 'El email no coincide',
@@ -59,6 +63,8 @@ const userMessages = {
                 actions: 'Acciones',
                 repeatEmail: 'Confirmar email',
                 repeatPassword: 'Confirmar contraseña',
+                newPassword: 'Contraseña nueva',
+                currentPassword: 'Contraseña actual'
             },
         },
 
@@ -71,8 +77,9 @@ const userMessages = {
             updateTitle: 'Atualizando usuário',
             showTitle: 'Detalhes do usuario',
             deleteTitle: 'Excluindo usuário',
-            changePasswordTitle: 'Alterando a senha do usuário',
             deleteConfirm: 'Tem certeza de que deseja excluir este usuário?',
+            changePasswordTitle: 'Alterando a senha do usuário',
+            changeYourPassword: 'Mude sua senha',
             validation: {
                 required: 'Campo obrigatório',
                 emailVerify: 'O email não corresponde',
@@ -91,6 +98,8 @@ const userMessages = {
                 actions: 'Ações',
                 repeatEmail: 'Confirmar o e-mail',
                 repeatPassword: 'Confirmar a senha',
+                newPassword: 'Nova senha',
+                currentPassword: 'Senha atual'
             }
         },
     }
