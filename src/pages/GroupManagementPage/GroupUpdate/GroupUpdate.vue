@@ -139,6 +139,7 @@
             },
             save() {
                 if (this.$refs.form.validate()) {
+                    this.loading = true
                     GroupProvider.updateGroup(this.form).then(r => {
                             if (r) {
                                 this.$emit('itemUpdate', r.data.groupUpdate)
@@ -149,7 +150,7 @@
                         let clientError = new ClientError(error)
                         this.inputErrors = clientError.inputErrors
                         this.errorMessage = clientError.i18nMessage
-                    })
+                    }).finally(()=>this.loading=false)
                 }
 
             },

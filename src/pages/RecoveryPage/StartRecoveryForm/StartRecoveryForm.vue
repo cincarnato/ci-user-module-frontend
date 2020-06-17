@@ -9,7 +9,11 @@
             <h2 class="mt-3" v-t="'auth.passwordRecovery'"></h2>
         </v-card-text>
 
-        <v-card-text>
+        <v-card-text v-if="status">
+           <start-recovery-form-success :email="form.email" />
+        </v-card-text>
+
+        <v-card-text v-else>
             <v-form ref="form" autocomplete="off" v-model="valid" @submit.prevent="submit">
                 <v-text-field prepend-icon="email"
                               name="email"
@@ -48,10 +52,11 @@
     import RecoveryProvider from "../../../providers/RecoveryProvider";
     import ClientError from "../../../errors/ClientError";
     import SubmitButton from "../../../components/SubmitButton/SubmitButton";
+    import StartRecoveryFormSuccess from "./StartRecoveryFormSuccess";
 
     export default {
         name: "StartRecoveryForm",
-        components: {SubmitButton},
+        components: {StartRecoveryFormSuccess, SubmitButton},
         mixins: [UserValidations, InputErrors],
         data: () => ({
                 loading: false,

@@ -27,7 +27,7 @@
                         :type="showRepeatPassword ? 'text' : 'password'"
                         @click:append="showRepeatPassword = !showRepeatPassword"
                         :rules="requiredRule"
-                        :error="passwordMatchError"
+                        :error="!!passwordMatchError"
                         :error-messages="passwordMatchError"
                 ></v-text-field>
 
@@ -52,9 +52,11 @@
     import UserValidations from "../../../mixins/UserValidations";
     import recoveryProvider from "../../../providers/RecoveryProvider";
     import ClientError from "../../../errors/ClientError";
+    import SubmitButton from "../../../components/SubmitButton/SubmitButton";
 
     export default {
         name: "RecoveryPasswordForm",
+        components: {SubmitButton},
         mixins: [InputErrors, UserValidations],
         data() {
             return {

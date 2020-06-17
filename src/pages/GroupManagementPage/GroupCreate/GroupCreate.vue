@@ -118,6 +118,7 @@
         methods: {
             save() {
                 if (this.$refs.form.validate()) {
+                    this.loading = true
                     GroupProvider.createGroup(this.form).then(r => {
                             if (r) {
                                 this.$emit('itemCreate', r.data.groupCreate)
@@ -128,7 +129,7 @@
                         let clientError = new ClientError(error)
                         this.inputErrors = clientError.inputErrors
                         this.errorMessage = clientError.i18nMessage
-                    })
+                    }).finally(()=>this.loading=false)
                 }
 
             },
