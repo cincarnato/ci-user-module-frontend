@@ -23,8 +23,8 @@ class AuthProvider {
     }
 
     register({username,password, name, email, phone}){
-        return this.gqlc.query({
-            query: require('./gql/registerUser.graphql'),
+        return this.gqlc.mutate({
+            mutation: require('./gql/registerUser.graphql'),
             variables: {username,password, name, email, phone}
         })
     }
@@ -44,6 +44,6 @@ class AuthProvider {
 
 
 }
-const authProvider = new AuthProvider(null)
+const authProvider = new AuthProvider(gqlc)
 
 export default authProvider

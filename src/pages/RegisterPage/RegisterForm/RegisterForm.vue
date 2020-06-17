@@ -109,7 +109,7 @@
             </v-col>
 
             <v-col cols="12">
-                <v-btn :loading="loading" color="secondary" class="OnSecondary--text" @click="register" v-t="'auth.signUp'"></v-btn>
+                <submit-button :loading="loading" @click="register" v-t="'auth.signUp'"></submit-button>
             </v-col>
         </v-row>
     </v-form>
@@ -120,10 +120,12 @@
     import AuthProvider from '../../../providers/AuthProvider';
     import ClientError from '../../../errors/ClientError'
     import InputErrors from "../../../mixins/InputErrors";
+    import SubmitButton from "../../../components/SubmitButton/SubmitButton";
 
 
     export default {
         name: "RegisterForm",
+        components: {SubmitButton},
         mixins: [InputErrors],
         data: () => ({
                 loading: false,
@@ -167,13 +169,18 @@
         },
         methods: {
             register() {
+                console.log("register")
                 if (this.$refs.form.validate()) {
+                    console.log("register validate")
                     this.loading = true
                     AuthProvider.register(this.form).then(res => {
-                        if (res.data.register.status) {
-                            this.$emit("userRegistered", res.data.register.email)
-                        }
+                        console.log(res)
+                     /*   if (res.data.registerUser.status) {
+                            console.log("register ok")
+                            this.$emit("userRegistered", res.data.registerUser.email)
+                        }*/
                     }).catch(err => {
+                        console.log("err",err)
                         let clientError = new ClientError(err)
                         this.error = clientError.i18nMessage
                         this.inputErrors = clientError.inputErrors

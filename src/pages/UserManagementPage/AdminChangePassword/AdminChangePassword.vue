@@ -35,7 +35,7 @@
                                       :label="$t('user.label.repeatPassword')"
                                       :placeholder="$t('user.label.repeatPassword')"
                                       autocomplete="new-password"
-                                      :error="passwordMatchError"
+                                      :error="!!passwordMatchError"
                                       :error-messages="passwordMatchError"
                                       required
                         />

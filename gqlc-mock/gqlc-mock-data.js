@@ -13,6 +13,7 @@ import permissions from "./resolves/permissions";
 import avatarUpload from "./resolves/avatarUpload";
 import authSuccessful from "./resolves/auth-successful";
 import recoveryByEmail from "./resolves/recoveryByEmail";
+import registerUser from "./resolves/registerUser";
 
 
 //Helpers
@@ -20,13 +21,20 @@ import uuidv4 from "./helpers/uuidv4";
 import getRoleById from "./helpers/getRoleById";
 import getUserById from "./helpers/getUserById";
 
-
+mockGqlClient.setRequestHandler(
+    require('../src/providers/gql/registerUser.graphql'),
+    () => {
+        return new Promise((resolve) => {
+            setTimeout(() => resolve(registerUser), 800)
+        })
+    }
+);
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/recoveryByEmail.graphql'),
     () => {
         return new Promise((resolve) => {
-            setTimeout(()=>resolve(recoveryByEmail),800)
+            setTimeout(() => resolve(recoveryByEmail), 800)
         })
     }
 );
@@ -36,18 +44,17 @@ mockGqlClient.setRequestHandler(
     require('../src/providers/gql/avatarUpload.graphql'),
     () => {
         return new Promise((resolve) => {
-            setTimeout(()=>resolve(avatarUpload),2000)
+            setTimeout(() => resolve(avatarUpload), 2000)
         })
     }
 );
-
 
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/dashboardData.graphql'),
     () => {
         return new Promise((resolve) => {
-            setTimeout(()=>resolve(dashboardData),800)
+            setTimeout(() => resolve(dashboardData), 800)
         })
     }
 );
@@ -57,30 +64,30 @@ mockGqlClient.setRequestHandler(
     require('../src/providers/gql/groupsPaginate.graphql'),
     () => {
         return new Promise((resolve) => {
-            setTimeout(()=>resolve(groupsPaginate),800)
+            setTimeout(() => resolve(groupsPaginate), 800)
         })
     }
 );
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/groupCreate.graphql'),
-    ({ name, color, users}) => {
+    ({name, color, users}) => {
         return new Promise((resolve) => {
-            let id =uuidv4()
+            let id = uuidv4()
             users = users.map(user => getUserById(user))
-            let r = {data: {groupCreate: {id, name, color, users} } }
-            setTimeout(()=>resolve(r),800)
+            let r = {data: {groupCreate: {id, name, color, users}}}
+            setTimeout(() => resolve(r), 800)
         })
     }
 );
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/groupUpdate.graphql'),
-    ({ id, name, color, users}) => {
+    ({id, name, color, users}) => {
         return new Promise((resolve) => {
             users = users.map(user => getUserById(user))
-            let r = {data: {groupUpdate: {id,  name, color, users} } }
-            setTimeout(()=>resolve(r),800)
+            let r = {data: {groupUpdate: {id, name, color, users}}}
+            setTimeout(() => resolve(r), 800)
         })
     }
 );
@@ -90,76 +97,112 @@ mockGqlClient.setRequestHandler(
     (id) => {
         return new Promise((resolve) => {
             let r = {data: {groupDelete: {id: id, deleteSuccess: true}}}
-            setTimeout(()=>resolve(r),800)
+            setTimeout(() => resolve(r), 800)
         })
     }
 );
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/users.graphql'),
-    () => Promise.resolve(users)
+    () => {
+        return new Promise((resolve) => {
+            setTimeout(() => resolve(users), 800)
+        })
+    }
 );
 
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/userPaginate.graphql'),
-    () => Promise.resolve(userPaginate)
+    () => {
+        return new Promise((resolve) => {
+            setTimeout(() => resolve(userPaginate), 800)
+        })
+    }
 );
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/userCreate.graphql'),
-    ({ username, password, name, email, phone, role, groups, active}) => {
-        let id =uuidv4()
-        role = getRoleById(role)
-        let avatarurl = null
-        let r = {data: {createUser: {id, username, password, name, email, phone, role, groups, active,avatarurl} } }
-        return Promise.resolve(r)
+    ({username, password, name, email, phone, role, groups, active}) => {
+        return new Promise((resolve) => {
+            let id = uuidv4()
+            role = getRoleById(role)
+            let avatarurl = null
+            let r = {data: {createUser: {id, username, password, name, email, phone, role, groups, active, avatarurl}}}
+            setTimeout(() => resolve(r), 800)
+        })
     }
 );
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/userUpdate.graphql'),
     ({id, username, password, name, email, phone, role, groups, active}) => {
-        role = getRoleById(role)
-        let avatarurl = null
-        let r = {data: {updateUser: {id, username, password, name, email, phone, role, groups, active,avatarurl} } }
-        return Promise.resolve(r)
+        return new Promise((resolve) => {
+            role = getRoleById(role)
+            let avatarurl = null
+            let r = {data: {updateUser: {id, username, password, name, email, phone, role, groups, active, avatarurl}}}
+            setTimeout(() => resolve(r), 800)
+        })
     }
 );
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/userDelete.graphql'),
     (id) => {
-        let r = {data: {deleteUser:    {id: id, success: true}}}
-        return Promise.resolve(r)
+        return new Promise((resolve) => {
+            let r = {data: {deleteUser: {id: id, success: true}}}
+            setTimeout(() => resolve(r), 800)
+        })
     }
 );
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/userAdminChangePassword.graphql'),
-    () => Promise.resolve(changePasswordAdmin)
+    () => Promise.resolve(changePasswordAdmin),
+    () => {
+        return new Promise((resolve) => {
+            setTimeout(() => resolve(changePasswordAdmin), 800)
+        })
+    }
 );
 
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/roles.graphql'),
-    () => Promise.resolve(roles)
+    () => {
+        return new Promise((resolve) => {
+            setTimeout(() => resolve(roles), 800)
+        })
+    }
 );
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/groups.graphql'),
-    () => Promise.resolve(groups)
+    () => {
+        return new Promise((resolve) => {
+            setTimeout(() => resolve(groups), 800)
+        })
+    }
+
 );
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/permissions.graphql'),
-    () => Promise.resolve(permissions)
+    () => {
+        return new Promise((resolve) => {
+            setTimeout(() => resolve(permissions), 800)
+        })
+    }
 );
 
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/auth.graphql'),
-    () => Promise.resolve(authSuccessful)
+    () => {
+        return new Promise((resolve) => {
+            setTimeout(() => resolve(authSuccessful), 800)
+        })
+    }
 );
 
 export default mockGqlClient
