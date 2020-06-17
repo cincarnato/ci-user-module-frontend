@@ -4,10 +4,10 @@ import Vuetify, {
     VCard, VCardText, VCardTitle, VCardActions, VCardSubtitle,
     VContent, VContainer, VRow, VCol, VSpacer,
     VToolbar, VToolbarItems, VToolbarTitle, VProgressLinear, VMenu, VProgressCircular,
-    VAlert, VIcon, VTooltip,
+    VAlert, VIcon, VTooltip, VDivider,
     VDialog, VDataTable, VAvatar, VSimpleTable,
     VColorPicker, VChip, VChipGroup, VSnackbar,
-    VList, VListItem, VListGroup, VListItemIcon, VListItemTitle, VListItemSubtitle, VListItemContent
+    VList, VListItem, VListGroup, VListItemIcon, VListItemAction, VListItemTitle, VListItemSubtitle, VListItemContent
 } from 'vuetify/lib';
 import i18n from '../i18n'
 
@@ -17,10 +17,10 @@ Vue.use(Vuetify, {
         VCard, VCardText, VCardTitle, VCardActions, VCardSubtitle,
         VContent, VContainer, VRow, VCol, VSpacer,
         VToolbar, VToolbarItems, VToolbarTitle, VProgressLinear, VMenu, VProgressCircular,
-        VAlert, VIcon, VTooltip,
+        VAlert, VIcon, VTooltip, VDivider,
         VDialog, VDataTable, VAvatar,VSimpleTable,
         VColorPicker, VChip, VChipGroup,VSnackbar,
-        VList, VListItem, VListGroup, VListItemIcon, VListItemTitle, VListItemSubtitle, VListItemContent
+        VList, VListItem, VListGroup, VListItemIcon, VListItemAction, VListItemTitle, VListItemSubtitle, VListItemContent
     }
 });
 

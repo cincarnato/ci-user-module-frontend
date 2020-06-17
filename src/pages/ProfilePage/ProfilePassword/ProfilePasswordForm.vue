@@ -1,6 +1,6 @@
 <template>
     <v-card>
-        <v-card-title class="secondary--text" v-t="'user.changeYourPassword'"></v-card-title>
+        <toolbar-dialog-card title="user.changeYourPassword" @close="$emit('closeDialog')" />
 
         <v-card-text>
             <v-form ref="form" autocomplete="off" v-model="valid" @submit.prevent="submit">
@@ -110,7 +110,7 @@
             submit() {
                 if (this.$refs.form.validate()) {
                     this.resetValidation()
-
+                    this.loading = true
                     ProfileProvider.changePassword(this.form).then((response) => {
                         this.status = response.data.changePassword.success
                         this.$emit('success', this.status)

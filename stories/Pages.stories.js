@@ -8,6 +8,7 @@ import LoginPage from '../src/pages/LoginPage';
 import RegisterPage from '../src/pages/RegisterPage';
 import ActivationPage from '../src/pages/ActivationPage';
 import ProfilePage from '../src/pages/ProfilePage';
+import RecoveryPage from '../src/pages/RecoveryPage';
 
 
 import DashboardPage from '../src/pages/DashboardPage';
@@ -23,12 +24,14 @@ import groupProvider from '../src/providers/GroupProvider'
 import userProvider from '../src/providers/UserProvider'
 import roleProvider from '../src/providers/RoleProvider'
 import sessionProvider from '../src/providers/SessionProvider'
+import recoveryProvider from '../src/providers/RecoveryProvider'
 import mockGqlClient from '../gqlc-mock/gqlc-mock-data'
 authProvider.setGqlc(mockGqlClient)
 groupProvider.setGqlc(mockGqlClient)
 userProvider.setGqlc(mockGqlClient)
 roleProvider.setGqlc(mockGqlClient)
 sessionProvider.setGqlc(mockGqlClient)
+recoveryProvider.setGqlc(mockGqlClient)
 
 
 
@@ -85,3 +88,10 @@ storiesOf('Pages', module)
             template: '<profile-page></profile-page>',
             i18n, store, router
         }))
+    .add('RecoveryPage',
+        () => ({
+            components: {RecoveryPage},
+            template: '<recovery-page></recovery-page>',
+            i18n, store, router
+        }))
+

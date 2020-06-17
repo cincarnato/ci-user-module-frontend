@@ -1,32 +1,9 @@
 <template>
-
-
-    <v-container v-if="status" fluid fill-height class="grey lighten-3">
-
+    <v-container fluid fill-height class="grey lighten-3">
         <v-row align="center" justify="center">
             <v-col cols="12" sm="8" md="4">
-                <v-card class="elevation-12">
-                    <v-card-text>
-                        <v-alert
-                                :value="true"
-                                color="success"
-                                icon="check_circle"
-                                outlined
-                        >
-                            {{message}}
-                        </v-alert>
-
-                    </v-card-text>
-                </v-card>
-            </v-col>
-        </v-row>
-    </v-container>
-
-    <v-container v-else fluid fill-height class="grey lighten-3">
-
-        <v-row align="center" justify="center">
-            <v-col cols="12" sm="8" md="4">
-                <recovery-form/>
+                <recovery-password v-if="isToken" ></recovery-password>
+                <start-recovery-form v-else/>
             </v-col>
         </v-row>
     </v-container>
@@ -34,34 +11,17 @@
 
 <script>
 
-    import {mapActions, mapState} from 'vuex'
-    import RecoveryForm from '../components/RecoveryForm'
+    import StartRecoveryForm from './StartRecoveryForm'
+    import RecoveryPassword from "./RecoveryPassword/RecoveryPassword";
 
     export default {
         name: "Recovery",
-        components: {RecoveryForm},
-        data: () => ({
-                recoverySuccess: false,
-                recoveryMessage: '',
-            }
-        ),
+        components: {RecoveryPassword, StartRecoveryForm},
         computed: {
-            ...mapState({
-                status: state => state.recovery.recoveryStatus,
-                message: state => state.recovery.recoveryMessage
-            })
-        },
-        methods: {
-            ...mapActions(['resetRecovery'])
-        },
-        destroyed() {
-            this.resetRecovery()
+            isToken(){
+                return !!this.$route.params.token
+            }
         }
     }
 </script>
 
-<style scoped>
-    a {
-        text-decoration: none;
-    }
-</style>

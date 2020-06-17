@@ -1,7 +1,7 @@
 <template>
 
     <v-card>
-        <toolbar-dialog-card title="user.changePasswordTitle" @close="$emit('closeDialog')"></toolbar-dialog-card>
+        <toolbar-dialog-card title="user.changePasswordTitle" @close="$emit('closeDialog')" />
 
         <v-card-text>
             <v-form ref="form" autocomplete="off" v-model="valid" @submit.prevent="submit">
@@ -14,10 +14,10 @@
                                       :type="showNewPassword ? 'text' : 'password'"
                                       @click:append="showNewPassword = !showNewPassword"
                                       v-model="form.password"
-                                      :rules="requiredRule"
                                       :label="$t('user.label.newPassword')"
                                       :placeholder="$t('user.label.newPassword')"
                                       autocomplete="new-password"
+                                      :rules="requiredRule"
                                       :error="hasInputErrors('newPassword')"
                                       :error-messages="getInputErrors('newPassword')"
                                       required

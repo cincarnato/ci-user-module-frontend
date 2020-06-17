@@ -40,7 +40,7 @@ export default {
 
                     let error = new ClientError(err)
 
-                    if(error.code === 'UNAUTHENTICATED' && error.errorMessage === 'BadCredentials'){
+                    if (error.code === 'UNAUTHENTICATED' && error.errorMessage === 'BadCredentials') {
                         reject('auth.badCredentials')
                     }
 
@@ -55,6 +55,23 @@ export default {
             commit('setAccessToken', null)
             //Todo move to another part
             // router.push('/login')
+        },
+
+        verifyToken(_, token) {
+            try {
+                let payload = jwt_decode(token)
+
+                if (payload.exp) {
+                    let dateNow = new Date();
+                    let dateToken = new Date(payload.exp * 1000)
+                    return (dateNow < dateToken) ? true : false
+                }
+
+            } catch (e) {
+                return false
+            }
+
+            return false
         },
 
         checkAuth: ({state, dispatch, commit}) => {

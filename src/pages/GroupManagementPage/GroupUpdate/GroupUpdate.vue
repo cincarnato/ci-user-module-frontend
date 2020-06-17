@@ -30,9 +30,9 @@
                                 :label="$t('group.label.name')"
                                 :placeholder="$t('group.label.name')"
                                 class="pa-3"
-                                :rules="[rules.required]"
-                                :error="hasErrors('name')"
-                                :error-messages="getMessageErrors('name')"
+                                :rules="requiredRule"
+                                :error="hasInputErrors('name')"
+                                :error-messages="getInputErrors('name')"
                                 required
                         ></v-text-field>
                     </v-col>
@@ -40,8 +40,8 @@
                     <v-col cols="12" sm="6">
                         <group-color-input v-model="form.color"
                                            :label="$t('group.label.color')"
-                                           :get-message-errors="getMessageErrors('color')"
-                                           :has-errors="hasErrors('color')"
+                                           :get-message-errors="getInputErrors('color')"
+                                           :has-errors="hasInputErrors('color')"
                                            :rules="rules.hexcode"
                         />
                     </v-col>
@@ -90,11 +90,14 @@
     import ClientError from '../../../errors/ClientError'
     import GroupColorInput from "../GroupColorInput/GroupColorInput";
     import UserProvider from "../../../providers/UserProvider";
+    import InputErrors from "../../../mixins/InputErrors";
+    import UserValidations from "../../../mixins/UserValidations";
 
 
     export default {
         name: "GroupUpdate",
         components: {GroupColorInput},
+        mixins: [InputErrors, UserValidations],
         props: {
             item: Object
         },
@@ -115,7 +118,7 @@
                     users: this.item.users.map(user => user.id?user.id:user )
                 },
                 rules: {
-                    required: value => !!value || 'Requerido',
+                    required: value => !!value || this.$t('user.validation.required'),
                     hexcode: [v => /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(v) || 'hexcode invalid ']
                 },
 
@@ -123,20 +126,6 @@
         },
         created() {
             this.loadUsers()
-        },
-        computed: {
-            hasErrors() {
-                return field => this.inputErrors[field] != undefined
-            },
-            getMessageErrors() {
-                return field => {
-                    if (this.inputErrors[field] != undefined) {
-                        let message = this.inputErrors[field].message
-                        return [message]
-                    }
-                    return []
-                }
-            },
         },
         methods: {
             loadUsers(){

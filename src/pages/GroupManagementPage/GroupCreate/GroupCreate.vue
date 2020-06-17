@@ -7,11 +7,11 @@
         </v-card-text>
 
         <v-card-text>
-            <v-form ref="form" autocomplete="off" @submit.prevent="save" >
+            <v-form ref="form" autocomplete="off" @submit.prevent="save">
 
                 <v-row>
-    
-                   
+
+
                     <v-col cols="12" sm="6">
                         <v-text-field
                                 prepend-icon="account_box"
@@ -21,9 +21,9 @@
                                 :label="$t('group.label.name')"
                                 :placeholder="$t('group.label.name')"
                                 class="pa-3"
-                                :rules="[rules.required]"
-                                :error="hasErrors('name')"
-                                :error-messages="getMessageErrors('name')"
+                                :rules="requiredRule"
+                                :error="hasInputErrors('name')"
+                                :error-messages="getInputErrors('name')"
                                 required
                         ></v-text-field>
                     </v-col>
@@ -31,10 +31,10 @@
                     <v-col cols="12" sm="6">
                         <group-color-input
                                 v-model="form.color"
-                                           :label="$t('group.label.color')"
-                                           :get-message-errors="getMessageErrors('color')"
-                                           :has-errors="hasErrors('color')"
-                                           :rules="rules.hexcode"
+                                :label="$t('group.label.color')"
+                                :has-errors="hasInputErrors('color')"
+                                :get-message-errors="getInputErrors('color')"
+                                :rules="rules.hexcode"
                         />
                     </v-col>
 
@@ -77,12 +77,14 @@
     import SubmitButton from "../../../components/SubmitButton/SubmitButton";
     import CloseButton from "../../../components/CloseButton/CloseButton";
     import ToolbarDialogCard from "../../../components/ToolbarDialogCard/ToolbarDialogCard";
-
+    import InputErrors from "../../../mixins/InputErrors";
+    import UserValidations from "../../../mixins/UserValidations";
 
 
     export default {
         name: "GroupCreate",
         components: {ToolbarDialogCard, CloseButton, SubmitButton, GroupColorInput},
+        mixins: [InputErrors, UserValidations],
         data() {
             return {
                 modal: false,
@@ -101,7 +103,7 @@
                     required: value => !!value || 'Requerido',
                     hexcode: [v => /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(v) || 'hexcode invalid ']
                 },
-                
+
             }
         },
         created() {
@@ -113,38 +115,24 @@
                 console.error(err)
             }).finally(() => this.loadingUsers = false)
         },
-        computed: {
-             hasErrors() {
-                return field => this.inputErrors[field] != undefined
-            },
-            getMessageErrors() {
-                return field => {
-                    if (this.inputErrors[field] != undefined) {
-                        let message = this.inputErrors[field].message
-                        return [message]
-                    }
-                    return []
-                }
-            },
-        },
         methods: {
             save() {
                 if (this.$refs.form.validate()) {
                     GroupProvider.createGroup(this.form).then(r => {
                             if (r) {
-                                this.$emit('itemCreate',r.data.groupCreate)
+                                this.$emit('itemCreate', r.data.groupCreate)
                                 this.$emit('closeDialog')
                             }
                         }
                     ).catch(error => {
-                         let clientError = new ClientError(error)
-                         this.inputErrors = clientError.inputErrors
-                         this.errorMessage = clientError.i18nMessage
+                        let clientError = new ClientError(error)
+                        this.inputErrors = clientError.inputErrors
+                        this.errorMessage = clientError.i18nMessage
                     })
                 }
 
             },
-            
+
 
         },
     }
