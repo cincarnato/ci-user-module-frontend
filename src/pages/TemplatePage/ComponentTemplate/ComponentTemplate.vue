@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h3>Component Template</h3>
+        <h3>Plantilla de componente</h3>
         {{data}}
+        <p>otro texto agregado</p>
     </div>
 </template>
 

@@ -8,7 +8,8 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "build-storybook": "build-storybook",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006",
+    "storybook&Dev": "npx -p @vue/devtools vue-devtools & start-storybook -p 6006"
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.6.6",

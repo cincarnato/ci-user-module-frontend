@@ -26,17 +26,17 @@ class RoleProvider {
     
     
 
-    createRole(form) {
+    roleCreate(form) {
         return this.gqlc.mutate({
-            mutation: require('./gql/createRole.graphql'),
+            mutation: require('./gql/roleCreate.graphql'),
             variables: form
         })
     }
     
-    roleUpdate(id,form) {
+    roleUpdate(form) {
         return this.gqlc.mutate({
             mutation: require('./gql/roleUpdate.graphql'),
-            variables:{id,name:form.name,permissions:form.permissions}
+            variables:{ id: form.id, name: form.name, permissions: form.permissions }
         })
     }
     

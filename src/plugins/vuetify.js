@@ -9,4 +9,7 @@ export default new Vuetify({
     lang: {
         t: (key, ...params) => i18n.t(key, params),
     },
+    icons:{
+        iconfont: 'md'
+    }
 });

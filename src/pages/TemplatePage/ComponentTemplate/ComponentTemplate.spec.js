@@ -1,5 +1,5 @@
-import {mount} from '@vue/test-utils'
-import { createLocalVue } from '@vue/test-utils'
+import {mount, createLocalVue} from '@vue/test-utils'
+
 export const localVue = createLocalVue()
 
 //Resources
@@ -45,7 +45,9 @@ describe('ComponentTemplate.vue', () => {
             router
         })
 
-        expect(wrapper.text()).toMatch('Component Template')
+        let textoComponente = wrapper.text()
+
+        expect(textoComponente).toMatch('Component Template')
 
     })
 })

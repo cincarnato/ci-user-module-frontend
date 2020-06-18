@@ -172,6 +172,29 @@ mockGqlClient.setRequestHandler(
 );
 
 mockGqlClient.setRequestHandler(
+    require('../src/providers/gql/roleCreate.graphql'),
+    ({name, permissions}) => {
+        return new Promise((resolve) => {
+            let id = uuidv4()
+            let r = {data: {roleCreate: {id, name, permissions}}}
+            setTimeout(() => resolve(r), 800)
+        })
+    }
+);
+
+
+mockGqlClient.setRequestHandler(
+    require('../src/providers/gql/roleUpdate.graphql'),
+    ({id, name, permissions}) => {
+        return new Promise((resolve) => {
+            let r = {data: {roleUpdate: {id, name, permissions}}}
+            setTimeout(() => resolve(r), 800)
+        })
+    }
+);
+
+
+mockGqlClient.setRequestHandler(
     require('../src/providers/gql/groups.graphql'),
     () => {
         return new Promise((resolve) => {

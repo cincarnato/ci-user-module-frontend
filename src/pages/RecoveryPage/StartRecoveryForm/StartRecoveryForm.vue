@@ -17,6 +17,7 @@
             <v-form ref="form" autocomplete="off" v-model="valid" @submit.prevent="submit">
                 <v-text-field prepend-icon="email"
                               name="email"
+                              ref="email"
                               type="text"
                               v-model="form.email"
                               :rules="emailRules"

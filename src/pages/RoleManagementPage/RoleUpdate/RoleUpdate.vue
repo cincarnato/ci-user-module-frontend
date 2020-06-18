@@ -24,6 +24,7 @@
                             required
                     ></v-text-field>
                 </v-col>
+
                 <v-col cols="12">
                     <v-row>
                         <v-col cols="12" v-for="(permission,index) in permissions" :key="index">
@@ -31,7 +32,8 @@
                             <v-checkbox v-model="form.permissions"
                                         :label="getPermissionsTranslation(permission)"
                                         :value="permission"
-                            />
+                                        @input="inputPermission(permission)"
+                            ></v-checkbox>
                         </v-col>
                     </v-row>
                 </v-col>
@@ -49,7 +51,6 @@
 <script>
     import RoleProvider from "../../../providers/RoleProvider";
     import ClientError from "../../../errors/ClientError";
-    import UserProvider from "../../../providers/UserProvider";
     import CloseButton from "../../../components/CloseButton/CloseButton";
     import SubmitButton from "../../../components/SubmitButton/SubmitButton";
     import ToolbarDialogCard from "../../../components/ToolbarDialogCard/ToolbarDialogCard";
@@ -68,7 +69,7 @@
         },
         data() {
             return {
-                title: this.$t("role.updateTitle"),
+                title: "role.updateTitle",
                 errorMessage: "",
                 inputErrors: {},
                 loading: false,
@@ -80,14 +81,29 @@
 
             };
         },
+        computed:{
+            hasPermission(){
+                return (permission) => {
+                    return this.form.permissions.includes(permission)
+                }
+            }
+        },
+
         methods: {
+            inputPermission(permission){
+                if(this.hasPermission(permission)){
+                    this.form.permissions = this.form.permissions.filter(p => p != permission)
+                }else{
+                    this.form.permissions.push(permission)
+                }
+            },
             save() {
                 if (this.$refs.form.validate()) {
                     this.loading = true
-                    RoleProvider.roleUpdate(this.role.id, this.form)
+                    RoleProvider.roleUpdate(this.form)
                         .then(r => {
                             if (r) {
-                                this.$emit("roleUpdated")
+                                this.$emit("roleUpdated", r.data.roleUpdate)
                                 this.$emit("closeDialog")
                             }
                         })
@@ -95,10 +111,6 @@
                             let clientError = new ClientError(error);
                             this.inputErrors = clientError.inputErrors
                             this.errorMessage = clientError.i18nMessage
-                            if (error.toString().indexOf("duplicate")) {
-                                this.inputErrors.duplicate = "duplicate"
-                                this.errorMessage = this.$t("role.rolDuplicate")
-                            }
                         }).finally(() => this.loading = false)
                 }
             },
