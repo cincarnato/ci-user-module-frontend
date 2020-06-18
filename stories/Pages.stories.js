@@ -13,31 +13,12 @@ import RecoveryPage from '../src/pages/RecoveryPage';
 
 import DashboardPage from '../src/pages/DashboardPage';
 
-
 import store from '../src/store'
 import i18n from '../src/i18n'
 import router from '../src/router'
 
-//MOCK GQLC PROVIDERS
-import authProvider from '../src/providers/AuthProvider'
-import groupProvider from '../src/providers/GroupProvider'
-import userProvider from '../src/providers/UserProvider'
-import roleProvider from '../src/providers/RoleProvider'
-import sessionProvider from '../src/providers/SessionProvider'
-import recoveryProvider from '../src/providers/RecoveryProvider'
-import mockGqlClient from '../gqlc-mock/gqlc-mock-data'
-authProvider.setGqlc(mockGqlClient)
-groupProvider.setGqlc(mockGqlClient)
-userProvider.setGqlc(mockGqlClient)
-roleProvider.setGqlc(mockGqlClient)
-sessionProvider.setGqlc(mockGqlClient)
-recoveryProvider.setGqlc(mockGqlClient)
-
-
-
 //Set Auth
 store.dispatch('login',{username:'root',password:'123'})
-
 
 storiesOf('Pages', module)
     .add('UserManagementPage',

@@ -24,7 +24,7 @@ class AuthProvider {
 
     register({username,password, name, email, phone}){
         return this.gqlc.mutate({
-            mutation: require('./gql/registerUser.graphql'),
+            mutation: require('./gql/register.graphql'),
             variables: {username,password, name, email, phone}
         })
     }

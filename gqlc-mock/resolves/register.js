@@ -1,6 +1,6 @@
 const resolve = {
     data: {
-        registerUser: {
+        register: {
             status: true,
             id: 123,
             email: 'asd@asd.com'

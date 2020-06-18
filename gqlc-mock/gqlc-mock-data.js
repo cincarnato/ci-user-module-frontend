@@ -1,5 +1,6 @@
 //Mock
-import mockGqlClient from "./gqlc-mock";
+import {createMockClient} from 'mock-apollo-client';
+const mockGqlClient = createMockClient();
 
 //Resolvers
 import dashboardData from "./resolves/dashboardData";
@@ -12,8 +13,9 @@ import groups from "./resolves/groups";
 import permissions from "./resolves/permissions";
 import avatarUpload from "./resolves/avatarUpload";
 import authSuccessful from "./resolves/auth-successful";
+import authBadCredentials from "./resolves/auth-badCredentials";
 import recoveryByEmail from "./resolves/recoveryByEmail";
-import registerUser from "./resolves/registerUser";
+import register from "./resolves/register";
 
 
 //Helpers
@@ -21,14 +23,7 @@ import uuidv4 from "./helpers/uuidv4";
 import getRoleById from "./helpers/getRoleById";
 import getUserById from "./helpers/getUserById";
 
-mockGqlClient.setRequestHandler(
-    require('../src/providers/gql/registerUser.graphql'),
-    () => {
-        return new Promise((resolve) => {
-            setTimeout(() => resolve(registerUser), 800)
-        })
-    }
-);
+
 
 mockGqlClient.setRequestHandler(
     require('../src/providers/gql/recoveryByEmail.graphql'),
@@ -195,14 +190,31 @@ mockGqlClient.setRequestHandler(
     }
 );
 
-
 mockGqlClient.setRequestHandler(
-    require('../src/providers/gql/auth.graphql'),
-    () => {
+    require('../src/providers/gql/register.graphql'),
+    ({email}) => {
         return new Promise((resolve) => {
-            setTimeout(() => resolve(authSuccessful), 800)
+            register.data.register.email = email
+            setTimeout(() => resolve(register), 800)
         })
     }
 );
+
+mockGqlClient.setRequestHandler(
+    require('../src/providers/gql/auth.graphql'),
+    ({username, password}) => {
+        return new Promise((resolve) => {
+            if(username == "root" && password == "123"){
+                setTimeout(() => resolve(authSuccessful), 800)
+            }else{
+                setTimeout(() => resolve(authBadCredentials), 800)
+            }
+
+        })
+    }
+);
+
+
+
 
 export default mockGqlClient

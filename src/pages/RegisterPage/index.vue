@@ -4,7 +4,7 @@
             <v-row align="center" justify="center">
                 <v-col cols="12" sm="7" md="5" lg="4">
 
-                    <register-successful v-if="email" email="email"></register-successful>
+                    <register-successful v-if="!!email" :email="email"></register-successful>
 
                     <register-card v-else>
                         <register-form @userRegistered="userRegistered"></register-form>

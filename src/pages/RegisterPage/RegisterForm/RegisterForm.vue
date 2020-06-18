@@ -169,18 +169,13 @@
         },
         methods: {
             register() {
-                console.log("register")
                 if (this.$refs.form.validate()) {
-                    console.log("register validate")
                     this.loading = true
                     AuthProvider.register(this.form).then(res => {
-                        console.log(res)
-                     /*   if (res.data.registerUser.status) {
-                            console.log("register ok")
-                            this.$emit("userRegistered", res.data.registerUser.email)
-                        }*/
+                       if (res.data.register.status) {
+                            this.$emit("userRegistered", res.data.register.email)
+                        }
                     }).catch(err => {
-                        console.log("err",err)
                         let clientError = new ClientError(err)
                         this.error = clientError.i18nMessage
                         this.inputErrors = clientError.inputErrors
