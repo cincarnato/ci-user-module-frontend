@@ -64,7 +64,7 @@
                 this.loading = true
                 GroupProvider.deleteGroup(this.item.id).then(result => {
                         if (result.data.groupDelete.deleteSuccess) {
-                            this.$emit('deleteConfirmed', this.item)
+                            this.$emit('groupDeleted', this.item)
                             this.$emit('closeDialog')
                         } else {
                             this.errorMessage = 'Error on Delete'

@@ -37,22 +37,14 @@
 
 <script>
 
+    import {RoleMixin} from "../RoleMixin";
+
     export default {
         name: "RoleList",
+        mixins: [RoleMixin],
         props: {
             roles: Array,
             permissions: Array
-        },
-        computed: {
-            getPermissionsTranslation() {
-                return (permission) => {
-                    if (this.$te('role.permissions.' + permission)) {
-                        return this.$t('role.permissions.' + permission)
-                    } else {
-                        return permission
-                    }
-                }
-            }
         },
         methods: {
             openUpdate(role) {

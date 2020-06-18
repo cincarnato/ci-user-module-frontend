@@ -13,7 +13,7 @@ const decorator = () => `
         </v-container>`
 
 export default {
-    title: "PageComponents/Role",
+    title: "PageComponents/RoleManagement",
     decorators: [decorator]
 };
 

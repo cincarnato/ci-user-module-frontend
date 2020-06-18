@@ -212,7 +212,7 @@
                     this.loading=true
                     UserProvider.updateUser(this.form).then(r => {
                             if (r) {
-                                this.$emit('itemUpdate', r.data.updateUser)
+                                this.$emit('userUpdated', r.data.updateUser)
                                 this.$emit('closeDialog')
                             }
                         }

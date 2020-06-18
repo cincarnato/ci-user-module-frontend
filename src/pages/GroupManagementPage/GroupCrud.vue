@@ -21,14 +21,14 @@
         <v-dialog :value="deleting" width="850" persistent>
             <group-delete :item="itemToDelete"
                           v-if="deleting"
-                          @deleteConfirmed="itemDelete"
+                          @groupDeleted="onGroupDeleted"
                           v-on:closeDialog="deleting=false"
             />
         </v-dialog>
 
         <v-dialog :value="creating" width="850" fullscreen persistent>
             <group-create v-if="creating"
-                          v-on:itemCreate="itemCreate"
+                          v-on:groupCreated="onGroupCreated"
                           v-on:closeDialog="creating=false"
             />
         </v-dialog>
@@ -36,7 +36,7 @@
         <v-dialog :value="updating" width="850" persistent>
             <group-update v-if="updating"
                           :item="itemToEdit"
-                          v-on:itemUpdate="itemUpdate"
+                          v-on:groupUpdated="onGroupUpdated"
                           v-on:closeDialog="updating=false"
             />
         </v-dialog>
@@ -81,15 +81,15 @@
             this.loadGroups()
         },
         methods: {
-            itemCreate(item) {
+            onGroupCreated(item) {
                 this.items.push(item)
                 this.totalItems++
             },
-            itemUpdate(item) {
+            onGroupUpdated(item) {
                 let index = this.items.findIndex(i => i.id == item.id)
                 this.$set(this.items, index, item)
             },
-            itemDelete(item){
+            onGroupDeleted(item){
                 let index = this.items.findIndex(i => i.id == item.id)
                 this.totalItems--
                 this.items.splice(index,1)

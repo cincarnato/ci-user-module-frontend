@@ -56,7 +56,7 @@
             deleteConfirm() {
                 this.loading=true
                 UserProvider.deleteUser(this.user.id).then( () => {
-                    this.$emit('deleteConfirmed',this.user)
+                    this.$emit('userDeleted',this.user)
                     this.$emit('closeDialog')
                 }).catch(error => {
                     let clientError = new ClientError(error)

@@ -242,7 +242,7 @@
                     this.loading=true
                     UserProvider.createUser(this.form).then(r => {
                             if (r) {
-                                this.$emit('itemCreate', r.data.createUser)
+                                this.$emit('userCreated', r.data.createUser)
                                 this.$emit('closeDialog')
                             }
                         }

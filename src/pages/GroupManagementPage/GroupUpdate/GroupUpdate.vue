@@ -142,7 +142,7 @@
                     this.loading = true
                     GroupProvider.updateGroup(this.form).then(r => {
                             if (r) {
-                                this.$emit('itemUpdate', r.data.groupUpdate)
+                                this.$emit('groupUpdated', r.data.groupUpdate)
                                 this.$emit('closeDialog')
                             }
                         }

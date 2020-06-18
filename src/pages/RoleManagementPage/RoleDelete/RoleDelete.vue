@@ -27,23 +27,23 @@
 
 export default {
   name: "ConfirmDelete",
+  props: {
+    role: String
+  },
   data: () => ({
     validate:true,
     successMessage: false,
     errorMessage: false
   }),
-  props: {
-    roleId: String
-  },
   methods: {
     removeRole() {
       if (this.roleId) {
-        RoleProvider.roleDelete(this.roleId)
+        RoleProvider.roleDelete(this.role.id)
           .then(result => {
             if (result.data.roleDelete.success) {
               this.validate = false;
               this.successMessage = true;
-              this.$emit("itemDelete", result.data.roleDelete.id);
+              this.$emit("roleDeleted", result.data.roleDelete.id);
             } else {
               this.errorMessage = true;
             }

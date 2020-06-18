@@ -121,7 +121,7 @@
                     this.loading = true
                     GroupProvider.createGroup(this.form).then(r => {
                             if (r) {
-                                this.$emit('itemCreate', r.data.groupCreate)
+                                this.$emit('groupCreated', r.data.groupCreate)
                                 this.$emit('closeDialog')
                             }
                         }

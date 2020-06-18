@@ -7,7 +7,10 @@
 
             <v-card-text>
 
-                <role-list :roles="roles" :permissions="permissions"></role-list>
+                <role-list :roles="roles"
+                           :permissions="permissions"
+                           @update=""
+                ></role-list>
 
             </v-card-text>
 
@@ -32,14 +35,7 @@
                 <v-icon dark>edit</v-icon>
             </v-btn>
 
-            <v-dialog :value="openDialog" width="500" persistent>
-                <confirm-delete
-                        :valid="true"
-                        :roleId="roleId"
-                        v-on:itemDelete="deleteRole"
-                        v-on:closeDialog="openDialog=false"
-                />
-            </v-dialog>
+
 
             <v-dialog :value="creating" width="850" persistent>
                 <role-create
@@ -50,13 +46,23 @@
                 />
             </v-dialog>
 
-            <v-dialog :value="openEdit" width="850" persistent>
-                <role-edit
-                        v-if="openEdit"
-                        v-on:closeDialog="openEdit=false"
+            <v-dialog :value="!!roleToDelete" width="500" persistent>
+                <role-delete
+                        v-if="!!roleToDelete"
+                        :role="roleToDelete"
+                        v-on:roleDeleted="onRoleDeleted"
+                        v-on:closeDialog="roleToDelete=null"
+                />
+            </v-dialog>
+
+            <v-dialog :value="!!roleToUpdate" width="850" persistent>
+                <role-update
+                        v-if="!!roleToUpdate"
+                        :role="roleToUpdate"
                         :permissions="permissions"
-                        v-on:roleUpdate="updatePage"
-                        :role="role"
+                        v-on:closeDialog="roleToUpdate=null"
+                        v-on:roleUpdated="onRoleUpdated"
+
                 />
             </v-dialog>
 
@@ -70,18 +76,21 @@
 
 <script>
     import RoleCreate from "./RoleCreate/RoleCreate";
-    import ConfirmDelete from "./RoleDelete/RoleDelete";
-    import RoleEdit from "./RoleUpdate/RoleUpdate";
+    import RoleDelete from "./RoleDelete/RoleDelete";
+    import RoleUpdate from "./RoleUpdate/RoleUpdate";
     import RoleProvider from "../../providers/RoleProvider";
     import RoleList from "./RoleList";
+    import Vue from "vue";
 
     export default {
         name: "RoleCrud",
-        components: {RoleList, RoleCreate, ConfirmDelete, RoleEdit},
+        components: {RoleList, RoleCreate, RoleDelete, RoleUpdate},
         data() {
             return {
                 permissions: [],
                 roles: [],
+                roleToUpdate: null,
+                roleToDelete: null
             }
         },
         created() {
@@ -96,16 +105,22 @@
                     this.roles = r.data.roles;
                 });
             },
-            createRole(role) {
+            openUpdate(role) {
+                this.roleToUpdate = role
+            },
+            openDelete(role){
+                this.roleToDelete = role
+            },
+            onRoleCreated(role) {
                 this.roles.push(role);
             },
-            changeStateDelete() {
-                this.statusDelete = !this.statusDelete;
-                this.rolesName = [];
+            onRoleDeleted(role){
+                let index = this.roles.findIndex(i => i.id == role.id)
+                this.roles.splice(index,1)
             },
-            deleteRole: function (id) {
-                const index = this.roles.findIndex(role => role.id === id);
-                this.roles.splice(index, 1);
+            onRoleUpdated(role){
+                let index = this.items.findIndex(i => i.id == role.id)
+                Vue.set(this.roles, index, role)
             }
         }
     }
