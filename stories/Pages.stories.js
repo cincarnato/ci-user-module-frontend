@@ -1,7 +1,7 @@
 import {storiesOf} from '@storybook/vue';
 
 import GroupManagementPage from '../src/pages/GroupManagementPage';
-import RolePage from '../src/pages/RolePage';
+import RoleManagementPage from '../src/pages/RoleManagementPage';
 import UserManagementPage from '../src/pages/UserManagementPage';
 
 import LoginPage from '../src/pages/LoginPage';
@@ -27,10 +27,10 @@ storiesOf('Pages', module)
             template: '<user-management-page></user-management-page>',
             i18n, store, router
         }))
-    .add('RolePage',
+    .add('RoleManagementPage',
         () => ({
-            components: {RolePage},
-            template: '<role-page></role-page>',
+            components: {RoleManagementPage},
+            template: '<role-management-page></role-management-page>',
             i18n, store, router
         }))
     .add('GroupManagementPage',

@@ -1,4 +1,4 @@
-import GroupDataTable from "./GroupDataTable"
+import GroupList from "./GroupList"
 import i18n from "../../../i18n"
 import router from "../../../router"
 import store from "../../../store"
@@ -38,11 +38,11 @@ const data = [
     }
 ]
 
-export const groupDataTable = () => ({
-    components: {GroupDataTable},
+export const groupList = () => ({
+    components: {GroupList},
     props: {
         data: {default: data}
     },
-    template: '<GroupDataTable :items="data" :total-items="data.length" :loading="false" />',
+    template: '<group-list :items="data" :total-items="data.length" :loading="false" />',
     i18n, router, store
 })

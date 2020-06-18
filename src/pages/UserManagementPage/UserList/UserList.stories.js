@@ -1,4 +1,4 @@
-import UserDataTable from "./UserDataTable"
+import UserList from "./UserList"
 import i18n from "../../../i18n"
 import router from "../../../router"
 import store from "../../../store"
@@ -47,11 +47,11 @@ const data = {
     ]
 }
 
-export const userDataTable = () => ({
-    components: {UserDataTable},
+export const userList = () => ({
+    components: {UserList},
     props: {
         data: {default: data}
     },
-    template: `<UserDataTable :items="data.items" :loading="data.loading" :total-items="data.totalItems" />`,
+    template: `<user-list :items="data.items" :loading="data.loading" :total-items="data.totalItems" />`,
     i18n, router, store
 })

@@ -96,7 +96,7 @@
 </template>
 <script>
     export default {
-        name: 'user-data-table',
+        name: 'UserList',
         props: {
           items: Array,
           totalItems: Number,

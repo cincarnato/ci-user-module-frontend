@@ -1,4 +1,4 @@
-import UserDataTable from "./UserDataTable";
+import UserDataTable from "./UserList";
 
 export {UserDataTable}
 export default UserDataTable

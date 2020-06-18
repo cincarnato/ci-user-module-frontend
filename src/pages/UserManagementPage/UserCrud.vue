@@ -5,7 +5,7 @@
             <v-card-subtitle class="" v-t="'user.description'"></v-card-subtitle>
 
             <v-card-text>
-                <user-data-table
+                <user-list
                         @open-change-password="openChangePassword"
                         @open-delete="openDelete"
                         @open-edit="openEdit"
@@ -74,14 +74,14 @@
     import UserChangePassword from './AdminChangePassword'
     import UserDelete from "./UserDelete";
     import UserShow from "./UserShow";
-    import UserDataTable from "./UserDataTable";
+    import UserList from "./UserList";
     import UserProvider from "../../providers/UserProvider";
     import Vue from "vue";
 
     export default {
         name: "UserCrud",
         components: {
-            UserDataTable,
+            UserList,
             UserShow,
             UserDelete,
             UserCreate,

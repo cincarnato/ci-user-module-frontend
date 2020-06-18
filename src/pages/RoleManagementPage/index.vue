@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import DataTablaRole from "./DataTablaRole";
+    import DataTablaRole from "./RoleList/RoleList";
 
     export default {
         name: "RolePage",

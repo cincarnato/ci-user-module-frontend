@@ -57,9 +57,9 @@
 </template>
 
 <script>
-    import RoleProvider from "../../providers/RoleProvider";
-    import ClientError from "../../errors/ClientError";
-    import UserProvider from "../../providers/UserProvider";
+    import RoleProvider from "../../../providers/RoleProvider";
+    import ClientError from "../../../errors/ClientError";
+    import UserProvider from "../../../providers/UserProvider";
 
 
     export default {

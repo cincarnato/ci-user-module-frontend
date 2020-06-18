@@ -5,13 +5,13 @@
         <v-card-subtitle class="" v-t="'group.description'"></v-card-subtitle>
 
         <v-card-text>
-            <group-data-table
+            <group-list
                     @open-delete="openDelete"
                     @open-edit="openEdit"
                     @open-show="openShow"
                     :items="items" :totalItems="totalItems" :loading="loading"
                     @update="loadGroups"
-            ></group-data-table>
+            ></group-list>
         </v-card-text>
 
         <v-dialog :value="showing" width="850" persistent>
@@ -54,12 +54,12 @@
     import GroupDelete from "./GroupDelete";
     import GroupCreate from "./GroupCreate";
     import GroupUpdate from "./GroupUpdate";
-    import GroupDataTable from "./GroupDataTable/GroupDataTable";
+    import GroupList from "./GroupList";
     import GroupProvider from "../../providers/GroupProvider";
 
     export default {
         name: "GroupCrud",
-        components: {GroupDataTable, GroupUpdate, GroupCreate, GroupDelete, GroupShow},
+        components: {GroupList, GroupUpdate, GroupCreate, GroupDelete, GroupShow},
         data() {
             return {
                 title: this.$t('group.title'),

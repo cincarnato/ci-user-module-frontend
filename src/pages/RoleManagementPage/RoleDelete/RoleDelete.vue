@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import RoleProvider from "../../providers/RoleProvider";
+  import RoleProvider from "../../../providers/RoleProvider";
 
 export default {
   name: "ConfirmDelete",

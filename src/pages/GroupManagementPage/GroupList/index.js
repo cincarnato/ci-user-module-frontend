@@ -1,4 +1,4 @@
-import GroupDataTable from "./GroupDataTable";
+import GroupDataTable from "./GroupList";
 
 export {GroupDataTable}
 export default GroupDataTable

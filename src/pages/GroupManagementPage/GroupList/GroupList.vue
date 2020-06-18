@@ -73,7 +73,7 @@
 
 <script>
     export default {
-        name: "GroupDataTable",
+        name: "GroupList",
         props: {
             items: Array,
             totalItems: Number,
