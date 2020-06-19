@@ -1,15 +1,10 @@
 <template>
     <v-card>
 
-        <v-toolbar flat dark color="primary">
-            <v-toolbar-title>{{title}}</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-toolbar-items>
-                <v-btn icon dark @click="$emit('closeDialog')">
-                    <v-icon>close</v-icon>
-                </v-btn>
-            </v-toolbar-items>
-        </v-toolbar>
+        <toolbar-dialog-card :title="title"
+                             danger
+                             @close="$emit('closeDialog')">
+        </toolbar-dialog-card>
 
         <v-card-text>
             <group-show-data :item="item"/>
@@ -21,19 +16,16 @@
 
         <v-card-text>
             <v-row justify="center">
-                <span class="title">{{areYouSure}}</span>
+                <span class="title" v-t="'common.areYouSureDeleteRecord'"></span>
             </v-row>
         </v-card-text>
 
 
         <v-card-actions>
-            <v-btn color="grey" tile outlined @click="$emit('closeDialog')">
-                {{$t('common.close')}}
-            </v-btn>
+            <close-button @click="$emit('closeDialog')"></close-button>
+
             <v-spacer></v-spacer>
-            <v-btn color="secondary" class="onSecondary--text" @click="remove" :loading="loading">
-                {{$t('common.delete')}}
-            </v-btn>
+            <danger-button @click="remove" :loading="loading" text="common.delete"></danger-button>
         </v-card-actions>
 
     </v-card>
@@ -43,18 +35,20 @@
     import GroupShowData from "../GroupShow/GroupShowData";
     import GroupProvider from "../../../providers/GroupProvider";
     import ClientError from "../../../errors/ClientError";
+    import CloseButton from "../../../components/CloseButton/CloseButton";
+    import DangerButton from "../../../components/DangerButton/DangerButton";
+    import ToolbarDialogCard from "../../../components/ToolbarDialogCard/ToolbarDialogCard";
 
     export default {
         name: "GroupDelete",
-        components: {GroupShowData},
+        components: {ToolbarDialogCard, DangerButton, CloseButton, GroupShowData},
         props: {
             item: Object
         },
         data() {
             return {
                 modal: false,
-                title: "Borrando Group",
-                areYouSure: "¿Esta seguro que desea borrar este registro?",
+                title: "group.deleteTitle",
                 errorMessage: '',
                 loading: false,
             }

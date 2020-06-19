@@ -195,6 +195,17 @@ mockGqlClient.setRequestHandler(
 
 
 mockGqlClient.setRequestHandler(
+    require('../src/providers/gql/roleDelete.graphql'),
+    (id) => {
+        return new Promise((resolve) => {
+            let r = {data: {roleDelete: {id: id, success: true}}}
+            setTimeout(() => resolve(r), 800)
+        })
+    }
+);
+
+
+mockGqlClient.setRequestHandler(
     require('../src/providers/gql/groups.graphql'),
     () => {
         return new Promise((resolve) => {

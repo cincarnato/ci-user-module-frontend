@@ -1,66 +1,68 @@
 <template>
-  <v-card>
-    <v-card-title class="secondary--text" v-t="'role.deleteTitle'"></v-card-title>
-    <v-card-text v-show="successMessage == true" class="ma-0">
-      <v-alert :value="true" color="success" class="ma-0" icon="check_circle" outlined>Exitoso</v-alert>
-    </v-card-text>
+    <v-card>
 
-    <v-card-text v-show="errorMessage == true" class="ma-0">
-      <v-alert :value="true" color="error" class="ma-0" icon="check_circle" outlined>Error</v-alert>
-    </v-card-text>
+        <toolbar-dialog-card :title="title"
+                             danger
+                             @close="$emit('closeDialog')">
+        </toolbar-dialog-card>
 
-    <v-card-text v-show="successMessage != true && errorMessage != true">
-      <label>{{$t('common.areYouSureDeleteRecord')}}</label>
-    </v-card-text>
+        <v-card-text v-show="successMessage == true" class="ma-0">
+            <v-alert :value="true" color="success" class="ma-0" icon="check_circle" outlined>Exitoso</v-alert>
+        </v-card-text>
 
-    <v-card-actions>
-      <v-spacer></v-spacer>
+        <v-card-text v-show="errorMessage == true" class="ma-0">
+            <v-alert :value="true" color="error" class="ma-0" icon="check_circle" outlined>Error</v-alert>
+        </v-card-text>
 
-      <v-btn outlined color="grey" @click="closeConfirm" v-t="'common.close'"></v-btn>
-      <v-btn color="secondary" @click="removeRole" :disabled="!validate" v-t="'common.delete'"></v-btn>
-    </v-card-actions>
-  </v-card>
+        <v-card-text v-show="successMessage != true && errorMessage != true">
+            <label>{{$t('common.areYouSureDeleteRecord')}}</label>
+        </v-card-text>
+
+        <v-card-actions>
+            <v-spacer></v-spacer>
+            <close-button @click="$emit('closeDialog')"></close-button>
+            <danger-button @click="deleteRole" v-t="'common.delete'"></danger-button>
+        </v-card-actions>
+    </v-card>
 </template>
 
 <script>
-  import RoleProvider from "../../../providers/RoleProvider";
+    import RoleProvider from "../../../providers/RoleProvider";
+    import CloseButton from "../../../components/CloseButton/CloseButton";
+    import ClientError from "../../../errors/ClientError";
+    import DangerButton from "../../../components/DangerButton/DangerButton";
+    import ToolbarDialogCard from "../../../components/ToolbarDialogCard/ToolbarDialogCard";
 
-export default {
-  name: "ConfirmDelete",
-  props: {
-    role: String
-  },
-  data: () => ({
-    validate:true,
-    successMessage: false,
-    errorMessage: false
-  }),
-  methods: {
-    removeRole() {
-      if (this.roleId) {
-        RoleProvider.roleDelete(this.role.id)
-          .then(result => {
-            if (result.data.roleDelete.success) {
-              this.validate = false;
-              this.successMessage = true;
-              this.$emit("roleDeleted", result.data.roleDelete.id);
-            } else {
-              this.errorMessage = true;
+    export default {
+        name: "ConfirmDelete",
+        components: {ToolbarDialogCard, DangerButton, CloseButton},
+        props: {
+            role: Object
+        },
+        data: () => ({
+            title: 'role.deleteTitle',
+            successMessage: false,
+            errorMessage: false
+        }),
+        methods: {
+            deleteRole() {
+                if (this.role && this.role.id) {
+                    RoleProvider.roleDelete(this.role.id)
+                        .then(r => {
+                            if (r) {
+                                this.$emit("roleDeleted", this.role)
+                                this.$emit("closeDialog")
+                            }
+                        })
+                        .catch(error => {
+                            let clientError = new ClientError(error);
+                            this.errorMessage = clientError.i18nMessage
+                        }).finally(() => this.loading = false)
+
+                }
             }
-          })
-          .catch(err => {
-            this.errorMessage = err.message;
-          });
-      }
-    },
-    closeConfirm() {
-      this.successMessage = false;
-      this.errorMessage = false;
-      this.validate = true;
-      this.$emit("closeDialog");
-    }
-  }
-};
+        }
+    };
 </script>
 
 <style scoped>

@@ -27,8 +27,7 @@
 
                 <v-col cols="12">
                     <v-row>
-                        <v-col cols="12" v-for="(permission,index) in permissions" :key="index">
-
+                        <v-col cols="12" class="py-0" v-for="(permission,index) in permissions" :key="index">
                             <v-checkbox v-model="form.permissions"
                                         :label="getPermissionsTranslation(permission)"
                                         :value="permission"

@@ -9,7 +9,8 @@
 
                 <role-list :roles="roles"
                            :permissions="permissions"
-                           @update=""
+                           @update="openUpdate"
+                           @delete="openDelete"
                 ></role-list>
 
             </v-card-text>
@@ -18,29 +19,10 @@
 
 
         <div>
-            <v-btn class="mx-3" fab fixed right dark color="teal" @click="changeStateDelete">
-                <v-icon dark>delete</v-icon>
-            </v-btn>
-
-
-            <v-btn
-                    style="margin-top:70px; margin-right:12px"
-                    fixed
-                    right
-                    fab
-                    dark
-                    color="cyan"
-                    @click="stateEdit=!stateEdit"
-            >
-                <v-icon dark>edit</v-icon>
-            </v-btn>
-
-
-
-            <v-dialog :value="creating" width="850" persistent>
+                 <v-dialog :value="creating" width="850" persistent>
                 <role-create
                         v-if="creating"
-                        v-on:createRole="createRole"
+                        v-on:roleCreated="onRoleCreated"
                         v-on:closeDialog="creating=false"
                         :permissions="permissions"
                 />
@@ -90,7 +72,8 @@
                 permissions: [],
                 roles: [],
                 roleToUpdate: null,
-                roleToDelete: null
+                roleToDelete: null,
+                creating: false
             }
         },
         created() {
@@ -119,7 +102,7 @@
                 this.roles.splice(index,1)
             },
             onRoleUpdated(role){
-                let index = this.items.findIndex(i => i.id == role.id)
+                let index = this.roles.findIndex(i => i.id == role.id)
                 Vue.set(this.roles, index, role)
             }
         }

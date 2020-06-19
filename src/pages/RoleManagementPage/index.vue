@@ -1,15 +1,15 @@
 <template>
     <v-container fluid>
-        <data-tabla-role/>
+        <role-crud></role-crud>
     </v-container>
 </template>
 
 <script>
-    import DataTablaRole from "./RoleList/RoleList";
+    import RoleCrud from "./RoleCrud";
 
     export default {
         name: "RolePage",
-        components: {DataTablaRole},
+        components: {RoleCrud},
 
     }
 </script>

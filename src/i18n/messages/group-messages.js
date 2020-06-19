@@ -5,6 +5,7 @@ const clientMessages = {
             description: 'View, search, create, edit and delete Groups',
             createTitle: 'Creating group',
             updateTitle: 'Updating group',
+            deleteTitle: 'Deleting group',
             label: {
                 avatar: 'Avatar',
                 name: 'Name',
@@ -19,6 +20,7 @@ const clientMessages = {
             description: 'Ver, buscar, crear, editar, y borrar grupos del sistema',
             createTitle: 'Creando grupo',
             updateTitle: 'Editando grupo',
+            deleteTitle: 'Eliminando groupo',
             label: {
                 avatar: 'Avatar',
                 name: 'Nombre',
@@ -34,6 +36,7 @@ const clientMessages = {
             description: 'Ver, buscar, criar, editar e usar  grupos del sistema',
             createTitle: 'Criando grupo',
             updateTitle: 'Atualizando grupo',
+            deleteTitle: 'Excluindo groupo',
             label: {
                 avatar: 'Avatar',
                 name: 'Nome',
