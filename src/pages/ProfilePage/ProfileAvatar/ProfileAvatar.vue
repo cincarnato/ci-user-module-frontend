@@ -1,10 +1,7 @@
 <template>
-    <div>
-
         <profile-avatar-form v-slot="i">
             <profile-avatar-img :loading="i.loading" />
         </profile-avatar-form>
-    </div>
 </template>
 
 <script>
@@ -13,14 +10,5 @@
     export default {
         name: "ProfileAvatar",
         components: {ProfileAvatarForm, ProfileAvatarImg},
-        methods:{
-            changeAvatar(){
-
-            }
-        }
     }
 </script>
-
-<style scoped>
-
-</style>
