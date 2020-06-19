@@ -1,8 +1,6 @@
-import {gqlc} from '../resources'
-
 class RoleProvider {
-    constructor(gqlc) {
-        this.gqlc = gqlc
+    constructor() {
+        this.gqlc = null
     }
 
     setGqlc(gqlc){
@@ -49,7 +47,7 @@ class RoleProvider {
 
 }
 
-const roleProvider = new RoleProvider(gqlc)
+const roleProvider = new RoleProvider()
 
 export default roleProvider
 

@@ -1,10 +1,7 @@
-import {gqlc} from '../resources'
-
 class AuthProvider {
 
-    constructor(gqlc) {
-        //GraphQLClient
-        this.gqlc = gqlc
+    constructor() {
+        this.gqlc = null
     }
 
     setGqlc(gqlc){
@@ -44,6 +41,6 @@ class AuthProvider {
 
 
 }
-const authProvider = new AuthProvider(gqlc)
+const authProvider = new AuthProvider()
 
 export default authProvider

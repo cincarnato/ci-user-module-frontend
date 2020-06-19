@@ -1,10 +1,7 @@
-import {gqlc} from '../resources'
-
-
 class RecoveryProvider {
 
-    constructor(gqlc) {
-        this.gqlc = gqlc
+    constructor() {
+        this.gqlc = null
     }
 
     setGqlc(gqlc) {
@@ -29,6 +26,6 @@ class RecoveryProvider {
 
 }
 
-const recoveryProvider = new RecoveryProvider(gqlc)
+const recoveryProvider = new RecoveryProvider()
 
 export default recoveryProvider

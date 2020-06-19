@@ -42,6 +42,8 @@ Storybook available.
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
     "apollo-link": "^1.2.14",
+    "apollo-link-error": "^1.1.13",
+    "apollo-upload-client": "^13.0.0",
     "chart.js": "^2.9.3",
     "chartjs-plugin-labels": "^1.1.0",
     "core-js": "^3.6.5",

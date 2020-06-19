@@ -1,10 +1,9 @@
-import {gqlc} from '../resources'
 import ClientError from '../errors/ClientError'
 
 class UserProvider {
 
-    constructor(gqlc) {
-        this.gqlc = gqlc
+    constructor() {
+        this.gqlc = null
     }
 
     setGqlc(gqlc){
@@ -97,5 +96,5 @@ class UserProvider {
         })
     }
 }
-const userProvider = new UserProvider(gqlc)
+const userProvider = new UserProvider()
 export default userProvider

@@ -1,8 +1,6 @@
-import {gqlc} from '../resources'
-
 class SessionProvider {
-    constructor(gqlc) {
-        this.gqlc = gqlc
+    constructor() {
+        this.gqlc = null
     }
 
     setGqlc(gqlc){
@@ -20,7 +18,7 @@ class SessionProvider {
 
 
 }
-const sessionProvider = new SessionProvider(gqlc)
+const sessionProvider = new SessionProvider()
 export default sessionProvider
 
 

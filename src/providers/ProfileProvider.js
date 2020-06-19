@@ -1,9 +1,7 @@
-import {gqlc} from '../resources'
-
 class ProfileProvider {
 
-    constructor(gqlc) {
-        this.gqlc = gqlc
+    constructor() {
+        this.gqlc = null
     }
 
     setGqlc(gqlc){
@@ -32,7 +30,7 @@ class ProfileProvider {
 
 }
 
-const profileProvider = new ProfileProvider(gqlc)
+const profileProvider = new ProfileProvider()
 
 export default profileProvider
 

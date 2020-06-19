@@ -1,9 +1,7 @@
-import {gqlc} from '../resources'
-
 class GroupProvider {
 
-    constructor(gqlc) {
-        this.gqlc = gqlc
+    constructor() {
+        this.gqlc = null
     }
 
     setGqlc(gqlc){
@@ -53,7 +51,7 @@ class GroupProvider {
     }
 
 }
-const groupProvider = new GroupProvider(gqlc)
+const groupProvider = new GroupProvider()
 
 export default groupProvider
 
