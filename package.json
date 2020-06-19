@@ -1,7 +1,8 @@
 {
   "name": "ci-user-module",
-  "version": "v0.0.4",
+  "version": "v0.0.5",
   "author": "Cristian Incarnato",
+  "main": "./dist/ci-user-module.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
