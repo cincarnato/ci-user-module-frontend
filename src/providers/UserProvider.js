@@ -1,4 +1,4 @@
-import {gqlc} from '../index'
+import {gqlc} from '../resources'
 import ClientError from '../errors/ClientError'
 
 class UserProvider {

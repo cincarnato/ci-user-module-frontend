@@ -1,6 +1,6 @@
 {
   "name": "ci-user-module",
-  "version": "v0.0.3",
+  "version": "v0.0.4",
   "author": "Cristian Incarnato",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,8 +9,16 @@
     "lint": "vue-cli-service lint",
     "build-storybook": "build-storybook",
     "storybook": "start-storybook -p 6006",
-    "storybook&Dev": "npx -p @vue/devtools vue-devtools & start-storybook -p 6006"
+    "storybook&Dev": "npx -p @vue/devtools vue-devtools & start-storybook -p 6006",
+    "build-bundle": "vue-cli-service build --target lib --name ci-user-module ./src/index.js"
   },
+  "files": [
+    "dist/*",
+    "src/*",
+    "*.md",
+    "*.json",
+    "*.js"
+  ],
   "dependencies": {
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
