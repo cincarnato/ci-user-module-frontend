@@ -12,7 +12,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Publish tag to npm
         if: contains(github.ref, 'tags')
-        run: npm publish
+        run: npm publish --access public
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
