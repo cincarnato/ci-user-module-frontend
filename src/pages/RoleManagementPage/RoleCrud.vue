@@ -48,10 +48,9 @@
                 />
             </v-dialog>
 
-            <v-btn class="elevation-8" color="#D81B60" fab fixed bottom right dark @click="creating = true">
-                <v-icon>add</v-icon>
-            </v-btn>
+            <add-button @click="creating = true"></add-button>
 
+            <snackbar :message="flashMessage"/>
         </div>
     </div>
 </template>
@@ -63,17 +62,20 @@
     import RoleProvider from "../../providers/RoleProvider";
     import RoleList from "./RoleList";
     import Vue from "vue";
+    import AddButton from "../../components/AddButton/AddButton";
+    import Snackbar from "../../components/Snackbar/Snackbar";
 
     export default {
         name: "RoleCrud",
-        components: {RoleList, RoleCreate, RoleDelete, RoleUpdate},
+        components: {Snackbar, AddButton, RoleList, RoleCreate, RoleDelete, RoleUpdate},
         data() {
             return {
                 permissions: [],
                 roles: [],
                 roleToUpdate: null,
                 roleToDelete: null,
-                creating: false
+                creating: false,
+                flashMessage: null
             }
         },
         created() {
@@ -96,14 +98,17 @@
             },
             onRoleCreated(role) {
                 this.roles.push(role);
+                this.flashMessage = this.$t('role.created')
             },
             onRoleDeleted(role){
                 let index = this.roles.findIndex(i => i.id == role.id)
                 this.roles.splice(index,1)
+                this.flashMessage = this.$t('role.deleted')
             },
             onRoleUpdated(role){
                 let index = this.roles.findIndex(i => i.id == role.id)
                 Vue.set(this.roles, index, role)
+                this.flashMessage = this.$t('role.updated')
             }
         }
     }

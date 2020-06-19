@@ -59,9 +59,8 @@
 
         <snackbar :message="flashMessage"/>
 
-        <v-btn class="elevation-8 onSecondary--text" color="secondary" fab fixed bottom right  @click="openCreate">
-            <v-icon>add</v-icon>
-        </v-btn>
+        <add-button @click="openCreate"></add-button>
+
     </div>
 
 </template>
@@ -77,10 +76,12 @@
     import UserList from "./UserList";
     import UserProvider from "../../providers/UserProvider";
     import Vue from "vue";
+    import AddButton from "../../components/AddButton/AddButton";
 
     export default {
         name: "UserCrud",
         components: {
+            AddButton,
             UserList,
             UserShow,
             UserDelete,
@@ -155,21 +156,21 @@
                 this.changePassword = true
                 this.userToEdit = user
             },
-            onUserUpdated(item){
-                let index = this.items.findIndex(i => i.id == item.id)
-                Vue.set(this.items, index, item)
-                this.flashMessage="User Updated"
-            },
             onUserCreated(item){
                 this.items.push(item)
                 this.totalItems++
-                this.flashMessage="User Created"
+                this.flashMessage = this.$t('user.created')
+            },
+            onUserUpdated(item){
+                let index = this.items.findIndex(i => i.id == item.id)
+                Vue.set(this.items, index, item)
+                this.flashMessage = this.$t('user.updated')
             },
             onUserDeleted(item){
                 let index = this.items.findIndex(i => i.id == item.id)
                 this.items.splice(index,1)
                 this.totalItems--
-                this.flashMessage="User Deleted"
+                this.flashMessage = this.$t('user.deleted')
             },
             changePasswordConfirmed(){
                 this.flashMessage="User password changed"

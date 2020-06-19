@@ -1,6 +1,6 @@
 <template>
     <v-card>
-        <toolbar-dialog-card :title="title"></toolbar-dialog-card>
+        <toolbar-dialog-card :title="title" @close="$emit('closeDialog')"></toolbar-dialog-card>
 
         <v-card-text class="pt-3">
             <v-alert v-if="errorMessage" type="error" dense text>{{$t(errorMessage)}}</v-alert>

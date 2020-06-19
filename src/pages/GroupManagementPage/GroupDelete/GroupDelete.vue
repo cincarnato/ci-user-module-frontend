@@ -25,7 +25,7 @@
             <close-button @click="$emit('closeDialog')"></close-button>
 
             <v-spacer></v-spacer>
-            <danger-button @click="remove" :loading="loading" text="common.delete"></danger-button>
+            <submit-button danger @click="remove" :loading="loading" text="common.delete"></submit-button>
         </v-card-actions>
 
     </v-card>
@@ -36,12 +36,12 @@
     import GroupProvider from "../../../providers/GroupProvider";
     import ClientError from "../../../errors/ClientError";
     import CloseButton from "../../../components/CloseButton/CloseButton";
-    import DangerButton from "../../../components/DangerButton/DangerButton";
     import ToolbarDialogCard from "../../../components/ToolbarDialogCard/ToolbarDialogCard";
+    import SubmitButton from "../../../components/SubmitButton/SubmitButton";
 
     export default {
         name: "GroupDelete",
-        components: {ToolbarDialogCard, DangerButton, CloseButton, GroupShowData},
+        components: {SubmitButton, ToolbarDialogCard, CloseButton, GroupShowData},
         props: {
             item: Object
         },

@@ -6,6 +6,9 @@ const clientMessages = {
             createTitle: 'Creating group',
             updateTitle: 'Updating group',
             deleteTitle: 'Deleting group',
+            created: 'Group created',
+            updated: 'Group updated',
+            deleted: 'Group deleted',
             label: {
                 avatar: 'Avatar',
                 name: 'Name',
@@ -21,6 +24,9 @@ const clientMessages = {
             createTitle: 'Creando grupo',
             updateTitle: 'Editando grupo',
             deleteTitle: 'Eliminando groupo',
+            created: 'Groupo creado',
+            updated: 'Groupo actualizado',
+            deleted: 'Groupo eliminado',
             label: {
                 avatar: 'Avatar',
                 name: 'Nombre',
@@ -37,6 +43,9 @@ const clientMessages = {
             createTitle: 'Criando grupo',
             updateTitle: 'Atualizando grupo',
             deleteTitle: 'Excluindo groupo',
+            created: 'Grupo criado',
+            updated: 'Grupo atualizado',
+            deleted: 'Grupo removido',
             label: {
                 avatar: 'Avatar',
                 name: 'Nome',

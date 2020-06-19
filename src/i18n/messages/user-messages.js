@@ -10,6 +10,9 @@ const userMessages = {
             deleteConfirm: 'Are you sure you want to delete this user?',
             changePasswordTitle: 'Changing user password',
             changeYourPassword: 'Change your password',
+            created: 'User created',
+            updated: 'User updated',
+            deleted: 'User deleted',
             validation: {
                 required: 'Required field',
                 emailVerify: 'Email does not match',
@@ -45,6 +48,9 @@ const userMessages = {
             deleteConfirm: '¿Esta seguro que desea eliminar este usuario?',
             changePasswordTitle: 'Cambiando contraseña de usuario',
             changeYourPassword: 'Cambiar tu contraseña',
+            created: 'Usuario creado',
+            updated: 'Usuario actualizado',
+            deleted: 'Usuario eliminado',
             validation: {
                 required: 'Campo requerido',
                 emailVerify: 'El email no coincide',
@@ -80,6 +86,9 @@ const userMessages = {
             deleteConfirm: 'Tem certeza de que deseja excluir este usuário?',
             changePasswordTitle: 'Alterando a senha do usuário',
             changeYourPassword: 'Mude sua senha',
+            created: 'Usuário criado',
+            updated: 'Usuário atualizado',
+            deleted: 'Usuário removido',
             validation: {
                 required: 'Campo obrigatório',
                 emailVerify: 'O email não corresponde',

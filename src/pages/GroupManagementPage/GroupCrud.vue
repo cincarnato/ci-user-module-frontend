@@ -41,11 +41,9 @@
             />
         </v-dialog>
 
+        <add-button  @click="creating = true"></add-button>
 
-        <v-btn class="elevation-8" color="#D81B60" fab fixed bottom right dark @click="creating = true">
-            <v-icon>add</v-icon>
-        </v-btn>
-
+        <snackbar :message="flashMessage"/>
     </v-card>
 </template>
 
@@ -56,10 +54,12 @@
     import GroupUpdate from "./GroupUpdate";
     import GroupList from "./GroupList";
     import GroupProvider from "../../providers/GroupProvider";
+    import AddButton from "../../components/AddButton/AddButton";
+    import Snackbar from "../../components/Snackbar/Snackbar";
 
     export default {
         name: "GroupCrud",
-        components: {GroupList, GroupUpdate, GroupCreate, GroupDelete, GroupShow},
+        components: {Snackbar, AddButton, GroupList, GroupUpdate, GroupCreate, GroupDelete, GroupShow},
         data() {
             return {
                 title: this.$t('group.title'),
@@ -75,6 +75,7 @@
                 items: [],
                 totalItems: 0,
                 loading: false,
+                flashMessage: null
             }
         },
         created() {
@@ -84,15 +85,18 @@
             onGroupCreated(item) {
                 this.items.push(item)
                 this.totalItems++
+                this.flashMessage = this.$t('group.created')
             },
             onGroupUpdated(item) {
                 let index = this.items.findIndex(i => i.id == item.id)
                 this.$set(this.items, index, item)
+                this.flashMessage = this.$t('group.updated')
             },
             onGroupDeleted(item){
                 let index = this.items.findIndex(i => i.id == item.id)
                 this.totalItems--
                 this.items.splice(index,1)
+                this.flashMessage = this.$t('group.deleted')
 
             },
             openEdit(item) {

@@ -1,15 +1,9 @@
 <template>
     <v-card tile>
 
-        <v-toolbar flat dark color="primary">
-            <v-toolbar-title>{{title}}</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-toolbar-items>
-                <v-btn icon dark @click="$emit('closeDialog')">
-                    <v-icon>close</v-icon>
-                </v-btn>
-            </v-toolbar-items>
-        </v-toolbar>
+        <toolbar-dialog-card :title="title" @close="$emit('closeDialog')"></toolbar-dialog-card>
+
+
 
         <v-card-text class="pt-3">
             <v-alert v-if="errorMessage" type="error" dense text>{{$t(errorMessage)}}</v-alert>
@@ -92,11 +86,12 @@
     import UserProvider from "../../../providers/UserProvider";
     import InputErrors from "../../../mixins/InputErrors";
     import UserValidations from "../../../mixins/UserValidations";
+    import ToolbarDialogCard from "../../../components/ToolbarDialogCard/ToolbarDialogCard";
 
 
     export default {
         name: "GroupUpdate",
-        components: {GroupColorInput},
+        components: {ToolbarDialogCard, GroupColorInput},
         mixins: [InputErrors, UserValidations],
         props: {
             item: Object

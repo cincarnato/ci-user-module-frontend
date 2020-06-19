@@ -1,7 +1,7 @@
 <template>
     <v-btn
-            color="secondary"
-            class="onSecondary--text"
+            :color="danger?'red':'secondary'"
+            :class="danger?'white--text':'onSecondary--text--text'"
             v-on="$listeners"
             :loading="loading"
             :disabled="disabled"
@@ -17,7 +17,7 @@
             text: {type: String, default: "common.submit"},
             loading: {type: Boolean, default: false},
             disabled: {type: Boolean, default: false},
-
+            danger:{type: Boolean, default: false},
         }
     }
 </script>

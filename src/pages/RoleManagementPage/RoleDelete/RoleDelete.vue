@@ -21,7 +21,7 @@
         <v-card-actions>
             <v-spacer></v-spacer>
             <close-button @click="$emit('closeDialog')"></close-button>
-            <danger-button @click="deleteRole" v-t="'common.delete'"></danger-button>
+            <submit-button danger @click="deleteRole" v-t="'common.delete'" :loading="loading"></submit-button>
         </v-card-actions>
     </v-card>
 </template>
@@ -30,23 +30,25 @@
     import RoleProvider from "../../../providers/RoleProvider";
     import CloseButton from "../../../components/CloseButton/CloseButton";
     import ClientError from "../../../errors/ClientError";
-    import DangerButton from "../../../components/DangerButton/DangerButton";
     import ToolbarDialogCard from "../../../components/ToolbarDialogCard/ToolbarDialogCard";
+    import SubmitButton from "../../../components/SubmitButton/SubmitButton";
 
     export default {
         name: "ConfirmDelete",
-        components: {ToolbarDialogCard, DangerButton, CloseButton},
+        components: {SubmitButton, ToolbarDialogCard, CloseButton},
         props: {
             role: Object
         },
         data: () => ({
             title: 'role.deleteTitle',
             successMessage: false,
-            errorMessage: false
+            errorMessage: false,
+            loading: false
         }),
         methods: {
             deleteRole() {
                 if (this.role && this.role.id) {
+                    this.loading = true
                     RoleProvider.roleDelete(this.role.id)
                         .then(r => {
                             if (r) {

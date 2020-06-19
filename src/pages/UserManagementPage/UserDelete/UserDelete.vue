@@ -25,7 +25,7 @@
         <v-card-actions>
             <close-button @click="$emit('closeDialog')"></close-button>
             <v-spacer></v-spacer>
-            <danger-button @click="deleteConfirm" :loading="loading" text="common.delete"></danger-button>
+            <submit-button danger @click="deleteConfirm" :loading="loading" text="common.delete"></submit-button>
         </v-card-actions>
 
     </v-card>
@@ -37,10 +37,11 @@
     import ClientError from "../../../errors/ClientError";
     import ToolbarDialogCard from "../../../components/ToolbarDialogCard/ToolbarDialogCard";
     import CloseButton from "../../../components/CloseButton/CloseButton";
-    import DangerButton from "../../../components/DangerButton/DangerButton";
+    import SubmitButton from "../../../components/SubmitButton/SubmitButton";
+
     export default {
         name: "UserDelete",
-        components: {DangerButton, CloseButton, ToolbarDialogCard, UserShowData},
+        components: {SubmitButton, CloseButton, ToolbarDialogCard, UserShowData},
         props: {
             user: Object
         },
