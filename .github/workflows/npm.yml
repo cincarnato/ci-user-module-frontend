@@ -10,8 +10,6 @@ jobs:
         with:
           node-version: '10.x'
           registry-url: 'https://registry.npmjs.org'
-      - name: Build package
-        run: npm run build
       - name: Publish tag to npm
         if: contains(github.ref, 'tags')
         run: npm publish
