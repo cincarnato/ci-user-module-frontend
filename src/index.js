@@ -20,6 +20,25 @@ import DashboardPage from './pages/DashboardPage'
 import i18nMessages from './i18n/messages'
 import UserModuleStore from './store/UserModule'
 
+//Providers
+import authProvider from "./providers/AuthProvider";
+import userProvider from "./providers/UserProvider";
+import roleProvider from "./providers/RoleProvider";
+import groupProvider from "./providers/GroupProvider";
+import profileProvider from "./providers/ProfileProvider";
+import recoveryProvider from "./providers/RecoveryProvider";
+import sessionProvider from "./providers/SessionProvider";
+
+const setGraphQlClientToProviders = (graphQlClient) => {
+    authProvider.setGqlc(graphQlClient)
+    userProvider.setGqlc(graphQlClient)
+    roleProvider.setGqlc(graphQlClient)
+    groupProvider.setGqlc(graphQlClient)
+    profileProvider.setGqlc(graphQlClient)
+    recoveryProvider.setGqlc(graphQlClient)
+    sessionProvider.setGqlc(graphQlClient)
+}
+
 export {
     //Components
     CloseButton,
@@ -43,4 +62,14 @@ export {
     i18nMessages,
     UserModuleStore,
 
+    //Provider
+    authProvider,
+    userProvider,
+    roleProvider,
+    groupProvider,
+    profileProvider,
+    recoveryProvider,
+    sessionProvider,
+    //Initialice gqlc
+    setGraphQlClientToProviders
 }

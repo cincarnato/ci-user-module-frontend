@@ -30,6 +30,11 @@ Storybook available.
 - Audit details
 - ... We are listen ideas
 
+# Requisites
+- store
+- i18n
+- vuetify
+- apollo client
 
 ## DEPENDENCIES
 ```
@@ -53,6 +58,33 @@ Storybook available.
     "vuex": "^3.4.0"
   }
 ```
+
+## DEV DEPENDENCIES
+```
+    devDependencies{
+        "graphql-tag": "^2.10.3"
+    }
+```
+
+## vue.config.js
+Add gql loader
+```
+module.exports = {
+  "transpileDependencies": [
+    "vuetify"
+  ],
+  chainWebpack: (config) => {
+    config.module
+        .rule('gql')
+        .test(/\.(graphql|gql)$/)
+        .use('graphql-tag/loader')
+        .loader('graphql-tag/loader')
+        .end();
+  }
+}
+```
+
+-----------------------------------------------------------------------------
 
 ## Project setup
 ```
