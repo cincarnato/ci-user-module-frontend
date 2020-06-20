@@ -29,6 +29,9 @@ import profileProvider from "./providers/ProfileProvider";
 import recoveryProvider from "./providers/RecoveryProvider";
 import sessionProvider from "./providers/SessionProvider";
 
+//Routes
+import routes from "./routes";
+
 const setGraphQlClientToProviders = (graphQlClient) => {
     authProvider.setGqlc(graphQlClient)
     userProvider.setGqlc(graphQlClient)
@@ -61,6 +64,7 @@ export {
     //Resources
     i18nMessages,
     UserModuleStore,
+    routes,
 
     //Provider
     authProvider,
