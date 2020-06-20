@@ -53,8 +53,6 @@ export default {
         logout({commit}) {
             commit('setMe', null)
             commit('setAccessToken', null)
-            //Todo move to another part
-            // router.push('/login')
         },
 
         verifyToken(_, token) {

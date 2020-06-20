@@ -1,9 +1,11 @@
 //Components
-import CloseButton from "./components/CloseButton/CloseButton";
-import SubmitButton from "./components/SubmitButton/SubmitButton";
-import AddButton from "./components/AddButton/AddButton";
-import Snackbar from "./components/Snackbar/Snackbar";
-import ToolbarDialogCard from "./components/ToolbarDialogCard/ToolbarDialogCard";
+import CloseButton from "./components/CloseButton";
+import SubmitButton from "./components/SubmitButton";
+import AddButton from "./components/AddButton";
+import Snackbar from "./components/Snackbar";
+import ToolbarDialogCard from "./components/ToolbarDialogCard";
+import DashboardButton from "./components/DashboardButton";
+import AppBarUserMenu from "./components/AppBarUserMenu";
 
 //Pages
 import UserManagementPage from './pages/UserManagementPage'
@@ -49,6 +51,8 @@ export {
     AddButton,
     Snackbar,
     ToolbarDialogCard,
+    DashboardButton,
+    AppBarUserMenu,
 
     //Pages
     UserManagementPage,

@@ -12,7 +12,7 @@
     import {mapGetters} from 'vuex'
 
     export default {
-        name: "AppBarUserAdmin",
+        name: "DashboardButton",
         computed: {
             ...mapGetters(['isAuth', 'hasRole']),
             mustShow() {
