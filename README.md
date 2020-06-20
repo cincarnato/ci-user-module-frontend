@@ -35,6 +35,7 @@ Storybook available.
 - i18n
 - vuetify
 - apollo client
+- router
 
 ## DEPENDENCIES
 ```
@@ -64,7 +65,8 @@ Storybook available.
 ## DEV DEPENDENCIES
 ```
     devDependencies{
-        "graphql-tag": "^2.10.3"
+        "graphql-tag": "^2.10.3",
+        "deepmerge": "^4.2.2"
     }
 ```
 

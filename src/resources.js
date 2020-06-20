@@ -1,9 +1,9 @@
-import routes from './router/routes'
+import index from './routes'
 import store from './store/UserModule'
 
 const userModule = {
     store: store,
-    routes: routes,
+    routes: index,
     gqlc: null,
     setGqlc(gqlc){
         this.gqlc = gqlc
