@@ -34,9 +34,6 @@ import sessionProvider from "./providers/SessionProvider";
 //Routes
 import routes from "./routes";
 
-//API
-import * as api from './api'
-
 const setGraphQlClientToProviders = (graphQlClient) => {
     authProvider.setGqlc(graphQlClient)
     userProvider.setGqlc(graphQlClient)
@@ -48,9 +45,6 @@ const setGraphQlClientToProviders = (graphQlClient) => {
 }
 
 export {
-    //API
-    api,
-
     //Components
     CloseButton,
     SubmitButton,
